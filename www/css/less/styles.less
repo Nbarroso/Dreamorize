@@ -5,7 +5,10 @@
 @import "elements.less";
 @background: #141444;
 @bleu_clair : #7BF6FF;
+@bleu_nuit : #222143;
+@vert_bleu : #67F4DC;
 @violet_clair: #B5B3FF;
+@rose : #BD59E6;
 
 @font-face{
 
@@ -27,6 +30,17 @@ a{
 	text-decoration: none;
 }
 
+p{
+
+	font-size: 24px;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+
+	font-size: 80px;
+	color: @violet_clair;
+}
+
 /* /GENERAL */
 
 /* PAGE INTRO */
@@ -46,9 +60,10 @@ a{
 	text-align: center;
 }
 
-.icon_menu{
+.icon-menu{
 
-	font-size: 20px;
+	font-size: 30px;
+	color: @bleu_clair;
 }
 
 /* /HEADER*/
@@ -77,12 +92,12 @@ a{
 
 .titre_bouton{
 
-	font-size: 18px;
+	font-size: 24px;
 }
 
 .titre_bouton1{
 
-	font-size: 22px;
+	font-size: 26px;
 }
 
 .menu_bouton{
@@ -105,6 +120,23 @@ a{
 			margin-top: 10px
 		}
 	}
+}
+
+.menu_bouton td{
+
+	padding: 0px 10px;
+}
+
+.icon-memoriser{
+
+	font-size: 100px;
+	color: @bleu_clair;
+}
+
+.icon-explorer, .icon-visualiser, .icon-echanger{
+
+	font-size: 80px;
+	color: @violet_clair;
 }
 
 /* /PAGE MENU PRINCIPAL */
@@ -131,6 +163,13 @@ a{
 			margin-top: 10px
 		}
 	}
+}
+
+.icon-micro, .icon-questions{
+
+	font-size: 100px;
+	color: @bleu_clair;
+	padding: 20px;
 }
 
 /* /MEMORISER */
@@ -165,6 +204,23 @@ a{
 	}
 }
 
+td a .icon-micro{
+
+	color: @violet_clair;
+}
+
+.icon-ok, .icon-reload, .icon-play, .icon-pause {
+
+	color: @bleu_clair;
+	font-size: 60px;
+}
+
+.icon-croix{
+
+	color: @violet_clair;
+	font-size: 60px;
+}
+
 .link_question{
 
 	text-align: center;
@@ -194,12 +250,39 @@ a{
 		p{
 			display: block;
 			margin: auto;
-			margin-top: 10px
+			margin-top: 10px;
 		}
 	}
 }
 
-#evolution_questionnaire{
+.tab_question td p{
+
+	font-size: 24px;
+}
+
+.tableau{
+
+	margin-bottom: 100px;
+}
+
+footer{
+
+	text-align: center;
+	background: #1C1C59;
+	height: 50px;
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	
+}
+
+.icon-fleche{
+
+	color: @bleu_clair;
+	font-size: 60px;
+}
+
+/*#evolution_questionnaire{
 
 	text-align: center;
 	margin-top: 200px;
@@ -208,7 +291,9 @@ a{
 	width: 100%;
 	position: absolute;
 	bottom: 0;
-}
+}*/
+
+
 
 /* /QUESTIONS */
 
@@ -236,7 +321,10 @@ a{
 	background-color: @background;
 	color: white;
 
-	width: 150px;
+	width: 200px;
+
+	font-family: 'Andarilho Font', Helvetica, sans-serif;
+	font-size: 20px;
 }
 
 /* /DATE DE REVE */
@@ -245,7 +333,7 @@ a{
 
 .emotion_text{
 
-	font-size: 20px;
+	font-size: 24px;
 }
 
 .color_user{
@@ -269,7 +357,9 @@ a{
 	background-color: @background;
 	color: white;
 
-	width: 150px;
+	width: 200px;
+	font-family: 'Andarilho Font', Helvetica, sans-serif;
+	font-size: 20px;
 }
 
 /* /ACTION MOT CLEF TITRE  */
@@ -301,5 +391,3 @@ a{
 }
 
 /* /NAVIGATION */
-
-

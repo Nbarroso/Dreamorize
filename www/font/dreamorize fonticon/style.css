@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'dreamorize';
-	src:url('../font/dreamorize.eot?2kscin');
-	src:url('../font/dreamorize.eot?#iefix2kscin') format('embedded-opentype'),
-		url('../font/dreamorize.woff?2kscin') format('woff'),
-		url('../font/dreamorize.ttf?2kscin') format('truetype'),
-		url('../font/dreamorize.svg?2kscin#dreamorize') format('svg');
+	src:url('fonts/dreamorize.eot?2kscin');
+	src:url('fonts/dreamorize.eot?#iefix2kscin') format('embedded-opentype'),
+		url('fonts/dreamorize.woff?2kscin') format('woff'),
+		url('fonts/dreamorize.ttf?2kscin') format('truetype'),
+		url('fonts/dreamorize.svg?2kscin#dreamorize') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
