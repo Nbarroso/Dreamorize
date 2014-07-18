@@ -52,13 +52,13 @@
 
 		<td rowspan="2">
 
-			<input type="range" min="0" max="100" step="5" value="70"> 
+			<input  type="range" value="0" max="100" min="0" step="1" name="joie" onchange="getEmotion(this.value, this.name)"> 
 
 		</td>
 
 		<td>&nbsp;</td>
 
-		<td class="emotion_text color_user">70%</td>
+		<td style="width:140px;"id="indice_joie" class="emotion_text color_user">0%</td>
 
 
 	</tr>
@@ -67,7 +67,7 @@
 	
 		<td>&nbsp;</td>
 
-		<td class="emotion_text">joie</td>
+		<td id="joie" class="emotion_text">Joie</td>
 
 	</tr>
 
@@ -79,13 +79,13 @@
 
 		<td rowspan="2">
 
-			<input type="range" min="0" max="100" step="5" value="0"> 
+			<input type="range" value="0" max="100" min="0" step="1" name="attirance" onchange="getEmotion(this.value, this.name)"> 
 
 		</td>
 
 		<td>&nbsp;</td>
 
-		<td class="emotion_text color_user">0%</td>
+		<td style="width:140px;" id="indice_attirance" class="emotion_text color_user">0%</td>
 
 
 	</tr>
@@ -94,7 +94,7 @@
 	
 		<td>&nbsp;</td>
 
-		<td class="emotion_text">colère</td>
+		<td id="attirance" class="emotion_text">Attirance</td>
 
 	</tr>
 
@@ -106,13 +106,13 @@
 
 		<td rowspan="2">
 
-			<input type="range" min="0" max="100" step="5" value="45"> 
+			<input type="range" value="0" max="100" min="0" step="1" name="peur" onchange="getEmotion(this.value, this.name)"> 
 
 		</td>
 
 		<td>&nbsp;</td>
 
-		<td class="emotion_text color_user">45%</td>
+		<td style="width:140px;" id="indice_peur" class="emotion_text color_user">0%</td>
 
 
 	</tr>
@@ -121,7 +121,7 @@
 	
 		<td>&nbsp;</td>
 
-		<td class="emotion_text">surprise</td>
+		<td id="peur" class="emotion_text">Appréhension</td>
 
 	</tr>
 
@@ -133,13 +133,13 @@
 
 		<td rowspan="2">
 
-			<input type="range" min="0" max="100" step="5" value="0"> 
+			<input type="range" value="0" max="100" min="0" step="1" name="surprise" onchange="getEmotion(this.value, this.name)"> 
 
 		</td>
 
 		<td>&nbsp;</td>
 
-		<td class="emotion_text color_user">0%</td>
+		<td style="width:140px;"  id="indice_surprise" class="emotion_text color_user">0%</td>
 
 
 	</tr>
@@ -148,7 +148,7 @@
 	
 		<td>&nbsp;</td>
 
-		<td class="emotion_text">dégoût</td>
+		<td id="surprise"class="emotion_text">Distraction</td>
 
 	</tr>
 
@@ -160,13 +160,13 @@
 
 		<td rowspan="2">
 
-			<input type="range" min="0" max="100" step="5" value="10"> 
+			<input type="range" value="0" max="100" min="0" step="1" name="tristesse" onchange="getEmotion(this.value, this.name)"> 
 
 		</td>
 
 		<td>&nbsp;</td>
 
-		<td class="emotion_text color_user">10%</td>
+		<td style="width:140px;"  id="indice_tristesse" class="emotion_text color_user">0%</td>
 
 
 	</tr>
@@ -175,7 +175,61 @@
 	
 		<td>&nbsp;</td>
 
-		<td class="emotion_text">peur</td>
+		<td id="tristesse"class="emotion_text">Songerie</td>
+
+	</tr>
+
+</table>
+
+<table class="tab_question">
+
+	<tr>
+
+		<td rowspan="2">
+
+			<input type="range" value="0" max="100" min="0" step="1" name="degout" onchange="getEmotion(this.value, this.name)"> 
+
+		</td>
+
+		<td>&nbsp;</td>
+
+		<td style="width:140px;"  id="indice_degout" class="emotion_text color_user">0%</td>
+
+
+	</tr>
+
+	<tr>
+	
+		<td>&nbsp;</td>
+
+		<td id="degout"class="emotion_text">Ennui</td>
+
+	</tr>
+
+</table>
+
+<table class="tab_question">
+
+	<tr>
+
+		<td rowspan="2">
+
+			<input type="range" value="0" max="100" min="0" step="1" name="colere" onchange="getEmotion(this.value, this.name)"> 
+
+		</td>
+
+		<td>&nbsp;</td>
+
+		<td style="width:140px;"  id="indice_colere" class="emotion_text color_user">0%</td>
+
+
+	</tr>
+
+	<tr>
+	
+		<td>&nbsp;</td>
+
+		<td id="colere"class="emotion_text">Contrariété</td>
 
 	</tr>
 
@@ -222,3 +276,80 @@
 	<img src="img/dreamorize_evolution.png" alt="DREAMORIZE - Evolution du questionnaire">
 	
 </footer>
+
+<script>
+
+  function getEmotion(value1, name){
+
+
+      //var value1 = document.getElementById("nom_emotion_1").value;
+      if(value1 < 33){
+          if(name=="joie"){
+            document.getElementById("joie").innerHTML="Sérénité";
+          }else if(name=="attirance"){
+            document.getElementById("attirance").innerHTML="Résignation";
+          }else if(name=="peur"){
+            document.getElementById("peur").innerHTML="Appréhension";
+          }else if(name=="surprise"){
+            document.getElementById("surprise").innerHTML="Distraction";
+          }else if(name=="tristesse"){
+            document.getElementById("tristesse").innerHTML="Songerie";
+          }else if(name=="degout"){
+            document.getElementById("degout").innerHTML="Ennui";
+          }else if(name=="colere"){
+            document.getElementById("colere").innerHTML="Contrariété";
+          }
+          
+      }
+      else if(value1 >= 33 && value1 < 66){
+          if(name=="joie"){
+            document.getElementById("joie").innerHTML="Joie";
+          }else if(name=="attirance"){
+            document.getElementById("attirance").innerHTML="Attirance";
+          }else if(name=="peur"){
+            document.getElementById("peur").innerHTML="Peur";
+          }else if(name=="surprise"){
+            document.getElementById("surprise").innerHTML="Surprise";
+          }else if(name=="tristesse"){
+            document.getElementById("tristesse").innerHTML="Tristesse";
+          }else if(name=="degout"){
+            document.getElementById("degout").innerHTML="Dégoût";
+          }else if(name=="colere"){
+            document.getElementById("colere").innerHTML="Colère";
+          }
+      }
+      else if(value1 >=66){
+        if(name=="joie"){
+            document.getElementById("joie").innerHTML="Extase";
+          }else if(name=="attirance"){
+            document.getElementById("attirance").innerHTML="Adoration";
+          }else if(name=="peur"){
+            document.getElementById("peur").innerHTML="Terreur";
+          }else if(name=="surprise"){
+            document.getElementById("surprise").innerHTML="Etonnement";
+          }else if(name=="tristesse"){
+            document.getElementById("tristesse").innerHTML="Chagrin";
+          }else if(name=="degout"){
+            document.getElementById("degout").innerHTML="Aversion";
+          }else if(name=="colere"){
+            document.getElementById("colere").innerHTML="Rage";
+          }
+      }
+        if(name=="joie"){
+            document.getElementById("indice_joie").innerHTML=value1 + " %";
+          }else if(name=="attirance"){
+            document.getElementById("indice_attirance").innerHTML=value1 + " %";
+          }else if(name=="peur"){
+            document.getElementById("indice_peur").innerHTML=value1 + " %";
+          }else if(name=="surprise"){
+            document.getElementById("indice_surprise").innerHTML=value1 + " %";
+          }else if(name=="tristesse"){
+            document.getElementById("indice_tristesse").innerHTML=value1 + " %";
+          }else if(name=="degout"){
+            document.getElementById("indice_degout").innerHTML=value1 + " %";
+          }else if(name=="colere"){
+            document.getElementById("indice_colere").innerHTML=value1 + " %";
+          }
+      
+  }
+</script>
