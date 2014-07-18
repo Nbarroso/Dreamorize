@@ -22,6 +22,19 @@ function memCtrl($scope) {
         console.log($scope.$parent.date + " // " + $scope.$parent.type + " // " + $scope.$parent.titre);
     };
 
+    $scope.addEmotion = function(joie, attirance, peur, surprise, tristesse, degout, colere) {
+
+
+        $scope.$parent.joie = joie;
+        $scope.$parent.attirance = attirance;
+        $scope.$parent.peur = peur;
+        $scope.$parent.surprise = surprise;
+        $scope.$parent.tristesse = tristesse;
+        $scope.$parent.degout = degout;
+        $scope.$parent.colere = colere;
+        //console.log($scope.$parent.date + " // " + $scope.$parent.type + " // " + $scope.$parent.titre);
+    };
+
     $scope.addTitre = function(titre) {
         $scope.$parent.titre = titre;
         console.log($scope.$parent.date + " // " + $scope.$parent.type + " // " + $scope.$parent.titre);
@@ -35,6 +48,16 @@ function memCtrl($scope) {
             var date_reve = $scope.$parent.date;
             var type_reve = $scope.$parent.type;
             var titre_reve = $scope.$parent.titre;
+            var emotion_joie = $scope.$parent.joie;
+            var emotion_attirance = $scope.$parent.attirance;
+            var emotion_peur = $scope.$parent.peur;
+            var emotion_surprise = $scope.$parent.surprise;
+            var emotion_tristesse = $scope.$parent.tristesse;
+            var emotion_degout = $scope.$parent.degout;
+            var emotion_colere = $scope.$parent.colere;
+
+
+            //console.log("joie : " + emotion_joie);
 
             jQuery.ajax({
 
@@ -43,7 +66,14 @@ function memCtrl($scope) {
                 data: {
                     date: date_reve,
                     type: type_reve,
-                    titre: titre_reve
+                    titre: titre_reve,
+                    joie : emotion_joie,
+                    attirance : emotion_attirance,
+                    peur : emotion_peur,
+                    surprise : emotion_surprise,
+                    tristesse : emotion_tristesse,
+                    degout : emotion_degout,
+                    colere : emotion_colere
                 },
                 error: function(xhr, status, error) {
                     alert("Erreur : le rêve n'a pas pu s'enregistrer.");
@@ -60,6 +90,13 @@ function memCtrl($scope) {
         $scope.$parent.date = "";
         $scope.$parent.type = "";
         $scope.$parent.titre = "";
+        $scope.$parent.joie = 0;
+        $scope.$parent.attirance = 0;
+        $scope.$parent.peur = 0;
+        $scope.$parent.surprise = 0;
+        $scope.$parent.tristesse = 0;
+        $scope.$parent.degout = 0;
+        $scope.$parent.colere = 0;
 
     }
 }

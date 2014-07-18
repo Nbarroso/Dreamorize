@@ -52,13 +52,13 @@
 
 		<td rowspan="2">
 
-			<input  type="range" value="0" max="100" min="0" step="1" name="joie" onchange="getEmotion(this.value, this.name)"> 
+			<input  ng-model="joie" type="range" value="0" max="100" min="0" step="1" name="joie" onchange="getEmotion(this.value, this.name);"> 
 
 		</td>
 
 		<td>&nbsp;</td>
 
-		<td style="width:140px;"id="indice_joie" class="emotion_text color_user">0%</td>
+		<td style="width:140px;" class="emotion_text color_user"><span id="indice_joie" >0</span>%</td>
 
 
 	</tr>
@@ -79,13 +79,13 @@
 
 		<td rowspan="2">
 
-			<input type="range" value="0" max="100" min="0" step="1" name="attirance" onchange="getEmotion(this.value, this.name)"> 
+			<input ng-model="attirance" type="range" value="0" max="100" min="0" step="1" name="attirance" onchange="getEmotion(this.value, this.name)"> 
 
 		</td>
 
 		<td>&nbsp;</td>
 
-		<td style="width:140px;" id="indice_attirance" class="emotion_text color_user">0%</td>
+		<td style="width:140px;" class="emotion_text color_user"><span id="indice_attirance" >0</span>%</td>
 
 
 	</tr>
@@ -106,13 +106,13 @@
 
 		<td rowspan="2">
 
-			<input type="range" value="0" max="100" min="0" step="1" name="peur" onchange="getEmotion(this.value, this.name)"> 
+			<input ng-model="peur" type="range" value="0" max="100" min="0" step="1" name="peur" onchange="getEmotion(this.value, this.name)"> 
 
 		</td>
 
 		<td>&nbsp;</td>
 
-		<td style="width:140px;" id="indice_peur" class="emotion_text color_user">0%</td>
+		<td style="width:140px;" class="emotion_text color_user"><span id="indice_peur" >0</span>%</td>
 
 
 	</tr>
@@ -133,13 +133,13 @@
 
 		<td rowspan="2">
 
-			<input type="range" value="0" max="100" min="0" step="1" name="surprise" onchange="getEmotion(this.value, this.name)"> 
+			<input ng-model="surprise" type="range" value="0" max="100" min="0" step="1" name="surprise" onchange="getEmotion(this.value, this.name)"> 
 
 		</td>
 
 		<td>&nbsp;</td>
 
-		<td style="width:140px;"  id="indice_surprise" class="emotion_text color_user">0%</td>
+		<td style="width:140px;" class="emotion_text color_user"><span id="indice_surprise" >0</span>%</td>
 
 
 	</tr>
@@ -160,13 +160,13 @@
 
 		<td rowspan="2">
 
-			<input type="range" value="0" max="100" min="0" step="1" name="tristesse" onchange="getEmotion(this.value, this.name)"> 
+			<input ng-model="tristesse" type="range" value="0" max="100" min="0" step="1" name="tristesse" onchange="getEmotion(this.value, this.name)"> 
 
 		</td>
 
 		<td>&nbsp;</td>
 
-		<td style="width:140px;"  id="indice_tristesse" class="emotion_text color_user">0%</td>
+		<td style="width:140px;" class="emotion_text color_user"><span id="indice_tristesse" >0</span>%</td>
 
 
 	</tr>
@@ -187,13 +187,13 @@
 
 		<td rowspan="2">
 
-			<input type="range" value="0" max="100" min="0" step="1" name="degout" onchange="getEmotion(this.value, this.name)"> 
+			<input ng-model="degout" type="range" value="0" max="100" min="0" step="1" name="degout" onchange="getEmotion(this.value, this.name)"> 
 
 		</td>
 
 		<td>&nbsp;</td>
 
-		<td style="width:140px;"  id="indice_degout" class="emotion_text color_user">0%</td>
+		<td style="width:140px;" class="emotion_text color_user"><span id="indice_degout" >0</span>%</td>
 
 
 	</tr>
@@ -214,13 +214,13 @@
 
 		<td rowspan="2">
 
-			<input type="range" value="0" max="100" min="0" step="1" name="colere" onchange="getEmotion(this.value, this.name)"> 
+			<input ng-model="colere" type="range" value="0" max="100" min="0" step="1" name="colere" onchange="getEmotion(this.value, this.name)"> 
 
 		</td>
 
 		<td>&nbsp;</td>
 
-		<td style="width:140px;"  id="indice_colere" class="emotion_text color_user">0%</td>
+		<td style="width:140px;" class="emotion_text color_user"><span id="indice_colere" value>0</span>%</td>
 
 
 	</tr>
@@ -257,7 +257,7 @@
 
 			<a href="#questions_lieu">
 	                
-		        <button class="bouton">
+		        <button class="bouton" ng-click="addEmotion(joie, attirance, peur, surprise, tristesse, degout, colere);">
 
 		           <span class="icon-ok"></span>
 
@@ -336,19 +336,19 @@
           }
       }
         if(name=="joie"){
-            document.getElementById("indice_joie").innerHTML=value1 + " %";
+            document.getElementById("indice_joie").innerHTML=value1;
           }else if(name=="attirance"){
-            document.getElementById("indice_attirance").innerHTML=value1 + " %";
+            document.getElementById("indice_attirance").innerHTML=value1;
           }else if(name=="peur"){
-            document.getElementById("indice_peur").innerHTML=value1 + " %";
+            document.getElementById("indice_peur").innerHTML=value1;
           }else if(name=="surprise"){
-            document.getElementById("indice_surprise").innerHTML=value1 + " %";
+            document.getElementById("indice_surprise").innerHTML=value1;
           }else if(name=="tristesse"){
-            document.getElementById("indice_tristesse").innerHTML=value1 + " %";
+            document.getElementById("indice_tristesse").innerHTML=value1;
           }else if(name=="degout"){
-            document.getElementById("indice_degout").innerHTML=value1 + " %";
+            document.getElementById("indice_degout").innerHTML=value1;
           }else if(name=="colere"){
-            document.getElementById("indice_colere").innerHTML=value1 + " %";
+            document.getElementById("indice_colere").innerHTML=value1;
           }
       
   }
