@@ -4,7 +4,7 @@ document.addEventListener('deviceready', function() {
 
 }, false);
 
-var app = angular.module('app', []);
+var app = angular.module('app', ['shoppinpal.mobile-menu']);
 
 
 app.directive('jqdatepicker', function() {
@@ -25,20 +25,18 @@ app.directive('jqdatepicker', function() {
 
 app.config(function($routeProvider) {
     $routeProvider
+        .when('/home', {
+            templateUrl: 'partials/home.html'
+        })
         .when('/intro', {
             templateUrl: 'partials/intro.html'
         })
-
-    .when('/home', {
-        templateUrl: 'partials/home.html'
-    })
         .when('/sidebar', {
             templateUrl: 'partials/sidebar.html'
         })
-
-    .when('/memoriser', {
-        templateUrl: 'partials/memoriser.html'
-    })
+        .when('/memoriser', {
+            templateUrl: 'partials/memoriser.html'
+        })
         .when('/vocal', {
             templateUrl: 'partials/vocal.html'
         })
@@ -54,11 +52,12 @@ app.config(function($routeProvider) {
         .when('/vocal_5', {
             templateUrl: 'partials/vocal_5.html'
         })
-
-    .when('/questions_date', {
-        templateUrl: 'partials/questions_date.html',
-        controller: 'memCtrl'
-    })
+        .when('/questions_date', {
+            templateUrl: 'partials/questions_date.html',
+            controller: 'memCtrl',
+            header: 'partials/header.html', 
+            footer: 'partials/footer.html'
+        })
         .when('/questions_type', {
             templateUrl: 'partials/questions_type.html',
             controller: 'memCtrl'
@@ -103,18 +102,23 @@ app.config(function($routeProvider) {
             templateUrl: 'partials/questions_titre.html',
             controller: 'memCtrl'
         })
+        .when('/visualiser', {
+            templateUrl: 'partials/visualiser.html'
+        })
+        .when('/partager', {
+            templateUrl: 'partials/partager.html'
+        })
+        .when('/explorer', {
+            templateUrl: 'partials/explorer.html'
+        })
 
 
+        .otherwise({
+            redirectTo: '/home'
+        })
 
-    .when('/visualiser', {
-        templateUrl: 'partials/visualiser.html'
-    })
-
-    .when('/partager', {
-        templateUrl: 'partials/partager.html'
-    })
-
-    .otherwise({
-        redirectTo: '/home'
-    })
-})
+}).run(function($rootScope, $route) {
+    $rootScope.layoutPartial = function(partialName) { 
+        return $route.current[ partialName ]
+    };
+});

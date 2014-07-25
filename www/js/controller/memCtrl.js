@@ -1,4 +1,7 @@
 function memCtrl($scope) {
+
+    var couleurs = new Array();
+
     $scope.pageLevel = 0;
     //console.log("page level : " + $scope.pageLevel);
 
@@ -8,20 +11,34 @@ function memCtrl($scope) {
         //console.log("page level après click : " + $scope.pageLevel);
     };
 
-    //$scope.date = 0;
-    //$scope.type = 0;
-    //$scope.titre = 0;
-
     $scope.addDate = function(date) {
         $scope.$parent.date = date;
+        console.log(date);
     };
 
     $scope.addType = function(type) {
         $scope.$parent.type = type;
     };
-
+    
     $scope.addCouleur = function(code_couleur) {
-        $scope.$parent.couleur = code_couleur;
+
+        
+        var addColor = true;
+        for( var i = 0 ; i < couleurs.length ; i++){
+            if(couleurs[i] == code_couleur){
+                couleurs.splice(i, 1);
+                addColor = false;
+            }
+        }
+        if(addColor){
+            couleurs.push(code_couleur);
+        }
+        console.log(couleurs.length + " couleurs :")
+        for( var i = 0 ; i < couleurs.length ; i++){
+            console.log(couleurs[i]);
+        }
+       
+        $scope.$parent.couleurs_liste = couleurs;
     };
 
     $scope.addEmotion = function(joie, attirance, peur, surprise, tristesse, degout, colere) {
@@ -49,7 +66,7 @@ function memCtrl($scope) {
             var date_reve = $scope.$parent.date;
             var type_reve = $scope.$parent.type;
             var titre_reve = $scope.$parent.titre;
-            var couleur_reve = $scope.$parent.couleur;
+            //var couleur_reve = $scope.$parent.couleur;
             var emotion_joie = $scope.$parent.joie;
             var emotion_attirance = $scope.$parent.attirance;
             var emotion_peur = $scope.$parent.peur;
@@ -59,7 +76,7 @@ function memCtrl($scope) {
             var emotion_colere = $scope.$parent.colere;
             var categorie_lieu = $scope.$parent.categorie_lieu;
             var lieu = "";
-
+            var jsonColors = JSON.stringify($scope.$parent.couleurs_liste);
 
             jQuery.ajax({
 
@@ -69,7 +86,7 @@ function memCtrl($scope) {
                     date: date_reve,
                     type: type_reve,
                     titre: titre_reve,
-                    couleur : couleur_reve,
+                    couleurs : jsonColors,
                     joie : emotion_joie,
                     attirance : emotion_attirance,
                     peur : emotion_peur,
@@ -102,6 +119,11 @@ function memCtrl($scope) {
         $scope.$parent.tristesse = 0;
         $scope.$parent.degout = 0;
         $scope.$parent.colere = 0;
+        
+        var categorie_lieu = $scope.$parent.categorie_lieu;
+        var lieu = "";
+
+        //$scope.$parent.couleurs.clear();
 
     }
 }

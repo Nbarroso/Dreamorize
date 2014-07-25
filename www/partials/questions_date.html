@@ -23,8 +23,9 @@
 </table>
 
 <div class="date_element">
-
-	<input  type="text" placeholder="CETTE NUIT" class="date_reve"/>
+	<a href="#questions_type">
+		<button class="date_reve" ng-click="addDate());">La nuit dernière</button>
+	</a>
 
 	<p>ou</p>
 
@@ -69,11 +70,30 @@
 
 </table>
 
-<footer id="evolution_questionnaire">
-               
-	<img src="img/dreamorize_evolution.png" alt="DREAMORIZE - Evolution du questionnaire">
-	
-</footer>
+
+
+
+<script>
+
+function lastNightDate(){
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth()+1; //January is 0!
+	var yyyy = today.getFullYear();
+
+	if(dd<10) {
+	    dd='0'+dd
+	} 
+
+	if(mm<10) {
+	    mm='0'+mm
+	} 
+
+	today = yyyy+'-'+mm+'-'+dd;
+	return today;
+}
+
+</script>
 
 
 

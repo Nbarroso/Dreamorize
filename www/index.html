@@ -1,71 +1,54 @@
 <!DOCTYPE html>
 <html ng-app="app">
-    <head>
-        <meta charset="utf-8" />
-        <title>DREAMORIZE</title>
+<head>
+    <meta charset="utf-8" />
+    <title>DREAMORIZE</title>
 
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, target-densitydpi=device-dpi" />
-        
-        <!-- LESS -->
-        <link rel="stylesheet/less" type="text/css" href="css/less/styles.less" />
-        <script src="js/less/less-1.7.0.min.js" type="text/javascript"></script>
-        <!-- JQUERY -->
-        <script src="js/jquery/jquery1.11.1.js" type="text/javascript"></script>
-        <!-- ANGULAR -->
-        <script src="js/angular/angular.js" type="text/javascript"></script>
-        <!-- jQuery UI -->
-        <script src="js/jquery/jquery_ui.js"></script>
-        <script type = "text/javascript" src="js/yql_ajax.js"> </script>
-        <link type="text/css"  rel="stylesheet" href="css/jquery_ui.css"/>
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, target-densitydpi=device-dpi" />
 
-        
-        <!-- Controllers  -->
-        <script src="js/controller/memCtrl.js" type="text/javascript"></script> 
+    
 
-        <script src="js/app.js" type="text/javascript"></script>
+    <!-- LESS -->
+    <link rel="stylesheet/less" type="text/css" href="css/less/styles.less" />
+    <script src="js/less/less-1.7.0.min.js" type="text/javascript"></script>
 
-        <script type="text/javascript" charset="utf-8">
-          // Wait for Cordova to load
-          document.addEventListener("deviceready", onDeviceReady, false);
-
-          // Cordova is ready
-          function onDeviceReady() {
-              navigator.splashscreen.show();
-          }
-
-          
-        </script>
-    </head>
-    <body>
-
-    <header class="header">
-
-            <a href="#sidebar">
-
-              <div class="sidebar">
-
-                <span class="icon-menu"></span>
-
-              </div>
-
-            </a>
-
-            <a href="#home">
-
-              <div class="home">
-
-                <img src="img/dreamorize_picto1.png" alt="DREAMORIZE - Retour au menu principal"/>
-
-              </div>
-
-            </a>
-          
-    </header>
-
-    <section ng-view >
-    </section>
+    <link rel="stylesheet" href="css/ng-mobile-menu.min.css"/>
+    <!-- JQUERY -->
+    <script src="js/jquery/jquery1.11.1.js" type="text/javascript"></script>
+    <!-- ANGULAR -->
+    <script src="js/angular/angular.js" type="text/javascript"></script>
+    <!-- jQuery UI -->
+    <script src="js/jquery/jquery_ui.js"></script>
+    <script type = "text/javascript" src="js/yql_ajax.js"> </script>
+    <link type="text/css"  rel="stylesheet" href="css/jquery_ui.css"/>
+    <!-- ng-mobile -->
+    <script type="text/javascript" src="js/ng-mobile-menu.min.js"></script>
+    <!-- Controllers  -->
+    <script src="js/controller/memCtrl.js" type="text/javascript"></script> 
+    <script src="js/app.js" type="text/javascript"></script>
 
 
-    </body>
+
+    <script type="text/javascript" charset="utf-8">
+      // Wait for Cordova to load
+      document.addEventListener("deviceready", onDeviceReady, false);
+
+      // Cordova is ready
+      function onDeviceReady() {
+            navigator.splashscreen.show();
+      }
+    </script>
+
+</head>
+<body>
+
+    
+
+<header ng-include src="'partials/header.html'"></header>
+
+<section ng-view ></section>
+<footer ng-include src="'partials/footer.html'"></footer>
+
+</body>
 </html>

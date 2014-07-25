@@ -2,13 +2,15 @@
 
 @import "../style.css";
 
-@import "elements.less";
+@import "elements_compatibility.less";
 @background: #141444;
 @bleu_clair : #7BF6FF;
 @bleu_nuit : #222143;
 @vert_bleu : #67F4DC;
 @violet_clair: #B5B3FF;
 @rose : #BD59E6;
+
+
 
 @font-face{
 
@@ -51,12 +53,30 @@ p{
 	margin-top: 200px;
 }
 
+
+
+.sidebar2{
+	background: black;
+}
+
+#sp-nav{
+	z-index: 5;
+	margin-top: 50px;
+}
+#sp-page{
+	z-index: 1000;
+	background: #141444;
+	margin-left: 0px;
+	padding-left: 0px;
+}
+
 /* /PAGE INTRO */
+
 
 /* HEADER */
 
 .home{
-
+	margin-top: -30px;
 	text-align: center;
 }
 
@@ -64,15 +84,34 @@ p{
 
 	font-size: 30px;
 	color: @bleu_clair;
+	cursor: pointer;
+}
+
+.menu-icon{
+	border: 1px solid blue;
+	display:inline-block;
+	width:1.5rem;
+	height:1.5rem;
+	
 }
 
 /* /HEADER*/
+
+
+
+header{
+	
+	z-index: 100;
+}
+
+
+
 
 /* PAGE MENU PRINCIPAL */
 
 .menu_memoriser{
 	position: absolute;
-	top: 120px;
+	top: 50px;
 	right: 0;
 	left: 0;
 	float: center;
