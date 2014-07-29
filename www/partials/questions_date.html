@@ -1,3 +1,8 @@
+<div id="sp-nav" ng-include src="'partials/sidebar.html'"></div>
+<div id="sp-page" class="page" ng-controller="memCtrl">
+
+<header ng-include src="'partials/header.html'"></header>
+
 <table class="tab_question">
 	<tr>
 		<td>
@@ -29,7 +34,7 @@
 
 	<p>ou</p>
 
-	<input id="date_reve" type="text" placeholder="AVANT" class="date_reve" ng-model="date" jqdatepicker/>
+	<input id="date_reve" onfocus="blur();"type="text" placeholder="AVANT" class="date_reve" ng-model="date" jqdatepicker/>
 
 </div>
 
@@ -69,6 +74,9 @@
 	</tr>
 
 </table>
+
+<footer ng-include src="'footer.html'"></footer>
+</div>
 
 
 

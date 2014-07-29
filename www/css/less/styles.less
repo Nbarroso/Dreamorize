@@ -11,6 +11,14 @@
 @rose : #BD59E6;
 
 
+/* Désactive les highights orange sur les supports natifs */
+* {
+    /*-webkit-tap-highlight-color: rgba(0,0,0,0);*/ /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0); 
+    -webkit-tap-highlight-color: transparent;  /*i.e. Nexus5/Chrome and Kindle Fire HD 7'' */
+}
+
+
 
 @font-face{
 
@@ -25,6 +33,10 @@ body{
 	color: white;
 	font-family: "Andarilho Font", Helvetica, sans-serif;
 	font-size: 14px;
+}
+
+.page{
+	background: blue;
 }
 
 a{
@@ -61,13 +73,15 @@ p{
 
 #sp-nav{
 	z-index: 5;
-	margin-top: 50px;
+	padding-top: 25px;
+	box-shadow: -27px 0 111px -33px #030326 inset;
+	
 }
 #sp-page{
 	z-index: 1000;
 	background: #141444;
-	margin-left: 0px;
-	padding-left: 0px;
+	margin-left: -8px;
+	padding-left: 0px;	
 }
 
 /* /PAGE INTRO */
@@ -85,6 +99,7 @@ p{
 	font-size: 30px;
 	color: @bleu_clair;
 	cursor: pointer;
+	margin-left: 8px;
 }
 
 .menu-icon{
@@ -312,6 +327,7 @@ footer{
 	width: 100%;
 	position: fixed;
 	bottom: 0;
+	margin-left: -8px;
 	
 }
 
