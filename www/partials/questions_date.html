@@ -1,81 +1,81 @@
 <div id="sp-nav" ng-include src="'partials/sidebar.html'"></div>
 <div id="sp-page" class="page" ng-controller="memCtrl">
 
-<header ng-include src="'partials/header.html'"></header>
+	<header ng-include src="'partials/header.html'"></header>
 
-<table class="tab_question">
-	<tr>
-		<td>
-			<a href="#vocal_5">
-			    <button class="bouton">
-			        <span class="icon-fleche"></span>
-			    </button>
-	    	</a>
-	    </td>
-		<td>&nbsp;</td>
-		<td class="intitule_question">
-			<p >QUAND AS-TU RÊVÉ ?</p>
-		</td>
-		<td>&nbsp;</td>
-		<td>
-			<a href="#questions_type">        
-		        <button class="bouton">
-		           <span class="icon-fleche"></span>
-		        </button>
-	    	</a>
-		</td>
-	</tr>
-</table>
+	<table class="tab_question">
+		<tr>
+			<td>
+				<a href="#vocal_5">
+				    <button class="bouton">
+				        <span class="icon-fleche"></span>
+				    </button>
+		    	</a>
+		    </td>
+			<td>&nbsp;</td>
+			<td class="intitule_question">
+				<p >QUAND AS-TU RÊVÉ ?</p>
+			</td>
+			<td>&nbsp;</td>
+			<td>
+				<a href="#questions_type">        
+			        <button class="bouton">
+			           <span class="icon-fleche"></span>
+			        </button>
+		    	</a>
+			</td>
+		</tr>
+	</table>
 
-<div class="date_element">
-	<a href="#questions_type">
-		<button class="date_reve" ng-click="addDate());">La nuit dernière</button>
-	</a>
+	<div class="date_element">
+		<a href="#questions_type">
+			<button class="date_reve" ng-click="addDate();">La nuit dernière</button>
+		</a>
 
-	<p>ou</p>
+		<p>ou</p>
 
-	<input id="date_reve" onfocus="blur();"type="text" placeholder="AVANT" class="date_reve" ng-model="date" jqdatepicker/>
+		<input id="date_reve" onfocus="blur();"type="text" placeholder="AVANT" class="date_reve" ng-model="date" jqdatepicker/>
 
-</div>
+	</div>
 
-<table class="tab_question tableau">
+	<table class="tab_question tableau">
 
-	<tr>
+		<tr>
 
-		<td>
+			<td>
 
-			<a href="#questions_date">
-	                
-		        <button class="bouton">
+				<a href="#questions_date">
+		                
+			        <button class="bouton">
 
-		            <span class="icon-croix"></span>
+			            <span class="icon-croix"></span>
 
-		        </button>
+			        </button>
 
-	    	</a>
-	    	
+		    	</a>
+		    	
 
-		</td>
+			</td>
 
-		<td>
+			<td>
 
-			<a href="#questions_type">
-	                
-		        <button class="bouton" ng-click="addDate(date);">
+				<a href="#questions_type">
+		                
+			        <button class="bouton" ng-click="addDate(date);">
 
-		           <span class="icon-ok"></span>
+			           <span class="icon-ok"></span>
 
-		        </button>
+			        </button>
 
-	    	</a>
+		    	</a>
 
-		</td>
+			</td>
 
-	</tr>
+		</tr>
 
-</table>
+	</table>
 
-<footer ng-include src="'footer.html'"></footer>
+	<footer ng-include src="'partials/footer.html'"></footer>
 </div>
 
 

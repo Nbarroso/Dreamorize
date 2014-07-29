@@ -3,7 +3,7 @@
 }
 
 #sp-nav,#sp-nav.wide{
-	width:30%;
+	width:150px;
 	overflow:hidden;
 	position:absolute;
 	top:0;
@@ -42,8 +42,8 @@
 #sp-nav.show+#sp-page #sp-hide-menu,#sp-nav.show.wide+#sp-page #sp-hide-menu{display:inline}
 #sp-nav.show+#sp-page,#sp-nav.show.wide+#sp-page{
 	position:absolute;
-	-webkit-transform:translateX(30%);
-	transform:translateX(30%);
+	-webkit-transform:translateX(150px);
+	transform:translateX(150px);
 	-webkit-transition-duration:0.3s;
 	transition-duration:0.3s;
 	overflow-x:hidden;
