@@ -4,7 +4,7 @@ document.addEventListener('deviceready', function() {
 
 }, false);
 
-var app = angular.module('app', ['shoppinpal.mobile-menu']);
+var app = angular.module('app', []);
 
 
 app.directive('jqdatepicker', function() {
