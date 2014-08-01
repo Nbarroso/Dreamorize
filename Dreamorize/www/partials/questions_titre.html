@@ -1,7 +1,7 @@
 <div id="sp-nav" ng-include src="'partials/sidebar.html'"></div>
 <div id="sp-page" class="page" ng-controller="memCtrl">
 
-<header ng-include src="'partials/header.html'"></header>
+<header id="header"></header>
 
 <table class="tab_question">
 
@@ -9,11 +9,11 @@
 
 		<td>
 
-			<a href="#questions_personnage">
+			<a href="#questions_keywords">
 	                
 		    <button class="bouton">
 
-		       <span class="icon-fleche"></span>
+		        <span class="icon-fleche"></span>
 
 		    </button>
 
@@ -25,25 +25,13 @@
 
 		<td>
 
-			<p class="intitule_question">ACTIONS DANS TON RÊVE ?</p>
+			<p class="intitule_question">TITRE POUR TON RÊVE ?</p>
 
 		</td>
 
 		<td>&nbsp;</td>
 
-		<td>
-
-			<a href="#questions_keywords">
-	                
-		        <button class="bouton">
-
-		            <span class="icon-fleche"></span>
-
-		        </button>
-
-	    	</a>
-
-		</td>
+		
 
 	</tr>
 
@@ -51,7 +39,7 @@
 
 <div class="date_element">
 
-	<input type="text" value="ENTRE UN VERBE" class="action_reve"/>
+	<input type="text" value="&nbsp;" class="action_reve" ng-model="titre"/>
 
 </div>
 
@@ -61,7 +49,7 @@
 
 		<td>
 
-			<a href="#questions_action">
+			<a href="#questions_titre">
 	                
 		        <button class="bouton">
 
@@ -75,9 +63,9 @@
 
 		<td>
 
-			<a href="#questions_keywords">
+			<a href="#home">
 	                
-		        <button class="bouton">
+		        <button class="bouton" ng-click="addTitre(titre);postReve();">
 
 		            <span class="icon-ok"></span>
 
@@ -96,4 +84,8 @@
 	<img src="img/dreamorize_evolution.png" alt="DREAMORIZE - Evolution du questionnaire">
 	
 </footer>
+
 </div>
+
+<script type="text/javascript" src="js/jquery.hammer.full.min.js"></script>    
+<script type="text/javascript" src="js/hammer_menu.js"></script>

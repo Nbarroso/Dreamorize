@@ -1,7 +1,7 @@
 <div id="sp-nav" ng-include src="'partials/sidebar.html'"></div>
 <div id="sp-page" class="page" ng-controller="memCtrl">
 
-<header ng-include src="'partials/header.html'"></header>
+<header id="header"></header>
 
 <table class="tab_question">
 
@@ -9,7 +9,7 @@
 
 		<td>
 
-			<a href="#questions_keywords">
+			<a href="#questions_action">
 	                
 		    <button class="bouton">
 
@@ -25,7 +25,7 @@
 
 		<td>
 
-			<p class="intitule_question">TITRE POUR TON RÊVE ?</p>
+			<p class="intitule_question">AUTRE CHOSE DANS TON RÊVE ?</p>
 
 		</td>
 
@@ -33,7 +33,7 @@
 
 		<td>
 
-			<a href="#visualiser">
+			<a href="#questions_titre">
 	                
 		        <button class="bouton">
 
@@ -51,7 +51,7 @@
 
 <div class="date_element">
 
-	<input type="text" value="&nbsp;" class="action_reve" ng-model="titre"/>
+	<input type="text" value="ENTRE DES MOTS-CLÉS" class="action_reve"/>
 
 </div>
 
@@ -61,11 +61,11 @@
 
 		<td>
 
-			<a href="#questions_titre">
+			<a href="#questions_keywords">
 	                
 		        <button class="bouton">
 
-		            <span class="icon-croix"></span>
+		             <span class="icon-croix"></span>
 
 		        </button>
 
@@ -75,9 +75,9 @@
 
 		<td>
 
-			<a href="#home">
+			<a href="#questions_titre">
 	                
-		        <button class="bouton" ng-click="addTitre(titre);postReve();">
+		        <button class="bouton">
 
 		            <span class="icon-ok"></span>
 
@@ -98,3 +98,6 @@
 </footer>
 
 </div>
+
+<script type="text/javascript" src="js/jquery.hammer.full.min.js"></script>    
+<script type="text/javascript" src="js/hammer_menu.js"></script>

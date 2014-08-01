@@ -1,7 +1,7 @@
 <div id="sp-nav" ng-include src="'partials/sidebar.html'"></div>
 <div id="sp-page" class="page" ng-controller="memCtrl">
 
-	<header ng-include src="'partials/header.html'"></header>
+	<header id="header"></header>
 
 	<table class="tab_question">
 		<tr>
@@ -75,7 +75,11 @@
 
 	</table>
 
-	<footer ng-include src="'partials/footer.html'"></footer>
+	<footer id="evolution_questionnaire">
+               
+	<img src="img/dreamorize_evolution.png" alt="DREAMORIZE - Evolution du questionnaire">
+	
+	</footer>
 </div>
 
 
@@ -102,6 +106,9 @@ function lastNightDate(){
 }
 
 </script>
+
+<script type="text/javascript" src="js/jquery.hammer.full.min.js"></script>    
+<script type="text/javascript" src="js/hammer_menu.js"></script>
 
 
 

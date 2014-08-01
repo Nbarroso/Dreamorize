@@ -1,11 +1,7 @@
 (function(s) {
 
-
-
-
     var $page = $('#sp-page');
     var sidebar = 0;
-
 
     $page.hammer()
 
@@ -56,7 +52,7 @@
     .on('dragend', function(e) {
         if (e.gesture.direction == "right" && !sidebar) {
             if (e.gesture.deltaX <= 75) {
-                //$page.css({transform: 'translateX(0px)'});
+
                 $page.css({
                     transitionDuration: '0.3s',
                     transform: 'translateX(0px)'
@@ -87,6 +83,7 @@
         }
     })
 
+
     $("#header").load("partials/header.html", function(data) {
 
         $('#sidemenu-button').click(function(event) {
@@ -105,7 +102,5 @@
             }
         });
     });
-
-
 
 })(jQuery);
