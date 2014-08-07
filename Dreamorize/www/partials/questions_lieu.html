@@ -1,315 +1,317 @@
 <div id="sp-nav" ng-include src="'partials/sidebar.html'"></div>
 <div id="sp-page" class="page" ng-controller="memCtrl">
 
-<header id="header"></header>
+	<header id="header"></header>
 
-<table class="tab_question">
+	<table class="tab_question">
 
-	<tr>
+		<tr>
 
-		<td>
+			<td>
 
-			<a href="#questions_emotion">
-	                
-		    <button class="bouton">
+				<a href="#questions_emotion">
+					
+					<button class="bouton">
 
-		        <span class="icon-fleche"></span>
+						<span class="icon-fleche"></span>
 
-		    </button>
+					</button>
 
-	    	</a>
+				</a>
 
-	    </td>
+			</td>
 
-		<td>&nbsp;</td>
+			<td>&nbsp;</td>
 
-		<td>
+			<td>
 
-			<p class="intitule_question">OÙ SE PASSAIT TON RÊVE ?</p>
+				<p class="intitule_question">OÙ SE PASSAIT TON RÊVE ?</p>
 
-		</td>
+			</td>
 
-		<td>&nbsp;</td>
+			<td>&nbsp;</td>
 
-		<td>
+			<td>
 
-			<a href="#questions_personnage">
-	                
-		        <button class="bouton">
+				<a href="#questions_personnage">
+					
+					<button class="bouton">
 
-		            <span class="icon-fleche"></span>
+						<span class="icon-fleche"></span>
 
-		        </button>
+					</button>
 
-	    	</a>
+				</a>
 
-		</td>
+			</td>
 
-	</tr>
+		</tr>
 
-</table>
+	</table>
 
-<table class="tab_question">
+	<div class='all_content'>
 
-	<tr>
+		<table class="tab_question">
 
-		<td>
+			<tr>
 
-			<a href="#questions_personnage">
-	                
-		        <button class="bouton" ng-click="addLieu(1)">
+				<td>
 
-		            <span class="icon-maison"></span>
+					<a href="#questions_personnage">
+						
+						<button class="bouton" ng-click="addLieu(1)">
 
-		        </button>
+							<span class="icon-maison"></span>
 
-	    	</a>
+						</button>
 
-		</td>
+					</a>
 
-		<td>
+				</td>
 
-			<a href="#questions_personnage">
-	                
-		        <button class="bouton" ng-click="addLieu(2)">
+				<td>
 
-		            <span class="icon-travail"></span>
+					<a href="#questions_personnage">
+						
+						<button class="bouton" ng-click="addLieu(2)">
 
-		        </button>
+							<span class="icon-travail"></span>
 
-	    	</a>
+						</button>
 
-		</td>
+					</a>
 
-		<td>
+				</td>
 
-			<a href="#questions_personnage">
-	                
-		        <button class="bouton" ng-click="addLieu(5)">
+				<td>
 
-		            <span class="icon-ecole"></span>
+					<a href="#questions_personnage">
+						
+						<button class="bouton" ng-click="addLieu(5)">
 
-		        </button>
+							<span class="icon-ecole"></span>
 
-	    	</a>
+						</button>
 
-		</td>
+					</a>
 
-	</tr>
+				</td>
 
-	<tr>
+			</tr>
 
-		<td><p>Maison</p></td>
-		<td><p>Travail</p></td>
-		<td><p>École</p></td>
+			<tr>
 
-	</tr>
+				<td><p>Maison</p></td>
+				<td><p>Travail</p></td>
+				<td><p>École</p></td>
 
-	<tr>
+			</tr>
 
-		<td>
+			<tr>
 
-			<a href="#questions_personnage">
-	                
-		        <button class="bouton" ng-click="addLieu(11)">
+				<td>
 
-		            <span class="icon-public"></span>
+					<a href="#questions_personnage">
+						
+						<button class="bouton" ng-click="addLieu(11)">
 
-		        </button>
+							<span class="icon-public"></span>
 
-	    	</a>
+						</button>
 
-		</td>
+					</a>
 
-		<td>
+				</td>
 
-			<a href="#questions_personnage">
-	                
-		        <button class="bouton" ng-click="addLieu(3)">
+				<td>
 
-		            <span class="icon-commerce"></span>
+					<a href="#questions_personnage">
+						
+						<button class="bouton" ng-click="addLieu(3)">
 
-		        </button>
+							<span class="icon-commerce"></span>
 
-	    	</a>
+						</button>
 
-		</td>
+					</a>
 
-		<td>
+				</td>
 
-			<a href="#questions_personnage">
-	                
-		        <button class="bouton" ng-click="addLieu(8)">
+				<td>
 
-		            <span class="icon-transport"></span>
+					<a href="#questions_personnage">
+						
+						<button class="bouton" ng-click="addLieu(8)">
 
-		        </button>
+							<span class="icon-transport"></span>
 
-	    	</a>
+						</button>
 
-		</td>
+					</a>
 
-	</tr>
+				</td>
 
-	<tr>
+			</tr>
 
-		<td><p>Public</p></td>
-		<td><p>Commerce</p></td>
-		<td><p>Transport</p></td>
+			<tr>
 
-	</tr>
+				<td><p>Public</p></td>
+				<td><p>Commerce</p></td>
+				<td><p>Transport</p></td>
 
-	<tr>
+			</tr>
 
-		<td>
+			<tr>
 
-			<a href="#questions_personnage">
-	                
-		        <button class="bouton" ng-click="addLieu(4)">
+				<td>
 
-		            <span class="icon-urbain"></span>
+					<a href="#questions_personnage">
+						
+						<button class="bouton" ng-click="addLieu(4)">
 
-		        </button>
+							<span class="icon-urbain"></span>
 
-	    	</a>
+						</button>
 
-		</td>
+					</a>
 
-		<td>
+				</td>
 
-			<a href="#questions_personnage">
-	                
-		        <button class="bouton" ng-click="addLieu(7)">
+				<td>
 
-		            <span class="icon-rural"></span>
+					<a href="#questions_personnage">
+						
+						<button class="bouton" ng-click="addLieu(7)">
 
-		        </button>
+							<span class="icon-rural"></span>
 
-	    	</a>
+						</button>
 
-		</td>
+					</a>
 
-		<td>
+				</td>
 
-			<a href="#questions_personnage">
-	                
-		        <button class="bouton" ng-click="addLieu(6)">
+				<td>
 
-		            <span class="icon-loisirs"></span>
+					<a href="#questions_personnage">
+						
+						<button class="bouton" ng-click="addLieu(6)">
 
-		        </button>
+							<span class="icon-loisirs"></span>
 
-	    	</a>
+						</button>
 
-		</td>
+					</a>
 
-	</tr>
+				</td>
 
-	<tr>
+			</tr>
 
-		<td><p>Urbain</p></td>
-		<td><p>Rural</p></td>
-		<td><p>Loisirs</p></td>
+			<tr>
 
-	</tr>
+				<td><p>Urbain</p></td>
+				<td><p>Rural</p></td>
+				<td><p>Loisirs</p></td>
 
-	<tr>
+			</tr>
 
-		<td>
+			<tr>
 
-			<a href="#questions_personnage">
-	                
-		        <button class="bouton" ng-click="addLieu(10)">
+				<td>
 
-		            <span class="icon-vacances"></span>
+					<a href="#questions_personnage">
+						
+						<button class="bouton" ng-click="addLieu(10)">
 
-		        </button>
+							<span class="icon-vacances"></span>
 
-	    	</a>
+						</button>
 
-		</td>
+					</a>
 
-		<td>
+				</td>
 
-			<a href="#questions_personnage">
-	                
-		        <button class="bouton" ng-click="addLieu(12)">
+				<td>
 
-		            <span class="icon-imaginaire_lieu"></span>
+					<a href="#questions_personnage">
+						
+						<button class="bouton" ng-click="addLieu(12)">
 
-		        </button>
+							<span class="icon-imaginaire_lieu"></span>
 
-	    	</a>
+						</button>
 
-		</td>
+					</a>
 
-		<td>
+				</td>
 
-			<a href="#questions_personnage">
-	                
-		        <button class="bouton" ng-click="addLieu(9)">
+				<td>
 
-		            <span class="icon-historique"></span>
+					<a href="#questions_personnage">
+						
+						<button class="bouton" ng-click="addLieu(9)">
 
-		        </button>
+							<span class="icon-historique"></span>
 
-	    	</a>
+						</button>
 
-		</td>
+					</a>
 
-	</tr>
+				</td>
 
-	<tr>
+			</tr>
 
-		<td><p>Vacances</p></td>
-		<td><p>Imaginaire</p></td>
-		<td><p>Historique</p></td>
+			<tr>
 
-	</tr>
+				<td><p>Vacances</p></td>
+				<td><p>Imaginaire</p></td>
+				<td><p>Historique</p></td>
 
-</table>
+			</tr>
 
-<table class="tab_question tableau">
+		</table>
 
-	<tr>
+		<table class="tab_question tableau">
 
-		<td>
+			<tr>
 
-			<a href="#questions_personnage">
-	                
-		        <button class="bouton">
+				<td>
 
-		            <span class="icon-croix"></span>
+					<a href="#questions_personnage">
+						
+						<button class="bouton">
 
-		        </button>
+							<span class="icon-croix"></span>
 
-	    	</a>
+						</button>
 
-		</td>
+					</a>
 
-		<td>
+				</td>
 
-			<a href="#questions_personnage">
-	                
-		        <button class="bouton">
+				<td>
 
-		            <span class="icon-ok"></span>
+					<a href="#questions_personnage">
+						
+						<button class="bouton">
 
-		        </button>
+							<span class="icon-ok"></span>
 
-	    	</a>
+						</button>
 
-		</td>
+					</a>
 
-	</tr>
+				</td>
 
-</table>
+			</tr>
 
-<footer id="evolution_questionnaire">
-               
-	<img src="img/dreamorize_evolution.png" alt="DREAMORIZE - Evolution du questionnaire">
-	
-</footer>
+		</table>
+	</div>
+	<footer id="evolution_questionnaire">
+		
+		<img src="img/dreamorize_evolution.png" alt="DREAMORIZE - Evolution du questionnaire">
+		
+	</footer>
 
 </div>
 <script type="text/javascript" src="js/jquery.hammer.full.min.js"></script>    

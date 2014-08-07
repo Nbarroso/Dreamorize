@@ -86,6 +86,9 @@
 .icon-ok:before {
 	content: "\e614";
 }
+.icon-ok:before {
+	content: "\e614";
+}
 .icon-non_identifier:before {
 	content: "\e615";
 }

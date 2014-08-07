@@ -1,191 +1,373 @@
 <div id="sp-nav" ng-include src="'partials/sidebar.html'"></div>
 <div id="sp-page" class="page" ng-controller="memCtrl">
+	<header id="header"></header>
+
+
+	<table class="tab_question">
+		<tr>
+			<td>
+				<a href="#questions_lieu">	
+					<button class="bouton">
+						<span class="icon-fleche"></span>
+					</button>
+				</a>
+			</td>
+			<td>&nbsp;</td>
+			<td>
+				<p class="intitule_question">QUI ÉTAIT DANS TON RÊVE ?</p>
+			</td>
+			<td>&nbsp;</td>
+			<td>
+				<a href="#questions_action">	
+					<button class="bouton">
+						<span class="icon-fleche"></span>
+					</button>
+				</a>
+			</td>
+		</tr>
+	</table>
+
+
+
+
+
+
+	<div   class='all_content' ng-switch="x.activePersonnage">
+		
+
+		<div  ng-switch-when="humain">
+			<table class="tab_question">
+				<tr >
+					<td>
+						<button class="bouton choix_personnage" ng-click="addPersonnage(1, 1);">
+							<span class="icon-toi"></span>
+						</button>
+					</td>
+					<td>
+						<button class="bouton choix_personnage">
+							<span class="icon-humain disabled"></span>
+						</button>
+					</td>
+					<td>
+						<button class="bouton choix_personnage" ng-click="addPersonnage(1, 2);">
+							<span class="icon-famille"></span>
+						</button>
+					</td>
+				</tr>
+				<tr>
+					<td><p>toi</p></td>
+					<td><p class="disabled">Humain</p></td>
+					<td><p>famille</p></td>
+				</tr>
+				<tr>
+					<td>
+						<button class="bouton choix_personnage" ng-click="addPersonnage(1, 4);">
+							<span class="icon-ami"></span>
+						</button>
+					</td>
+					<td>
+						<button class="bouton choix_personnage" ng-click="addPersonnage(1, 8);">
+							<span class="icon-amour"></span>
+						</button>
+					</td>
+					<td>
+						<button class="bouton choix_personnage" ng-click="addPersonnage(1, 6);">
+							<span class="icon-connaissance"></span>
+						</button>
+					</td>
+				</tr>
+				<tr>
+					<td><p>ami</p></td>
+					<td><p>amour</p></td>
+					<td><p>contact</p></td>
+				</tr>
+				<tr>
+					<td>
+						<button class="bouton choix_personnage" ng-click="addPersonnage(1, 5);">
+							<span class="icon-inconnu"></span>
+						</button>
+					</td>
+					<td>
+						<button class="bouton choix_personnage" ng-click="addPersonnage(1, 7);">
+							<span class="icon-collegue"></span>
+						</button>
+					</td>
+					<td>
+						<button class="bouton choix_personnage" ng-click="addPersonnage(1, 3);">
+							<span class="icon-star"></span>
+						</button>
+					</td>
+				</tr>
+				<tr>
+					<td><p>inconnu</p></td>
+					<td><p>collègue</p></td>
+					<td><p>star</p></td>
+
+				</tr>
+
+			</table>
+
+
+			<script type="text/javascript">
+
+			$(function() {
+
+				$(".choix_personnage").on("click", function() {
+
+					$("#nom_personnage_popup").css("display","block");
+					$("#nom_personnage_popup").dialog({autoOpen : false});
+					$("#nom_personnage_popup").dialog('open');
+
+					$("#nom_personnage_ok").on("click", function() {
+
+						$("#nom_personnage_popup").dialog('close');
+
+						var nom_personnage = $("#nom_personnage").val();
+						
+
+						//var scope = angular.element($("#nom_personnage")).scope();
+						//var sous_cat = scope.sous_categorie_personnage;
+    					//scope.$apply(function(){
+        				//	scope.msg = 'Superhero';
+   						//})
+						//console.log("sous categorie après: " + sous_cat);
+
+						angular.element($("#nom_personnage")).scope().addPersonnageData(1, 0, nom_personnage);
+
+						//angular.element($("#nom_personnage")).scope().$apply();
+						//console.log(nom_personnage);
+					});
+				});
+			});
+			</script>
+		</div>
+
+
+
+
+
+		
+
+		<div  ng-switch-when="animal">
+			<table class="tab_question">
+				<tr>
+					<td>&nbsp;</td>
+					<td>
+						<button class="bouton choix_personnage" ng-click="addPersonnage(2, 9);">
+							<span class="icon-poil"></span>
+						</button>
+					</td>
+					<td>
+						<button class="bouton choix_personnage" ng-click="addPersonnage(2, 10);">
+							<span class="icon-plume"></span>
+						</button>
+					</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td><p>poil</p></td>
+					<td><p>plume</p></td>
+				</tr>
+				<tr>
+					<td>
+						<button class="bouton choix_personnage">
+							<span class="icon-animal disabled"></span>
+						</button>
+					</td>
+					<td>
+						<button class="bouton choix_personnage" ng-click="addPersonnage(2, 11);">
+							<span class="icon-ecaille"></span>
+						</button>
+					</td>
+					<td>
+						<button class="bouton choix_personnage" ng-click="addPersonnage(2, 12);">
+							<span class="icon-autre_animal"></span>
+						</button>
+					</td>
+				</tr>
+				<tr>
+					<td><p class='disabled'>Animal</p></td>
+					<td><p>écaille</p></td>
+					<td><p>autre</p></td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+			</table>
+		</div>
+
+
+
+
+
+
+
+
+		<div   ng-switch-when="autre">
+			<table class="tab_question">
+				<tr>
+					<td>&nbsp;</td>
+					<td>
+						<button class="bouton choix_personnage" ng-click="addPersonnage(3, 13);">
+							<span class="icon-monstre"></span>
+						</button>
+					</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td><p>monstre</p></td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<button class="bouton choix_personnage" ng-click="addPersonnage(3, 15);">
+							<span class="icon-imaginaire_qui"></span>
+						</button>
+					</td>
+					<td>
+						<button class="bouton choix_personnage" ng-click="addPersonnage(3, 14);">
+							<span class="icon-ovni"></span>
+						</button>
+					</td>
+					<td>
+						<button class="bouton choix_personnage">
+							<span class="icon-non_identifier disabled"></span>
+						</button>
+					</td>
+				</tr>
+				<tr>
+					<td><p>imaginaire</p></td>
+					<td><p>OVNI</p></td>
+					<td><p class='disabled'>Autre</p></td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+			</table>
+		</div>
+
+
+
+
+
+
+
+
+		<div ng-switch-default>
+			<table class="tab_question" id="icons_personnage">
+				<tr>
+					<td><p>&nbsp;</p></td>
+					<td>
+						
+						<button class="bouton choix_personnage" ng-click="x.activePersonnage='humain';" >
+							<span class="icon-humain"></span>
+						</button>
+						
+					</td>
+					<td><p>&nbsp;</p></td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td><p>Humain</p></td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						
+						<button class="bouton choix_personnage" ng-click="x.activePersonnage='animal';">
+							<span class="icon-animal"></span>
+						</button>
+						
+					</td>
+					<td><p>&nbsp;</p></td>
+					<td>
+
+						<button class="bouton choix_personnage" ng-click="x.activePersonnage='autre';">
+							<span class="icon-non_identifier"></span>
+						</button>
+						
+					</td>
+				</tr>
+				<tr>
+					<td><p>Animal</p></td>
+					<td>&nbsp;</td>
+					<td><p>Autre</p></td>
+				</tr>
+				<tr>
+					<td><p>&nbsp;</p></td>
+					<td><p>&nbsp;</p></td>
+					<td><p>&nbsp;</p></td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+			</table>
+		</div>
+
+
+
+
+
+
+		<table class="tab_question tableau">
+			<tr>
+				<td>
+					<a href="#questions_personnage">	
+						<button class="bouton">
+							<span class="icon-croix"></span>
+						</button>
+					</a>
+				</td>
+				<td>
+					<a href="#questions_action">	
+						<button class="bouton">
+							<span class="icon-ok"></span>
+						</button>
+					</a>
+				</td>
+			</tr>
+		</table>
+
+
+		
+	</div>
+
+
+	<footer id="evolution_questionnaire">
+		<img src="img/dreamorize_evolution.png" alt="DREAMORIZE - Evolution du questionnaire">
+	</footer>
 
-<header id="header"></header>
 
-<table class="tab_question">
-
-	<tr>
-
-		<td>
-
-			<a href="#questions_lieu">
-	                
-		    <button class="bouton">
-
-		        <span class="icon-fleche"></span>
-
-		    </button>
-
-	    	</a>
-
-	    </td>
-
-		<td>&nbsp;</td>
-
-		<td>
-
-			<p class="intitule_question">QUI ÉTAIT DANS TON RÊVE ?</p>
-
-		</td>
-
-		<td>&nbsp;</td>
-
-		<td>
-
-			<a href="#questions_action">
-	                
-		        <button class="bouton">
-
-		            <span class="icon-fleche"></span>
-
-		        </button>
-
-	    	</a>
-
-		</td>
-
-	</tr>
-
-</table>
-
-<table class="tab_question">
-
-	<tr>
-
-		<td><p>&nbsp;</p></td>
-
-		<td>
-
-			<a href="#questions_personnage_humain">
-	                
-		        <button class="bouton">
-
-		            <span class="icon-humain"></span>
-
-		        </button>
-
-	    	</a>
-
-		</td>
-
-		<td><p>&nbsp;</p></td>
-
-	</tr>
-
-	<tr>
-
-		<td>&nbsp;</td>
-		<td><p>Humain</p></td>
-		<td>&nbsp;</td>
-
-	</tr>
-
-	<tr>
-
-		<td>
-
-			<a href="#questions_personnage_animal">
-	                
-		        <button class="bouton">
-
-		           <span class="icon-animal"></span>
-
-		        </button>
-
-	    	</a>
-
-		</td>
-
-		<td><p>&nbsp;</p></td>
-
-		<td>
-
-			<a href="#questions_personnage_autre">
-	                
-		        <button class="bouton">
-
-		            <span class="icon-non_identifier"></span>
-
-		        </button>
-
-	    	</a>
-
-		</td>
-
-	</tr>
-
-	<tr>
-
-		<td><p>Animal</p></td>
-		<td>&nbsp;</td>
-		<td><p>Autre</p></td>
-
-	</tr>
-
-	<tr>
-
-		<td><p>&nbsp;</p></td>
-
-		<td><p>&nbsp;</p></td>
-
-		<td><p>&nbsp;</p></td>
-
-	</tr>
-
-	<tr>
-
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-
-	</tr>
-
-</table>
-
-<table class="tab_question tableau">
-
-	<tr>
-
-		<td>
-
-			<a href="#questions_personnage">
-	                
-		        <button class="bouton">
-
-		            <span class="icon-croix"></span>
-
-		        </button>
-
-	    	</a>
-
-		</td>
-
-		<td>
-
-			<a href="#questions_action">
-	                
-		        <button class="bouton">
-
-		            <span class="icon-ok"></span>
-
-		        </button>
-
-	    	</a>
-
-		</td>
-
-	</tr>
-
-</table>
-
-<footer id="evolution_questionnaire">
-               
-	<img src="img/dreamorize_evolution.png" alt="DREAMORIZE - Evolution du questionnaire">
-	
-</footer>
 
 </div>
+
+
+
+
+<div id="nom_personnage_popup" style="display: none;">
+	<p>Quel est le nom de ton personnage ?</p>
+	<input class="date_reve" type="text" id="nom_personnage"/>
+	<span class="icon-ok mini-icon" id="nom_personnage_ok"></span>
+</div>
+
+
 
 <script type="text/javascript" src="js/jquery.hammer.full.min.js"></script>    
 <script type="text/javascript" src="js/hammer_menu.js"></script>

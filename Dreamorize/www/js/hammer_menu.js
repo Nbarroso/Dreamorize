@@ -3,6 +3,8 @@
     var $page = $('#sp-page');
     var sidebar = 0;
 
+
+
     $page.hammer()
 
     .on('swiperight', function(e) {
@@ -83,6 +85,18 @@
         }
     })
 
+    $("#dont_detect_swipe_gesture").hammer().on('drag', function(e) {
+        //console.log('et ouais ma couille');
+        e.stopPropagation();
+    })
+        .on('swipeleft', function(e) {
+            e.stopPropagation();
+        })
+        .on('swiperight', function(e) {
+            e.stopPropagation();
+        });
+
+
 
     $("#header").load("partials/header.html", function(data) {
 
@@ -102,5 +116,7 @@
             }
         });
     });
+
+
 
 })(jQuery);

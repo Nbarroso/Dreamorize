@@ -3,82 +3,86 @@
 
 	<header id="header"></header>
 
-	<table class="tab_question">
-		<tr>
-			<td>
-				<a href="#vocal_5">
-				    <button class="bouton">
-				        <span class="icon-fleche"></span>
-				    </button>
-		    	</a>
-		    </td>
-			<td>&nbsp;</td>
-			<td class="intitule_question">
-				<p >QUAND AS-TU RÊVÉ ?</p>
-			</td>
-			<td>&nbsp;</td>
-			<td>
-				<a href="#questions_type">        
-			        <button class="bouton">
-			           <span class="icon-fleche"></span>
-			        </button>
-		    	</a>
-			</td>
-		</tr>
-	</table>
+	<div class='all_content'>
 
-	<div class="date_element">
-		<a href="#questions_type">
-			<button class="date_reve" ng-click="addDate();">La nuit dernière</button>
-		</a>
+		<table class="tab_question">
+			<tr>
+				<td>
+					<a href="#vocal_5">
+						<button class="bouton">
+							<span class="icon-fleche"></span>
+						</button>
+					</a>
+				</td>
+				<td>&nbsp;</td>
+				<td class="intitule_question">
+					<p >QUAND AS-TU RÊVÉ ?</p>
+				</td>
+				<td>&nbsp;</td>
+				<td>
+					<a href="#questions_type">        
+						<button class="bouton">
+							<span class="icon-fleche"></span>
+						</button>
+					</a>
+				</td>
+			</tr>
+		</table>
 
-		<p>ou</p>
+		<div class="date_element">
+			<a href="#questions_type">
+				<button class="date_reve" ng-click="addDate();">La nuit dernière</button>
+			</a>
 
-		<input id="date_reve" onfocus="blur();"type="text" placeholder="AVANT" class="date_reve" ng-model="date" jqdatepicker/>
+			<p>ou</p>
+
+			<input id="date_reve" onfocus="blur();"type="text" placeholder="AVANT" class="date_reve" ng-model="date" jqdatepicker/>
+
+		</div>
+
+		<table class="tab_question tableau">
+
+			<tr>
+
+				<td>
+
+					<a href="#questions_date">
+						
+						<button class="bouton">
+
+							<span class="icon-croix"></span>
+
+						</button>
+
+					</a>
+					
+
+				</td>
+
+				<td>
+
+					<a href="#questions_type">
+						
+						<button class="bouton" ng-click="addDate(date);">
+
+							<span class="icon-ok"></span>
+
+						</button>
+
+					</a>
+
+				</td>
+
+			</tr>
+
+		</table>
 
 	</div>
 
-	<table class="tab_question tableau">
-
-		<tr>
-
-			<td>
-
-				<a href="#questions_date">
-		                
-			        <button class="bouton">
-
-			            <span class="icon-croix"></span>
-
-			        </button>
-
-		    	</a>
-		    	
-
-			</td>
-
-			<td>
-
-				<a href="#questions_type">
-		                
-			        <button class="bouton" ng-click="addDate(date);">
-
-			           <span class="icon-ok"></span>
-
-			        </button>
-
-		    	</a>
-
-			</td>
-
-		</tr>
-
-	</table>
-
 	<footer id="evolution_questionnaire">
-               
-	<img src="img/dreamorize_evolution.png" alt="DREAMORIZE - Evolution du questionnaire">
-	
+		
+		<img src="img/dreamorize_evolution.png" alt="DREAMORIZE - Evolution du questionnaire">
+		
 	</footer>
 </div>
 
@@ -94,11 +98,11 @@ function lastNightDate(){
 	var yyyy = today.getFullYear();
 
 	if(dd<10) {
-	    dd='0'+dd
+		dd='0'+dd
 	} 
 
 	if(mm<10) {
-	    mm='0'+mm
+		mm='0'+mm
 	} 
 
 	today = yyyy+'-'+mm+'-'+dd;

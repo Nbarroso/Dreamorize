@@ -13,19 +13,22 @@
 
 /* Désactive les highights orange sur les supports natifs */
 * {
-    /*-webkit-tap-highlight-color: rgba(0,0,0,0);*/ /* make transparent link selection, adjust last value opacity 0 to 1.0 */
-    -webkit-tap-highlight-color: rgba(255, 255, 255, 0); 
-    -webkit-tap-highlight-color: transparent;  /*i.e. Nexus5/Chrome and Kindle Fire HD 7'' */
+	/*-webkit-tap-highlight-color: rgba(0,0,0,0);*/ /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+	-webkit-tap-highlight-color: rgba(255, 255, 255, 0); 
+	-webkit-tap-highlight-color: transparent;  /*i.e. Nexus5/Chrome and Kindle Fire HD 7'' */
+	-webkit-overflow-scrolling: touch; 
 }
+
+
 
 
 
 @font-face{
 
 	font-family: 'Andarilho Font';
-    src: url('../../font/andarilho-font-webfont.ttf');
-    src: url('../../font/andarilho-font-webfont.svg');
-    src: url('../../font/andarilho-font-webfont.woff');
+	src: url('../../font/andarilho-font-webfont.ttf');
+	src: url('../../font/andarilho-font-webfont.svg');
+	src: url('../../font/andarilho-font-webfont.woff');
 }
 
 body{
@@ -33,11 +36,18 @@ body{
 	color: white;
 	font-family: "Andarilho Font", Helvetica, sans-serif;
 	font-size: 14px;
+	overflow-x: hidden;
+	height: 100%;
 	
 }
 
 .page{
 	background: blue;
+}
+
+.all_content{
+	overflow-y: scroll;
+	height: 68%;
 }
 
 a{
@@ -73,9 +83,11 @@ p{
 }
 
 #sp-nav{
+	width: 150px;
 	z-index: 5;
-	padding-top: 25px;
+	
 	box-shadow: -27px 0 111px -33px #030326 inset;
+	height: 100%
 	
 }
 #sp-page{
@@ -84,7 +96,8 @@ p{
 	margin-left: -8px;
 	padding-left: 0px;
 	-webkit-transition-duration:0.3s;
-	transition-duration:0.3s;	
+	transition-duration:0.3s;
+	height: 100%	
 }
 
 /* /PAGE INTRO */
@@ -160,7 +173,7 @@ header{
 	a{
 		display: inline-block;
 		text-decoration: none;
-	
+
 		img{
 			display: block;
 			margin: auto;
@@ -203,7 +216,7 @@ header{
 	a{
 		display: inline-block;
 		text-decoration: none;
-	
+
 		img{
 			display: block;
 			margin: auto;
@@ -242,7 +255,7 @@ header{
 	a{
 		display: inline-block;
 		text-decoration: none;
-	
+
 		img{
 			display: block;
 			margin: auto;
@@ -268,7 +281,6 @@ td a .icon-micro{
 }
 
 .icon-croix{
-
 	color: @violet_clair;
 	font-size: 60px;
 }
@@ -280,6 +292,17 @@ td a .icon-micro{
 
 	font-size: 18px;
 }
+
+.mini-icon{
+	font-size: 25px;
+	color: @violet_clair;
+
+}
+
+.disabled{
+	color: gray;
+}
+.mini-icon:active  { color: white; }
 
 /* /VOCAL */
 
@@ -293,7 +316,7 @@ td a .icon-micro{
 	a{
 		display: inline-block;
 		text-decoration: none;
-	
+
 		img{
 			display: block;
 			margin: auto;
@@ -314,7 +337,7 @@ td a .icon-micro{
 
 .tableau{
 
-	margin-bottom: 100px;
+	//margin-bottom: 100px;
 }
 
 footer{
@@ -326,6 +349,7 @@ footer{
 	position: absolute;
 	bottom: 0;
 	padding-right: 8px;
+	margin-bottom: -10px;
 	
 }
 
@@ -344,103 +368,103 @@ footer{
 	width: 100%;
 	position: absolute;
 	bottom: 0;
-}*/
+	}*/
 
 
 
-/* /QUESTIONS */
+	/* /QUESTIONS */
 
-.intitule_question{
-	width : 280px;
-}
+	.intitule_question{
+		width : 280px;
+	}
 
-/* DATE DU REVE */
+	/* DATE DU REVE */
 
-.date_element{
+	.date_element{
 
-	text-align: center;
-	margin-top: 20px;
-}
+		text-align: center;
+		margin-top: 20px;
+	}
 
-.date_reve{
+	.date_reve{
 
-	text-decoration: none;
-	text-align: center;
+		text-decoration: none;
+		text-align: center;
 
-	border: 1px solid @bleu_clair;
-	border-radius: 3px;
-	padding: 3px;
+		border: 1px solid @bleu_clair;
+		border-radius: 3px;
+		padding: 3px;
 
-	background-color: @background;
-	color: white;
+		background-color: @background;
+		color: white;
 
-	width: 200px;
+		width: 200px;
 
-	font-family: 'Andarilho Font', Helvetica, sans-serif;
-	font-size: 20px;
-}
+		font-family: 'Andarilho Font', Helvetica, sans-serif;
+		font-size: 20px;
+	}
 
-/* /DATE DE REVE */
+	/* /DATE DE REVE */
 
-/* EMOTION */
+	/* EMOTION */
 
-.emotion_text{
+	.emotion_text{
 
-	font-size: 24px;
-}
+		font-size: 24px;
+	}
 
-.color_user{
+	.color_user{
 
-	color: @violet_clair;
-}
+		color: @violet_clair;
+	}
 
-/* /EMOTION */
+	/* /EMOTION */
 
-/* ACTION MOT CLEF TITRE */
+	/* ACTION MOT CLEF TITRE */
 
-.action_reve{
+	.action_reve{
 
-	text-decoration: none;
-	text-align: center;
+		text-decoration: none;
+		text-align: center;
 
-	border: 1px solid @violet_clair;
-	border-radius: 3px;
-	padding: 3px;
+		border: 1px solid @violet_clair;
+		border-radius: 3px;
+		padding: 3px;
 
-	background-color: @background;
-	color: white;
+		background-color: @background;
+		color: white;
 
-	width: 200px;
-	font-family: 'Andarilho Font', Helvetica, sans-serif;
-	font-size: 20px;
-}
+		width: 200px;
+		font-family: 'Andarilho Font', Helvetica, sans-serif;
+		font-size: 20px;
+	}
 
-/* /ACTION MOT CLEF TITRE  */
+	/* /ACTION MOT CLEF TITRE  */
 
-/* NAVIGATION */
+	/* NAVIGATION */
 
-.panel{
-	position: absolute;
-	top: 0; right: 0; left: 0; bottom: 0;
+	.panel{
+		position: absolute;
+		top: 0; right: 0; left: 0; bottom: 0;
 
-	-webkit-overflow-scrolling: touch;
-	transition-duration: 0.5s;
-    -webkit-transition-duration: 0.5s ;
-    -moz-transition-duration: 0.5s ;
-    -ms-transition-duration: 0.5s ;
-    -o-transition-duration: 0.5s ;
-}
+		-webkit-overflow-scrolling: touch;
+		transition-duration: 0.5s;
+		-webkit-transition-duration: 0.5s ;
+		-moz-transition-duration: 0.5s ;
+		-ms-transition-duration: 0.5s ;
+		-o-transition-duration: 0.5s ;
+	}
 
-.left{
-	-webkit-transform:  translate3d(-100%,0,0);
-}
+	.left{
+		-webkit-transform:  translate3d(-100%,0,0);
+	}
 
-.center{
-	-webkit-transform:  translate3d(0,0,0);
-}
+	.center{
+		-webkit-transform:  translate3d(0,0,0);
+	}
 
-.right{
-	-webkit-transform:  translate3d(100%,0,0);
-}
+	.right{
+		-webkit-transform:  translate3d(100%,0,0);
+	}
 
-/* /NAVIGATION */
+	/* /NAVIGATION */

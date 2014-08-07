@@ -1,195 +1,201 @@
 <div id="sp-nav" ng-include src="'partials/sidebar.html'"></div>
 <div id="sp-page" class="page" ng-controller="memCtrl">
 
-<header id="header"></header>
+	<header id="header"></header>
 
-<table class="tab_question">
 
-	<tr>
 
-		<td>
+	<table class="tab_question">
 
-			<a href="#questions_date">
-	                
-		    <button class="bouton">
+		<tr>
 
-		        <span class="icon-fleche"></span>
+			<td>
 
-		    </button>
+				<a href="#questions_date">
+					
+					<button class="bouton">
 
-	    	</a>
+						<span class="icon-fleche"></span>
 
-	    </td>
+					</button>
 
-		<td>&nbsp;</td>
+				</a>
 
-		<td>
+			</td>
 
-			<p class="intitule_question">DE QUEL TYPE ÉTAIT TON RÊVE ?</p>
+			<td>&nbsp;</td>
 
-		</td>
+			<td>
 
-		<td>&nbsp;</td>
+				<p class="intitule_question">DE QUEL TYPE ÉTAIT TON RÊVE ?</p>
 
-		<td>
+			</td>
 
-			<a href="#questions_couleur">
-	                
-		        <button class="bouton">
+			<td>&nbsp;</td>
 
-		            <span class="icon-fleche"></span>
+			<td>
 
-		        </button>
+				<a href="#questions_couleur">
+					
+					<button class="bouton">
 
-	    	</a>
+						<span class="icon-fleche"></span>
 
-		</td>
+					</button>
 
-	</tr>
+				</a>
 
-</table>
+			</td>
 
-<table class="tab_question">
+		</tr>
 
-	<tr>
+	</table>
 
-		<td>
+	<div class='all_content'>
 
-			<a href="#questions_couleur">
-	                
-		        <button class="bouton" ng-click="addType(1);">
+		<table class="tab_question">
 
-		             <span class="icon-reve"></span>
+			<tr>
 
-		        </button>
+				<td>
 
-	    	</a>
+					<a href="#questions_couleur">
+						
+						<button class="bouton" ng-click="addType(1);">
 
-		</td>
+							<span class="icon-reve"></span>
 
-		<td>
+						</button>
 
-			<a href="#questions_couleur">
-	                
-		        <button class="bouton" ng-click="addType(2);">
+					</a>
 
-		             <span class="icon-cauchemar"></span>
+				</td>
 
-		        </button>
+				<td>
 
-	    	</a>
+					<a href="#questions_couleur">
+						
+						<button class="bouton" ng-click="addType(2);">
 
-		</td>
+							<span class="icon-cauchemar"></span>
 
-		<td>
+						</button>
 
-			<a href="#questions_couleur">
-	                
-		        <button class="bouton" ng-click="addType(4);">
+					</a>
 
-		            <span class="icon-enfantin"></span>
+				</td>
 
-		        </button>
+				<td>
 
-	    	</a>
+					<a href="#questions_couleur">
+						
+						<button class="bouton" ng-click="addType(4);">
 
-		</td>
+							<span class="icon-enfantin"></span>
 
-	</tr>
+						</button>
 
-	<tr>
+					</a>
 
-		<td><p>Rêve</p></td>
-		<td><p>Cauchemar</p></td>
-		<td><p>Enfantin</p></td>
+				</td>
 
-	</tr>
+			</tr>
 
-	<tr>
+			<tr>
 
-		<td>
+				<td><p>Rêve</p></td>
+				<td><p>Cauchemar</p></td>
+				<td><p>Enfantin</p></td>
 
-			<a href="#questions_couleur">
-	                
-		        <button class="bouton" ng-click="addType(3);">
+			</tr>
 
-		            <span class="icon-lucide"></span>
+			<tr>
 
-		        </button>
+				<td>
 
-	    	</a>
+					<a href="#questions_couleur">
+						
+						<button class="bouton" ng-click="addType(3);">
 
-		</td>
+							<span class="icon-lucide"></span>
 
-		<td>
+						</button>
 
-			<a href="#questions_couleur">
-	                
-		        <button class="bouton" ng-click="addType(5);">
+					</a>
 
-		           <span class="icon-dejavu"></span>
+				</td>
 
-		        </button>
+				<td>
 
-	    	</a>
+					<a href="#questions_couleur">
+						
+						<button class="bouton" ng-click="addType(5);">
 
-		</td>
+							<span class="icon-dejavu"></span>
 
-		<td>&nbsp;</td>
+						</button>
 
-	</tr>
+					</a>
 
-	<tr>
+				</td>
 
-		<td><p>Lucide</p></td>
-		<td><p>Déjà-Vu</p></td>
-		<td>&nbsp;</td>
+				<td>&nbsp;</td>
 
-	</tr>
+			</tr>
 
-</table>
+			<tr>
 
-<table class="tab_question tableau">
+				<td><p>Lucide</p></td>
+				<td><p>Déjà-Vu</p></td>
+				<td>&nbsp;</td>
 
-	<tr>
+			</tr>
 
-		<td>
+		</table>
 
-			<a href="#questions_type">
-	                
-		        <button class="bouton">
+		<table class="tab_question tableau">
 
-		            <span class="icon-croix"></span>
+			<tr>
 
-		        </button>
+				<td>
 
-	    	</a>
+					<a href="#questions_type">
+						
+						<button class="bouton">
 
-		</td>
+							<span class="icon-croix"></span>
 
-		<td>
+						</button>
 
-			<a href="#questions_couleur">
-	                
-		        <button class="bouton">
+					</a>
 
-		            <span class="icon-ok"></span>
-		            
-		        </button>
+				</td>
 
-	    	</a>
+				<td>
 
-		</td>
+					<a href="#questions_couleur">
+						
+						<button class="bouton">
 
-	</tr>
+							<span class="icon-ok"></span>
+							
+						</button>
 
-</table>
+					</a>
 
-<footer id="evolution_questionnaire">
-               
-	<img src="img/dreamorize_evolution.png" alt="DREAMORIZE - Evolution du questionnaire">
-	
-</footer>
+				</td>
+
+			</tr>
+
+		</table>
+
+	</div>
+
+	<footer id="evolution_questionnaire">
+		
+		<img src="img/dreamorize_evolution.png" alt="DREAMORIZE - Evolution du questionnaire">
+		
+	</footer>
 
 </div>
 
