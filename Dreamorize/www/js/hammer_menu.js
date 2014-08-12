@@ -35,6 +35,9 @@
         if (e.gesture.deltaX > 153) {
             return false;
         }
+        if (e.gesture.deltaX < -153) {
+            return false;
+        }
 
         if (e.gesture.direction == "right" && !sidebar) {
             $page.css({
