@@ -37,6 +37,7 @@ body{
 	font-family: "Andarilho Font", Helvetica, sans-serif;
 	font-size: 14px;
 	overflow-x: hidden;
+	overflow-y: hidden;
 	height: 100%;
 	max-width: 100px;
 	
@@ -56,6 +57,15 @@ body{
 	height: 68%;
 	//overflow-x: hidden;
 	
+}
+
+.boutons_annuler_valider{
+	//position: absolute;
+	bottom: 59px;
+	width: 162px;
+	left: 0;
+	right: 0;
+	margin: auto;
 }
 
 
@@ -368,14 +378,14 @@ footer{
 	position: absolute;
 	bottom: 0;
 	padding-right: 8px;
-	margin-bottom: -10px;
+	//margin-bottom: -10px;
 	
 }
 
 .icon-fleche{
 
 	color: @bleu_clair;
-	font-size: 60px;
+	font-size: 40px;
 }
 
 /*#evolution_questionnaire{
@@ -458,6 +468,37 @@ footer{
 		font-size: 20px;
 	}
 
+	.action_list{
+		//margin: auto;
+	}
+
+	#tableau_choix_categorie_action{
+		-webkit-transition-duration:0.3s;
+		transition-duration:0.3s;
+	}
+	
+
+	#tableau_choix_categorie_action td {
+		padding: 10px;
+
+	}
+	#tableau_choix_categorie_action .categorie_action_titre{
+		font-size: 20px;
+	}
+
+	.action_item{
+		cursor: pointer;
+		display: inline-block;
+		border-radius: 3px;
+		margin-top: -15px;
+		margin-left: 5px;
+		padding: 3px;
+		//display: none;
+		border: 1px solid #7BF6FF;
+		font-size: 15px;
+		//margin: auto;
+
+	}
 	/* /ACTION MOT CLEF TITRE  */
 
 	/* NAVIGATION */

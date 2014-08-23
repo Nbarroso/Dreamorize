@@ -4,97 +4,106 @@
 <header id="header"></header>
 
 <table class="tab_question">
-
 	<tr>
-
 		<td>
-
-			<a href="#questions_action">
-	                
+			<a href="#questions_action">        
 		    <button class="bouton">
-
 		        <span class="icon-fleche"></span>
-
 		    </button>
-
 	    	</a>
-
 	    </td>
-
 		<td>&nbsp;</td>
-
 		<td>
-
 			<p class="intitule_question">AUTRE CHOSE DANS TON RÊVE ?</p>
 
 		</td>
-
 		<td>&nbsp;</td>
-
 		<td>
-
-			<a href="#questions_titre">
-	                
+			<a href="#questions_titre">        
 		        <button class="bouton">
-
 		            <span class="icon-fleche"></span>
-
 		        </button>
-
 	    	</a>
-
 		</td>
-
 	</tr>
-
 </table>
+
+<div class='all_content'>
 
 <div class="date_element">
 
-	<input type="text" value="ENTRE DES MOTS-CLÉS" class="action_reve"/>
+	<input id='tag_field' type="text" placeholder="ENTRE DES MOTS-CLÉS" ng-model='tag' class="action_reve"/><span id="tag_ok"  ng-click='addTag(tag);'class="icon-ok mini-icon"></span>
+
+	<div id="tags_list" style='padding-top: 20px;'></div>
 
 </div>
+</div>
 
-<table class="tab_question tableau">
+<script type="text/javascript">
 
+	var nbTag = 0;
+	var tagsArray = new Array();
+
+	$('#tag_field').focus(function(){
+   		$(this).removeAttr('placeholder');
+	});
+
+	$('#tag_ok').click(function(event) {
+
+		if($('#tag_field').val() != ''){
+
+
+			var tagDoesntExist = true;
+			$.each(tagsArray, function(index, val) {
+				 if($('#tag_field').val() == val){
+				 	tagDoesntExist = false;
+				 	//$('#tag_field').val('Tu as déjà entré ce mot.');
+				 	$('#tag_field').attr("placeholder", "Existe déjà. Réesaie...");
+				 	$('#tag_field').val('');
+				 	console.log('existe déjà');
+				 }
+			});
+
+			if(tagDoesntExist){
+
+				nbTag++;
+				var tag = $('#tag_field').val();
+				tagsArray.push(tag);
+				$('#tag_field').attr("placeholder", "ENTRE DES MOTS-CLÉS");
+				$('#tag_field').val('');
+				$('#tags_list').append("<p id='tag_item"+nbTag+"' class='action_item'>" + tag + "</p></div><br>" );
+				//$('#action_item'+nbAction+'').show('400');
+			}
+		}
+	});
+
+</script>
+
+
+
+<table class="boutons_annuler_valider tableau">
 	<tr>
-
 		<td>
-
-			<a href="#questions_keywords">
-	                
+			<a href="#questions_keywords">        
 		        <button class="bouton">
-
 		             <span class="icon-croix"></span>
-
 		        </button>
-
 	    	</a>
-
 		</td>
-
 		<td>
-
-			<a href="#questions_titre">
-	                
+			<a href="#questions_titre">        
 		        <button class="bouton">
-
 		            <span class="icon-ok"></span>
-
 		        </button>
-
 	    	</a>
-
 		</td>
-
 	</tr>
-
 </table>
 
-<footer id="evolution_questionnaire">
-               
+
+
+<footer id="evolution_questionnaire">  
 	<img src="img/dreamorize_evolution.png" alt="DREAMORIZE - Evolution du questionnaire">
-	
 </footer>
 
 </div>

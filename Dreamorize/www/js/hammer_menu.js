@@ -3,41 +3,20 @@
     var $page = $('#sp-page');
     var sidebar = 0;
 
-
-
     $page.hammer()
 
-    .on('swiperight', function(e) {
-        if (sidebar) {
-            return true;
-        }
-        $page.css({
-            transform: 'translateX(150px)'
-        });
-        sidebar = 1;
-    })
-
-
-    .on('swipeleft', function(e) {
-        if (!sidebar) {
-            return true;
-        }
-        $page.css({
-            transform: 'translateX(0px)'
-        });
-        sidebar = 0;
-    })
+    
 
 
     .on('drag', function(e) {
 
 
-        if (e.gesture.deltaX > 153) {
+        if (e.gesture.deltaX > 150) {
             return false;
         }
-        if (e.gesture.deltaX < -153) {
-            return false;
-        }
+        //if (e.gesture.deltaX < -153) {
+          //  return false;
+        //}
 
         if (e.gesture.direction == "right" && !sidebar) {
             $page.css({

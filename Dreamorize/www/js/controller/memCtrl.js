@@ -1,45 +1,35 @@
-function memCtrl($scope) {
+function memCtrl($scope, questionnaireFactory) {
 
     var couleurs = new Array();
-
     $scope.pageLevel = 0;
     $scope.nbPersonnage = 0;
     $scope.activePersonnage = "";
-
-    $scope.sous_categorie_personnage = 0;
-
-    var personnage = {
-        datas: []
-    };
-
-
     $scope.x = {
         activePersonnage: "default"
     };
 
-
-    //console.log("page level : " + $scope.pageLevel);
+ 
     $scope.increaseLevel = function() {
         $scope.pageLevel++;
-        console.log($scope.pageLevel);
-        //console.log("page level après click : " + $scope.pageLevel);
+        //console.log($scope.pageLevel);
+        //console.log("page level après click :  + $scope.pageLevel);
     };
 
 
     $scope.addDate = function(date) {
-        $scope.$parent.date = date;
-        console.log(date);
+        $scope.$parent.$parent.date = date;
     };
 
 
     $scope.addType = function(type) {
-        $scope.$parent.type = type;
+        $scope.$parent.$parent.type = type;
     };
 
 
     $scope.addCouleur = function(code_couleur) {
-
         var addColor = true;
+
+        // Si la couleur cliquée est déjà sélectionnée, on la supprime de la liste
         for (var i = 0; i < couleurs.length; i++) {
             if (couleurs[i] == code_couleur) {
                 couleurs.splice(i, 1);
@@ -49,75 +39,120 @@ function memCtrl($scope) {
         if (addColor) {
             couleurs.push(code_couleur);
         }
-        console.log(couleurs.length + " couleurs :")
-        for (var i = 0; i < couleurs.length; i++) {
-            console.log(couleurs[i]);
-        }
-        $scope.$parent.couleurs_liste = couleurs;
+        $scope.$parent.$parent.couleurs_liste = couleurs;
     };
 
 
     $scope.addEmotion = function(joie, attirance, peur, surprise, tristesse, degout, colere) {
-        $scope.$parent.joie = joie;
-        $scope.$parent.attirance = attirance;
-        $scope.$parent.peur = peur;
-        $scope.$parent.surprise = surprise;
-        $scope.$parent.tristesse = tristesse;
-        $scope.$parent.degout = degout;
-        $scope.$parent.colere = colere;
+        $scope.$parent.$parent.joie = joie;
+        $scope.$parent.$parent.attirance = attirance;
+        $scope.$parent.$parent.peur = peur;
+        $scope.$parent.$parent.surprise = surprise;
+        $scope.$parent.$parent.tristesse = tristesse;
+        $scope.$parent.$parent.degout = degout;
+        $scope.$parent.$parent.colere = colere;
     };
 
 
     $scope.addLieu = function(categorie_lieu) {
-        $scope.$parent.categorie_lieu = categorie_lieu;
+        $scope.$parent.$parent.categorie_lieu = categorie_lieu;
     };
 
 
     $scope.addPersonnage = function(categorie_personnage, sous_categorie_personnage) {
-        $scope.$parent.categorie_personnage = categorie_personnage;
-        $scope.sous_categorie_personnage = sous_categorie_personnage;
+        $scope.$parent.$parent.categorie_personnage = categorie_personnage;
+        $scope.$parent.$parent.sous_categorie_personnage = sous_categorie_personnage;
         $scope.nbPersonnage++;
-        $scope.sous_categorie_personnage++;
-        console.log("sous categorie avant : " + $scope.sous_categorie_personnage);
-
+        console.log("categorie : " + $scope.$parent.$parent.categorie_personnage);
+        console.log("sous-categorie : " + $scope.$parent.$parent.sous_categorie_personnage);
     };
 
-    $scope.addPersonnageData = function(categorie_personnage, sous_categorie_personnage, nom_personnage) {
 
-        personnage.datas.push({
-            "categorie_personnage": categorie_personnage,
-            "sous_categorie_personnage": sous_categorie_personnage,
-            "nom_personnage": nom_personnage
+    $scope.addPersonnageData = function(nom_personnage) {
+        var sous_cat = $scope.$parent.sous_categorie_personnage;
+        var cat = $scope.$parent.categorie_personnage;
+        questionnaireFactory.addPersonnage(cat, sous_cat, nom_personnage);
+    }
+
+
+    $scope.addAction = function(action) {
+        var actionDoesntExist = true;
+
+        questionnaireFactory.actionsArray.forEach(function(entry) {
+            if(action == entry){
+                actionDoesntExist = false;
+            }
         });
-        console.log($scope.sous_categorie_personnage);
-        console.log(personnage.datas);
+        
+
+        if(actionDoesntExist){
+            questionnaireFactory.addAction(action);
+        }
+        console.log(questionnaireFactory.actionsArray);
+    }
+
+    $scope.addCategorieAction = function(categorie_action) {
+        
+        var nbAction = questionnaireFactory.actionsArray.length;
+        var lastAction = questionnaireFactory.actionsArray[nbAction-1];
+
+        questionnaireFactory.addCompleteAction(lastAction, categorie_action);
+        console.log(questionnaireFactory.completeActionsArray);
+
+    }
+
+    $scope.addTag = function(tag) {
+        var tagDoesntExist = true;
+
+        questionnaireFactory.tagsArray.forEach(function(entry) {
+            if(tag == entry){
+                tagDoesntExist = false;
+            }
+        });
+        
+
+        if(tagDoesntExist){
+            questionnaireFactory.addTag(tag);
+        }
+        console.log(questionnaireFactory.tagsArray);   
     }
 
 
     $scope.addTitre = function(titre) {
-        $scope.$parent.titre = titre;
+        $scope.$parent.$parent.titre = titre;
+        
     };
+
 
     $scope.postReve = function() {
 
-        if ($scope.date != null && $scope.type != null && $scope.titre != null) {
 
-            var date_reve = $scope.$parent.date;
-            var type_reve = $scope.$parent.type;
-            var titre_reve = $scope.$parent.titre;
-            //var couleur_reve = $scope.$parent.couleur;
+        if ($scope.$parent.$parent.date != null && $scope.$parent.$parent.type != null && $scope.$parent.$parent.titre != null) {
 
-            var emotion_joie = $scope.$parent.joie;
-            var emotion_attirance = $scope.$parent.attirance;
-            var emotion_peur = $scope.$parent.peur;
-            var emotion_surprise = $scope.$parent.surprise;
-            var emotion_tristesse = $scope.$parent.tristesse;
-            var emotion_degout = $scope.$parent.degout;
-            var emotion_colere = $scope.$parent.colere;
+            var date_reve = $scope.$parent.$parent.date;
+            var type_reve = $scope.$parent.$parent.type;
+            var titre_reve = $scope.$parent.$parent.titre;
 
-            var categorie_lieu = $scope.$parent.categorie_lieu;
+            var emotion_joie = $scope.$parent.$parent.joie;
+            var emotion_attirance = $scope.$parent.$parent.attirance;
+            var emotion_peur = $scope.$parent.$parent.peur;
+            var emotion_surprise = $scope.$parent.$parent.surprise;
+            var emotion_tristesse = $scope.$parent.$parent.tristesse;
+            var emotion_degout = $scope.$parent.$parent.degout;
+            var emotion_colere = $scope.$parent.$parent.colere;
+
+            var categorie_lieu = $scope.$parent.$parent.categorie_lieu;
             var lieu = "";
-            var jsonColors = JSON.stringify($scope.$parent.couleurs_liste);
+
+            var jsonColors = JSON.stringify($scope.$parent.$parent.couleurs_liste);
+            //console.log("variables : ");
+            console.log(questionnaireFactory.personnagesArray);
+            var jsonPersonnages = JSON.stringify(questionnaireFactory.personnagesArray);
+            //console.log(questionnaireFactory.completeActionsArray);
+            console.log(questionnaireFactory.completeActionsArray);
+            var actionsList = JSON.stringify(questionnaireFactory.completeActionsArray);
+
+            var tagsList = JSON.stringify(questionnaireFactory.tagsArray);
 
             jQuery.ajax({
 
@@ -136,7 +171,10 @@ function memCtrl($scope) {
                     degout: emotion_degout,
                     colere: emotion_colere,
                     categorie_lieu: categorie_lieu,
-                    lieu: lieu
+                    lieu: lieu,
+                    personnagestab: jsonPersonnages,
+                    actions: actionsList,
+                    tags: tagsList
                 },
                 error: function(xhr, status, error) {
                     alert("Erreur : le rêve n'a pas pu s'enregistrer.");
@@ -150,19 +188,21 @@ function memCtrl($scope) {
             alert("Les informations sur le rêve ne sont pas renseignées.");
         }
 
-        $scope.$parent.date = "";
-        $scope.$parent.type = "";
-        $scope.$parent.titre = "";
-        $scope.$parent.joie = 0;
-        $scope.$parent.attirance = 0;
-        $scope.$parent.peur = 0;
-        $scope.$parent.surprise = 0;
-        $scope.$parent.tristesse = 0;
-        $scope.$parent.degout = 0;
-        $scope.$parent.colere = 0;
+        $scope.$parent.$parent.date = "";
+        $scope.$parent.$parent.type = "";
+        $scope.$parent.$parent.titre = "";
+        $scope.$parent.$parent.joie = 0;
+        $scope.$parent.$parent.attirance = 0;
+        $scope.$parent.$parent.peur = 0;
+        $scope.$parent.$parent.surprise = 0;
+        $scope.$parent.$parent.tristesse = 0;
+        $scope.$parent.$parent.degout = 0;
+        $scope.$parent.$parent.colere = 0;
 
-        var categorie_lieu = $scope.$parent.categorie_lieu;
+
+        var categorie_lieu = $scope.$parent.$parent.categorie_lieu;
         var lieu = "";
+        questionnaireFactory.resetPersonnages();
         //$scope.$parent.couleurs.clear();
     }
 }

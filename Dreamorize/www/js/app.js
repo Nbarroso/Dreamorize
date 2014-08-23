@@ -23,6 +23,83 @@ app.directive('jqdatepicker', function() {
     };
 });
 
+app.directive('staticInclude', function($http, $templateCache, $compile) {
+    return function(scope, element, attrs) {
+        var templatePath = attrs.staticInclude;
+        $http.get(templatePath, { cache: $templateCache }).success(function(response) {
+            var contents = element.html(response).contents();
+            $compile(contents)(scope);
+        });
+    };
+});
+
+app.factory('questionnaireFactory', function(){
+
+    var ListService = {};
+
+    var tags = new Array();
+    var actions = new Array();
+    var personnages = {
+        datas: []
+    };
+    var completeActions = {
+        datas: []
+    };
+
+
+    ListService.actionsArray = actions;
+    ListService.completeActionsArray = completeActions.datas;
+    ListService.tagsArray = tags;
+    ListService.personnagesArray = personnages.datas;
+
+    // Personnages
+
+    ListService.addPersonnage = function(cat, sous_cat, nom_personnage) { 
+        personnages.datas.push({
+            "categorie_personnage": cat,
+            "sous_categorie_personnage": sous_cat,
+            "nom_personnage": nom_personnage
+        });
+    }
+    ListService.resetPersonnages = function(){
+        personnages.datas.clear();
+    }
+    // ListService.getPersonnages = function() { 
+    //     return personnages.datas; 
+    // }
+
+
+    
+    // Actions
+    ListService.addAction = function(action){
+        actions.push(action);
+    }
+    ListService.resetActions = function() { 
+        actions.clear();
+    }
+
+     // Actions completes (avec categorie)
+    ListService.addCompleteAction = function(action, categorie_action){
+        completeActions.datas.push({
+            "nom_action": action,
+            "categorie_action": categorie_action
+        });
+    }
+    ListService.resetCompleteActions = function() { 
+        completeActions.datas.clear();
+    }
+
+    // Tags
+    ListService.addTag = function(tag){
+        tags.push(tag);
+    }
+    ListService.resetTags = function() { 
+        tags.clear();
+    }
+
+    return ListService;
+});
+
 app.config(function($routeProvider) {
     $routeProvider
         .when('/home', {

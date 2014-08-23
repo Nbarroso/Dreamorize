@@ -4,98 +4,145 @@
 <header id="header"></header>
 
 <table class="tab_question">
-
 	<tr>
-
 		<td>
-
 			<a href="#questions_personnage">
-	                
 		    <button class="bouton">
-
 		       <span class="icon-fleche"></span>
-
 		    </button>
-
 	    	</a>
-
 	    </td>
-
 		<td>&nbsp;</td>
-
 		<td>
-
 			<p class="intitule_question">ACTIONS DANS TON RÊVE ?</p>
-
 		</td>
-
 		<td>&nbsp;</td>
-
 		<td>
-
 			<a href="#questions_keywords">
-	                
 		        <button class="bouton">
-
 		            <span class="icon-fleche"></span>
-
 		        </button>
-
 	    	</a>
-
 		</td>
-
 	</tr>
-
 </table>
+
+<div class='all_content'>
 
 <div class="date_element">
 
-	<input type="text" placeholder="ENTRE UN VERBE" class="action_reve"/> <span class="icon-ok mini-icon"></span>
+	<input type="text" id="action_field" ng-model="action" placeholder="ENTRE UN VERBE" class="action_reve"/> <span id="action_ok"  ng-click='addAction(action);'class="icon-ok mini-icon"></span>
+
+	<div id="action_list" style='padding-top: 20px;'></div>
+
+	<table id="tableau_choix_categorie_action" style="display: none; opacity: 0;">
+		<caption style="font-size: 20px; padding: 10px">CHOISIS UNE CATEGORIE</caption>
+		<tr>
+			<td><span ng-click="addCategorieAction(4)" class='choix_cat_action icon-mouvement' id="mouvement"></span></td>
+			<td><span ng-click="addCategorieAction(2)"class='choix_cat_action icon-creation'></span></td>
+			<td><span ng-click="addCategorieAction(3)"class='choix_cat_action icon-destruction'></span></td>
+		</tr>
+		<tr>
+			<td class="categorie_action_titre">Mouvement</td>
+			<td class="categorie_action_titre">Créer</td>
+			<td class="categorie_action_titre">Détruire</td>
+		</tr>
+		<tr>
+			<td><span ng-click="addCategorieAction(1)" class='choix_cat_action icon-echanger'></span></td>
+			<td><span ng-click="addCategorieAction(5)" class='choix_cat_action icon-psychologique'></span></td>
+			<td><span ng-click="addCategorieAction(6)" class='choix_cat_action icon-autre'></span></td>
+		</tr>
+		<tr>
+			<td class="categorie_action_titre">Echanger</td>
+			<td class="categorie_action_titre">Emotion</td>
+			<td class="categorie_action_titre">Autre</td>
+		</tr>
+
+	</table>
+
+
+	<script type="text/javascript">
+
+		$('.choix_cat_action ').click(function(event) {
+			$('#tableau_choix_categorie_action').animate({ opacity: 0 });
+			setTimeout(function(){
+				$('#tableau_choix_categorie_action').css({
+					display: 'none'
+				});
+			}, 1000);
+			
+		});
+
+		var nbAction = 0;
+		var actionsArray = new Array();
+
+		$('#action_field').focus(function(){
+	   		$(this).removeAttr('placeholder');
+		});
+
+		$('#action_ok').click(function(event) {
+
+			if($('#action_field').val() != ''){
+
+
+				var actionDoesntExist = true;
+				$.each(actionsArray, function(index, val) {
+					 if($('#action_field').val() == val){
+					 	actionDoesntExist = false;
+					 	//$('#tag_field').val('Tu as déjà entré ce mot.');
+					 	$('#action_field').attr("placeholder", "Existe déjà. Réesaie...");
+					 	$('#action_field').val('');
+					 	console.log('existe déjà');
+					 }
+				});
+
+				if(actionDoesntExist){
+
+					nbAction++;
+					var action = $('#action_field').val();
+					actionsArray.push(action);
+					$('#action_field').attr("placeholder", "ENTRE UN VERBE");
+					$('#action_field').val('');
+					$('#action_list').append("<p id='action_item"+nbAction+"' class='action_item'>" + action + "</p></div><br>" );
+					
+						$('#tableau_choix_categorie_action').css({
+							display: 'inline-block'
+						});
+					
+					$('#tableau_choix_categorie_action').animate({ opacity: 100 });
+					//$('#action_item'+nbAction+'').show('400');
+				}
+			}
+		});
+
+	</script>
 
 </div>
+	<table class="boutons_annuler_valider " style="-webkit-transition-duration: 0.3s">
+		<tr>
+			<td>
+				<a href="#questions_action">        
+			        <button class="bouton">
+			            <span class="icon-croix"></span>
+			        </button>
+		    	</a>
+			</td>
+			<td>
+				<a href="#questions_keywords">        
+			        <button class="bouton">
+			            <span class="icon-ok"></span>
+			        </button>
+		    	</a>
+			</td>
+		</tr>
+	</table>
 
-<table class="tab_question tableau">
 
-	<tr>
 
-		<td>
+	<footer id="evolution_questionnaire">      
+		<img src="img/dreamorize_evolution.png" alt="DREAMORIZE - Evolution du questionnaire">
+	</footer>
 
-			<a href="#questions_action">
-	                
-		        <button class="bouton">
-
-		            <span class="icon-croix"></span>
-
-		        </button>
-
-	    	</a>
-
-		</td>
-
-		<td>
-
-			<a href="#questions_keywords">
-	                
-		        <button class="bouton">
-
-		            <span class="icon-ok"></span>
-
-		        </button>
-
-	    	</a>
-
-		</td>
-
-	</tr>
-
-</table>
-
-<footer id="evolution_questionnaire">
-               
-	<img src="img/dreamorize_evolution.png" alt="DREAMORIZE - Evolution du questionnaire">
-	
-</footer>
 </div>
 
 <script type="text/javascript" src="js/jquery.hammer.full.min.js"></script>    
