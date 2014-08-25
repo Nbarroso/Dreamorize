@@ -83,6 +83,7 @@
     $("#header").load("partials/header.html", function(data) {
 
         $('#sidemenu-button').click(function(event) {
+            
             if (sidebar) {
                 $page.css({
                     transform: 'translateX(0px)'

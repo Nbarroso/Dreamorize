@@ -1,26 +1,25 @@
 <div id="sp-nav" ng-include src="'partials/sidebar.html'"></div>
 <div id="sp-page" class="page" ng-controller="memCtrl">
-	<header id="header"></header>
 
+	<div id="header" ng-include src="header.url"></div>
 
+	<nav class="memoriser">
 
-<nav class="memoriser">
+	    <a href="#vocal">
 
-    <a href="#vocal">
+		    <span class="icon-micro"></span>
+		    <p class="titre_bouton bouton">VOCAL</p>
 
-	    <span class="icon-micro"></span>
-	    <p class="titre_bouton bouton">VOCAL</p>
+	    </a>
 
-    </a>
+	    <a href="#questions_date">
 
-    <a href="#questions_date">
+		    <span class="icon-questions"></span>
+		    <p class="titre_bouton bouton">QUESTIONS</p>
 
-	    <span class="icon-questions"></span>
-	    <p class="titre_bouton bouton">QUESTIONS</p>
+	    </a>
 
-    </a>
-
-</nav>
+	</nav>
 
 </div>
 

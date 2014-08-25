@@ -8,6 +8,8 @@ function memCtrl($scope, questionnaireFactory) {
         activePersonnage: "default"
     };
 
+    $scope.header = {name: "partials/header.html", url: "partials/header.html"};
+
  
     $scope.increaseLevel = function() {
         $scope.pageLevel++;
@@ -17,7 +19,25 @@ function memCtrl($scope, questionnaireFactory) {
 
 
     $scope.addDate = function(date) {
+
         $scope.$parent.$parent.date = date;
+
+        if(date == "lastNight"){
+            var today = new Date();
+            var dd = today.getDate()-1;
+            var mm = today.getMonth()+1; //January is 0!
+            var yyyy = today.getFullYear();
+            if(dd<10) {
+                dd='0'+dd
+            } 
+            if(mm<10) {
+                mm='0'+mm
+            } 
+            today = yyyy+'-'+mm+'-'+dd;
+            $scope.$parent.$parent.date = today;
+        }
+        console.log($scope.$parent.$parent.date);
+        
     };
 
 

@@ -1,7 +1,7 @@
 <div id="sp-nav" static-include="partials/sidebar.html"></div>
 <div id="sp-page" class="page" ng-controller="memCtrl">
 
-	<header id="header"></header>
+<div id="header" ng-include src="header.url"></div>
 
 	<div class='all_content'>
 
@@ -31,7 +31,7 @@
 
 		<div class="date_element">
 			<a href="#questions_type">
-				<button class="date_reve" ng-click="addDate();">La nuit dernière</button>
+				<button class="date_reve" ng-click="addDate('lastNight')">La nuit dernière</button>
 			</a>
 
 			<p>ou</p>
@@ -87,36 +87,5 @@
 </div>
 
 
-
-
-<script>
-
-function lastNightDate(){
-	var today = new Date();
-	var dd = today.getDate();
-	var mm = today.getMonth()+1; //January is 0!
-	var yyyy = today.getFullYear();
-
-	if(dd<10) {
-		dd='0'+dd
-	} 
-
-	if(mm<10) {
-		mm='0'+mm
-	} 
-
-	today = yyyy+'-'+mm+'-'+dd;
-	return today;
-}
-
-</script>
-
 <script type="text/javascript" src="js/jquery.hammer.full.min.js"></script>    
 <script type="text/javascript" src="js/hammer_menu.js"></script>
-
-
-
-
-
-
-

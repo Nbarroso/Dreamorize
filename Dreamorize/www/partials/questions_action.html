@@ -1,7 +1,9 @@
 <div id="sp-nav" ng-include src="'partials/sidebar.html'"></div>
 <div id="sp-page" class="page" ng-controller="memCtrl">
 
-<header id="header"></header>
+<!--<header id="header"></header> -->
+<div id="header" ng-include src="header.url"></div>
+ 
 
 <table class="tab_question">
 	<tr>
@@ -63,15 +65,54 @@
 
 	<script type="text/javascript">
 
-		$('.choix_cat_action ').click(function(event) {
-			$('#tableau_choix_categorie_action').animate({ opacity: 0 });
-			setTimeout(function(){
-				$('#tableau_choix_categorie_action').css({
-					display: 'none'
-				});
-			}, 1000);
-			
-		});
+
+		var userId = 1;
+        var jsonVerbs;
+
+        var toType = function(obj) {
+  			return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
+		}
+
+        function access(data){
+        	var parser = new DOMParser();
+			var xmlDoc = parser.parseFromString(data.responseText,"text/xml");
+			var stringVerbs = xmlDoc.getElementById("verb_list").childNodes[1].innerHTML;
+			var jsonVerbs = JSON.parse("[" + stringVerbs + "]");
+			var verbsArray = new Array();
+
+			for(var i in jsonVerbs) {
+			   	for(var j in jsonVerbs[i]){
+			   		verbsArray.push(jsonVerbs[i][j]);
+			   		verbsArray.push("se " + jsonVerbs[i][j]);
+			   	}  
+			}
+
+			$("#action_field").autocomplete({
+				source: verbsArray,
+				minLength: 1
+			});
+
+			// Remplace le filtre par défaut d'autocomplétion pour chercher seulement au début des chaines de caractères
+    		$.ui.autocomplete.filter = function (array, term) {
+		        var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
+		       	return $.grep(array, function (value) {
+		            return matcher.test(value.label || value.value || value);
+		        });
+    		};
+        }
+
+        $.ajax({
+            url: "http://dreamorize.meximas.com/back_office/app/searchVerbs.php",
+            type: 'get',
+            
+            
+            success: function(data) {
+                result = data;
+                access(data);
+            }
+        });
+
+		
 
 		var nbAction = 0;
 		var actionsArray = new Array();
@@ -103,22 +144,51 @@
 					actionsArray.push(action);
 					$('#action_field').attr("placeholder", "ENTRE UN VERBE");
 					$('#action_field').val('');
-					$('#action_list').append("<p id='action_item"+nbAction+"' class='action_item'>" + action + "</p></div><br>" );
+					$('#action_list').append("<p id='action_item"+nbAction+"' class='action_item' style='opacity: 0;display: none;'>" + action + "</p></div><br>" );
+
+					 /*$("#first").animate({
+					       width: '200px'
+					    }, { duration: 200, queue: false });
+					    $("#second").animate({
+					       width: '600px'
+					    }, { duration: 200, queue: false });*/
 					
-						$('#tableau_choix_categorie_action').css({
-							display: 'inline-block'
-						});
 					
-					$('#tableau_choix_categorie_action').animate({ opacity: 100 });
-					//$('#action_item'+nbAction+'').show('400');
+					$("#boutons_final_actions").animate({marginTop: '200px',opacity: 0, 'useTranslate3d': true }, {duration :500, queue: false}, function(){
+
+						$("#boutons_final_actions").css({display: 'none'});
+						// Tableau choix categories
+						$('#tableau_choix_categorie_action').css({display: 'inline-block'});
+						$('#tableau_choix_categorie_action').animate({ opacity: 100 }, 5000);
+						
+					});
+					
+					// Action
+					$('#action_item'+nbAction).css({display: 'inline-block'});
+					$('#action_item'+nbAction).animate({ 'opacity': '100'}, {duration : 5000, queue : false});
 				}
 			}
 		});
 
+		$('.choix_cat_action ').click(function(event) {
+			$('#tableau_choix_categorie_action').animate({ opacity: 0 }, 1000, function() {
+
+				$('#tableau_choix_categorie_action').css({display: 'none'});
+
+				$("#boutons_final_actions").css({display: 'margin-top'});
+
+				$("#boutons_final_actions").css({'margin-top' : '200px', opacity: 100});
+				$("#boutons_final_actions").animate({marginTop: '0px','useTranslate3d': true}, 500);
+ 			});
+		});
+
 	</script>
 
+
+
+
 </div>
-	<table class="boutons_annuler_valider " style="-webkit-transition-duration: 0.3s">
+	<table class="boutons_annuler_valider" id="boutons_final_actions">
 		<tr>
 			<td>
 				<a href="#questions_action">        

@@ -1,7 +1,7 @@
 <div id="sp-nav" ng-include src="'partials/sidebar.html'"></div>
 <div id="sp-page" class="page" ng-controller="memCtrl">
 
-<header id="header"></header>
+<div id="header" ng-include src="header.url"></div>
 
 <table class="tab_question">
 	<tr>
@@ -50,30 +50,35 @@
 
 	$('#tag_ok').click(function(event) {
 
-		if($('#tag_field').val() != ''){
+		if(nbTag < 5){
+			if($('#tag_field').val() != ''){
 
 
-			var tagDoesntExist = true;
-			$.each(tagsArray, function(index, val) {
-				 if($('#tag_field').val() == val){
-				 	tagDoesntExist = false;
-				 	//$('#tag_field').val('Tu as déjà entré ce mot.');
-				 	$('#tag_field').attr("placeholder", "Existe déjà. Réesaie...");
-				 	$('#tag_field').val('');
-				 	console.log('existe déjà');
-				 }
-			});
+				var tagDoesntExist = true;
+				$.each(tagsArray, function(index, val) {
+					 if($('#tag_field').val() == val){
+					 	tagDoesntExist = false;
+					 	//$('#tag_field').val('Tu as déjà entré ce mot.');
+					 	$('#tag_field').attr("placeholder", "EXISTE DEJA, REESAIE");
+					 	$('#tag_field').val('');
+					 	console.log('existe déjà');
+					 }
+				});
 
-			if(tagDoesntExist){
+				if(tagDoesntExist){
 
-				nbTag++;
-				var tag = $('#tag_field').val();
-				tagsArray.push(tag);
-				$('#tag_field').attr("placeholder", "ENTRE DES MOTS-CLÉS");
-				$('#tag_field').val('');
-				$('#tags_list').append("<p id='tag_item"+nbTag+"' class='action_item'>" + tag + "</p></div><br>" );
-				//$('#action_item'+nbAction+'').show('400');
+					nbTag++;
+					var tag = $('#tag_field').val();
+					tagsArray.push(tag);
+					$('#tag_field').attr("placeholder", "ENTRE DES MOTS-CLÉS");
+					$('#tag_field').val('');
+					$('#tags_list').append("<p id='tag_item"+nbTag+"' class='action_item'>" + tag + "</p></div><br>" );
+					//$('#action_item'+nbAction+'').show('400');
+				}
 			}
+		}else{
+			$('#tag_field').val('');
+			$('#tag_field').attr("placeholder", "5 MAXIMUM...");
 		}
 	});
 
