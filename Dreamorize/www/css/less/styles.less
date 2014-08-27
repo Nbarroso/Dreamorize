@@ -314,11 +314,10 @@ td a .icon-micro{
 
 
 	.indices_question{
-
 		display: inline-block;
 		color: @bleu_clair;
 		font-family: 'Andale Mono';
-		font-size: 15px;
+		font-size: 20px;
 	}
 
 	.droit{
@@ -329,19 +328,12 @@ td a .icon-micro{
 		margin-right: 10px;
 	}
 
-
 	.checked_question{
 		background: @bleu_clair;
 	}
 
 	.current_question{
-		background: repeating-linear-gradient(
-		-45deg,
-		@header_color,
-		@header_color 3px,
-		@bleu_clair 3px,
-		@bleu_clair 4px
-		);
+		background: url(../../img/current_question.png);
 	}
 
 	#indicateur_question{
@@ -355,18 +347,23 @@ td a .icon-micro{
 	}
 
 
-	#barre_progression_question{
+	#cases_progression_questions{
 
 		display: inline-table;
 		line-height: 50px;
 		margin: auto;
-		height: 8px;
+		height: 10px;
 		width: 270px;
 		border: 1px solid @bleu_clair;
 		border-radius: 3px;
 		border-spacing: 0px;
 		margin-top: 19px;
 
+		.rectangle_etape_progression{
+
+			height: 11px;
+			border: 1px solid @bleu_clair;	
+		}
 		
 
 		#ligne_etapes td:first-child {
@@ -389,13 +386,6 @@ td a .icon-micro{
     		-moz-border-radius-topright:3px;
             -webkit-border-top-right-radius:3px;
     		border-top-right-radius:3px;
-		}
-
-
-		.rectangle_etape_progression{
-
-			height: 8px;
-			border: 1px solid @bleu_clair;	
 		}
 	}
 }

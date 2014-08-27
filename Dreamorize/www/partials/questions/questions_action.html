@@ -115,6 +115,7 @@
 
 		$('#action_field').focus(function(){
 	   		$(this).removeAttr('placeholder');
+	   		$("#boutons_final_actions").animate({opacity: 0, duration:200, queue: false});
 		});
 
 		$('#action_ok').click(function(event) {

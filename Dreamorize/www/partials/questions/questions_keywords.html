@@ -58,6 +58,7 @@
 
 	$('#tag_field').focus(function(){
    		$(this).removeAttr('placeholder');
+		$(".boutons_annuler_valider").animate({opacity: 0, duration:200, queue: false});
 	});
 
 	$('#tag_ok').click(function(event) {
@@ -85,6 +86,7 @@
 					$('#tag_field').attr("placeholder", "ENTRE DES MOTS-CLÉS");
 					$('#tag_field').val('');
 					$('#tags_list').append("<p id='tag_item"+nbTag+"' class='action_item'>" + tag + "</p></div><br>" );
+					$(".boutons_annuler_valider").animate({opacity: 1, duration:200, queue: false});
 					//$('#action_item'+nbAction+'').show('400');
 				}
 			}
