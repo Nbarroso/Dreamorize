@@ -1,28 +1,22 @@
 <div id="sp-nav" ng-include src="'partials/sidebar.html'"></div>
-<div id="sp-page" class="page" ng-controller="memCtrl">
+<div id="sp-page" class="page" ng-controller="memCtrl" data-ng-init="updateNumeroQuestion(8)">
 
-<div id="header" ng-include src="header.url"></div>
+<div id="header_container" ng-include src="header.url"></div>
 
 <table class="tab_question">
 	<tr>
 		<td>
 			<a href="#questions_action">        
-		    <button class="bouton">
 		        <span class="icon-fleche"></span>
-		    </button>
 	    	</a>
 	    </td>
-		<td>&nbsp;</td>
 		<td>
 			<p class="intitule_question">AUTRE CHOSE DANS TON RÊVE ?</p>
-
 		</td>
-		<td>&nbsp;</td>
+
 		<td>
 			<a href="#questions_titre">        
-		        <button class="bouton">
-		            <span class="icon-fleche"></span>
-		        </button>
+		        <span class="icon-fleche"></span>
 	    	</a>
 		</td>
 	</tr>
@@ -30,14 +24,32 @@
 
 <div class='all_content'>
 
-<div class="date_element">
+	<div class="date_elements">
+		<input id='tag_field' type="text" placeholder="ENTRE DES MOTS-CLÉS" ng-model='tag' class="question_text_input"/>
+		<span id="tag_ok"  ng-click='addTag(tag);'class="icon-ok mini-icon"></span>
+		<div id="tags_list" style='padding-top: 20px;'></div>
+	</div>
 
-	<input id='tag_field' type="text" placeholder="ENTRE DES MOTS-CLÉS" ng-model='tag' class="action_reve"/><span id="tag_ok"  ng-click='addTag(tag);'class="icon-ok mini-icon"></span>
 
-	<div id="tags_list" style='padding-top: 20px;'></div>
+	<table class="boutons_annuler_valider tableau">
+		<tr>
+			<td>
+				<a href="#questions_keywords">        
+			        <span class="icon-croix"></span>
+		    	</a>
+			</td>
+			<td>
+				<a href="#questions_titre">        
+			        <span class="icon-ok"></span>
+		    	</a>
+			</td>
+		</tr>
+	</table>
+
 
 </div>
-</div>
+
+<div id="footer_container" ng-include src="footer.url"></div>
 
 <script type="text/javascript">
 
@@ -83,35 +95,6 @@
 	});
 
 </script>
-
-
-
-<table class="boutons_annuler_valider tableau">
-	<tr>
-		<td>
-			<a href="#questions_keywords">        
-		        <button class="bouton">
-		             <span class="icon-croix"></span>
-		        </button>
-	    	</a>
-		</td>
-		<td>
-			<a href="#questions_titre">        
-		        <button class="bouton">
-		            <span class="icon-ok"></span>
-		        </button>
-	    	</a>
-		</td>
-	</tr>
-</table>
-
-
-
-<footer id="evolution_questionnaire">  
-	<img src="img/dreamorize_evolution.png" alt="DREAMORIZE - Evolution du questionnaire">
-</footer>
-
-</div>
 
 <script type="text/javascript" src="js/jquery.hammer.full.min.js"></script>    
 <script type="text/javascript" src="js/hammer_menu.js"></script>

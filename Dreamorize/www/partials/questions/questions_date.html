@@ -1,0 +1,69 @@
+<div id="sp-nav" static-include="partials/sidebar.html"></div>
+<div id="sp-page" class="page" ng-controller="memCtrl" data-ng-init="updateNumeroQuestion(1)">
+
+<div id="header_container" ng-include src="header.url"></div>
+
+<div id='testfr'></div>
+
+	<div class='all_content'>
+
+		<table class="tab_question">
+			<tr>
+				<td>
+					<a href="#vocal_5">
+						<span class="icon-fleche"></span>
+					</a>
+				</td>
+				<td class="intitule_question">
+					<p >QUAND AS-TU RÊVÉ ?</p>
+				</td>
+				<td>
+					<a href="#questions_type">        
+						<span class="icon-fleche"></span>
+					</a>
+				</td>
+			</tr>
+		</table>
+
+		<div class="date_elements">
+			<a href="#questions_type" >
+				<button  class="question_text_input bouton_cette_nuit" ng-click="addDate('lastNight')">CETTE NUIT</button>
+			</a>
+
+			<p>ou</p>
+
+			<input class="question_text_input" onfocus="blur();"type="text" placeholder="AVANT" ng-model="date" jqdatepicker/>
+
+		</div>
+
+		<table class="tab_question tableau">
+
+			<tr>
+				<td>
+					<a href="#questions_date">
+						<span class="icon-croix"></span>
+					</a>
+				</td>
+
+				<td>
+					<a href="#questions_type" ng-click="addDate(date);">
+						<span class="icon-ok"></span>
+					</a>
+				</td>
+			</tr>
+
+		</table>
+
+	</div>
+
+	<div id="footer_container" ng-include src="footer.url"></div>
+	
+</div>
+
+
+
+
+
+
+<script type="text/javascript" src="js/jquery.hammer.full.min.js"></script>    
+<script type="text/javascript" src="js/hammer_menu.js"></script>

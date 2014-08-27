@@ -1,55 +1,36 @@
 <div id="sp-nav" ng-include src="'partials/sidebar.html'"></div>
-
 <div id="sp-page" class="page" ng-controller="memCtrl">
 
-    <!-- <div class="panel"  ng-class="{center: pageLevel == 0, left: pageLevel == 1}"> -->
     <div id="header" ng-include src="header.url"></div>
 
-
-    <div class="menu_memoriser" >
-        <a href="#memoriser" ng-click="increaseLevel()">
-            <button id="bouton_memoriser" class="bouton">
+    <div id="home_main_menu_content">
+        <div id="menu_memoriser" >
+            <a  id="bouton_memoriser" ng-click="increaseLevel()" class="home_link">
                 <span class="icon-memoriser" alt="DREAMORIZE - Mémoriser"></span>
                 <p class="titre_bouton1">MÉMORISER</p>
-            </button>
-        </a>
-    </div>
-
-    <nav class="menu">
+            </a>
+        </div>
 
         <table class="menu_bouton">
 
             <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-
-            <tr>
-
                 <td>
                     <a href="#explorer">
-                        <button id="bouton_explorer" class="bouton">
-                            <span class="icon-explorer" alt="DREAMORIZE - Explorer"></span>
-                        </button>
+                        <span class="icon-explorer" alt="DREAMORIZE - Explorer"></span>
                     </a>
                 </td>
 
 
                 <td>
                     <a href="#visualiser">
-                        <button id="bouton_visualiser" class="bouton">
-                             <span class="icon-visualiser" alt="DREAMORIZE - Visualiser"></span>
-                        </button>
+                        <span class="icon-visualiser" alt="DREAMORIZE - Visualiser"></span>
                     </a>
-                </td>
+               </td>
 
 
                 <td>
                     <a href="#partager">
-                        <button id="bouton_partager" class="bouton">
-                              <span class="icon-echanger" alt="DREAMORIZE - Echanger"></span>
-                        </button>
+                        <span class="icon-echanger" alt="DREAMORIZE - Echanger"></span>
                     </a>
                 </td>
 
@@ -58,17 +39,44 @@
             <tr>
                 <td><p class="titre_bouton">EXPLORER</p></td>
 
-                <td><p class="titre_bouton bouton">VISUALISER</p></td>
+                <td><p class="titre_bouton">VISUALISER</p></td>
 
                 <td><p class="titre_bouton">PARTAGER</p></td>
             </tr>
 
         </table>
-    </nav>
+    </div>
 
+    <div id="options_memoriser" style="opacity: 0;display: none;">
+        <a href="#vocal" id='vocal'>
+            <span class="icon-micro"></span>
+            <p class="titre_bouton bouton">VOCAL</p>
+        </a>
 
+        <a href="#questions_date">
+            <span class="icon-questions"></span>
+            <p class="titre_bouton bouton">QUESTIONS</p>
+        </a>
+    </div>
 
+    
 </div>
 
+
+<script type="text/javascript">
+
+
+        $('#bouton_memoriser').click(function(event) {
+
+            //$('.home_link').removeAttr('href');
+            $('#options_memoriser').css({'display': 'block'});
+            $('#options_memoriser').animate({opacity: 1, duration: 500, queue: false}, 500);
+            $('#home_main_menu_content').animate({opacity: 0.150, duration: 500, queue: false}, 500);
+            $('#vocal').click(function(event) {
+                console.log('clickouze');
+            });
+        });
+
+</script>
 <script type="text/javascript" src="js/jquery.hammer.full.min.js"></script>    
 <script type="text/javascript" src="js/hammer_menu.js"></script>

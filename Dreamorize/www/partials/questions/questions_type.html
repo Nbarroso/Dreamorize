@@ -1,0 +1,83 @@
+<div id="sp-nav" static-include="partials/sidebar.html"></div>
+<div id="sp-page" class="page" ng-controller="memCtrl" data-ng-init="updateNumeroQuestion(2)">
+
+<div id="header_container" ng-include src="header.url"></div>
+
+	<table class="tab_question">
+		<tr>
+			<td>
+				<a href="#questions_date">
+					<span class="icon-fleche"></span>
+				</a>
+			</td>
+
+			<td>
+				<p class="intitule_question">DE QUEL TYPE ÉTAIT TON RÊVE ?</p>
+			</td>
+
+			<td>
+				<a href="#questions_couleur">
+					<span class="icon-fleche"></span>
+				</a>
+			</td>
+		</tr>
+	</table>
+
+
+
+	<div class='all_content'>
+
+		<table class="tab_question">
+
+			<tr>
+				<td>
+					<a href="#questions_couleur" ng-click="addType(1);">
+						<span class="icon-reve"></span>
+					</a>
+				</td>
+
+				<td>
+					<a href="#questions_couleur" ng-click="addType(2);">												
+						<span class="icon-cauchemar"></span>
+					</a>
+				</td>
+
+				<td>
+					<a href="#questions_couleur" ng-click="addType(4);">
+						<span class="icon-enfantin"></span>
+					</a>
+				</td>
+			</tr>
+
+			<tr>
+				<td><p>Rêve</p></td>
+				<td><p>Cauchemar</p></td>
+				<td><p>Enfantin</p></td>
+			</tr>
+
+			<tr>
+				<td>
+					<a href="#questions_couleur" ng-click="addType(3);">
+						<span class="icon-lucide"></span>
+					</a>
+				</td>
+
+				<td>
+					<a href="#questions_couleur">
+						<span class="icon-dejavu"></span>
+					</a>
+				</td>
+			</tr>
+
+			<tr>
+				<td><p>Lucide</p></td>
+				<td><p>Déjà-Vu</p></td>
+			</tr>
+		</table>
+	</div>
+
+	<div id="footer_container" ng-include src="footer.url"></div>
+</div>
+
+<script type="text/javascript" src="js/jquery.hammer.full.min.js"></script>    
+<script type="text/javascript" src="js/hammer_menu.js"></script>

@@ -1,27 +1,24 @@
 <div id="sp-nav" ng-include src="'partials/sidebar.html'"></div>
-<div id="sp-page" class="page" ng-controller="memCtrl">
-<div id="header" ng-include src="header.url"></div>
+<div id="sp-page" class="page" ng-controller="memCtrl" data-ng-init="updateNumeroQuestion(6)">
+
+<div id="header_container" ng-include src="header.url"></div>
 
 
 	<table class="tab_question">
 		<tr>
 			<td>
 				<a href="#questions_lieu">	
-					<button class="bouton">
-						<span class="icon-fleche"></span>
-					</button>
+					<span class="icon-fleche"></span>
 				</a>
 			</td>
-			<td>&nbsp;</td>
+			
 			<td>
 				<p class="intitule_question">QUI ÉTAIT DANS TON RÊVE ?</p>
 			</td>
-			<td>&nbsp;</td>
+
 			<td>
 				<a href="#questions_action">	
-					<button class="bouton">
-						<span class="icon-fleche"></span>
-					</button>
+					<span class="icon-fleche"></span>
 				</a>
 			</td>
 		</tr>
@@ -37,21 +34,16 @@
 
 		<div  ng-switch-when="humain">
 			<table class="tab_question">
+
 				<tr >
 					<td>
-						<button class="bouton choix_personnage" ng-click="addPersonnage(1, 1);">
-							<span class="icon-toi"></span>
-						</button>
+						<span class="icon-toi choix_personnage" ng-click="addPersonnage(1, 1);"></span>
 					</td>
 					<td>
-						<button class="bouton choix_personnage">
-							<span class="icon-humain disabled"></span>
-						</button>
+						<span class="icon-humain disabled"></span>
 					</td>
 					<td>
-						<button class="bouton choix_personnage" ng-click="addPersonnage(1, 2);">
-							<span class="icon-famille"></span>
-						</button>
+						<span class="icon-famille choix_personnage" ng-click="addPersonnage(1, 2);"></span>
 					</td>
 				</tr>
 				<tr>
@@ -61,19 +53,13 @@
 				</tr>
 				<tr>
 					<td>
-						<button class="bouton choix_personnage" ng-click="addPersonnage(1, 4);">
-							<span class="icon-ami"></span>
-						</button>
+						<span class="icon-ami choix_personnage" ng-click="addPersonnage(1, 4);"></span>	
 					</td>
 					<td>
-						<button class="bouton choix_personnage" ng-click="addPersonnage(1, 8);">
-							<span class="icon-amour"></span>
-						</button>
+						<span class="icon-amour choix_personnage" ng-click="addPersonnage(1, 8);"></span>
 					</td>
 					<td>
-						<button class="bouton choix_personnage" ng-click="addPersonnage(1, 6);">
-							<span class="icon-connaissance"></span>
-						</button>
+						<span class="icon-connaissance choix_personnage" ng-click="addPersonnage(1, 6);"></span>
 					</td>
 				</tr>
 				<tr>
@@ -83,19 +69,13 @@
 				</tr>
 				<tr>
 					<td>
-						<button class="bouton choix_personnage" ng-click="addPersonnage(1, 5);">
-							<span class="icon-inconnu"></span>
-						</button>
+						<span class="icon-inconnu choix_personnage" ng-click="addPersonnage(1, 5);"></span>
 					</td>
 					<td>
-						<button class="bouton choix_personnage" ng-click="addPersonnage(1, 7);">
-							<span class="icon-collegue"></span>
-						</button>
+						<span class="icon-collegue choix_personnage" ng-click="addPersonnage(1, 7);"></span>
 					</td>
 					<td>
-						<button class="bouton choix_personnage" ng-click="addPersonnage(1, 3);">
-							<span class="icon-star"></span>
-						</button>
+						<span class="icon-star choix_personnage" ng-click="addPersonnage(1, 3);"></span>
 					</td>
 				</tr>
 				<tr>
@@ -153,14 +133,10 @@
 				<tr>
 					<td>&nbsp;</td>
 					<td>
-						<button class="bouton choix_personnage" ng-click="addPersonnage(2, 9);">
-							<span class="icon-poil"></span>
-						</button>
+						<span class="icon-poil choix_personnage" ng-click="addPersonnage(2, 9);"></span>
 					</td>
 					<td>
-						<button class="bouton choix_personnage" ng-click="addPersonnage(2, 10);">
-							<span class="icon-plume"></span>
-						</button>
+						<span class="icon-plume choix_personnage" ng-click="addPersonnage(2, 10);"></span>
 					</td>
 				</tr>
 				<tr>
@@ -170,19 +146,13 @@
 				</tr>
 				<tr>
 					<td>
-						<button class="bouton choix_personnage">
-							<span class="icon-animal disabled"></span>
-						</button>
+						<span class="icon-animal disabled"></span>
 					</td>
 					<td>
-						<button class="bouton choix_personnage" ng-click="addPersonnage(2, 11);">
-							<span class="icon-ecaille"></span>
-						</button>
+						<span class="icon-ecaille choix_personnage" ng-click="addPersonnage(2, 11);"></span>
 					</td>
 					<td>
-						<button class="bouton choix_personnage" ng-click="addPersonnage(2, 12);">
-							<span class="icon-autre_animal"></span>
-						</button>
+						<span class="icon-autre_animal choix_personnage" ng-click="addPersonnage(2, 12);"></span>
 					</td>
 				</tr>
 				<tr>
@@ -204,20 +174,12 @@
 		</div>
 
 
-
-
-
-
-
-
 		<div   ng-switch-when="autre">
 			<table class="tab_question">
 				<tr>
 					<td>&nbsp;</td>
 					<td>
-						<button class="bouton choix_personnage" ng-click="addPersonnage(3, 13);">
-							<span class="icon-monstre"></span>
-						</button>
+						<span class="icon-monstre choix_personnage" ng-click="addPersonnage(3, 13);"></span>
 					</td>
 					<td>&nbsp;</td>
 				</tr>
@@ -228,19 +190,13 @@
 				</tr>
 				<tr>
 					<td>
-						<button class="bouton choix_personnage" ng-click="addPersonnage(3, 15);">
-							<span class="icon-imaginaire_qui"></span>
-						</button>
+						<span class="icon-imaginaire_qui choix_personnage" ng-click="addPersonnage(3, 15);"></span>
 					</td>
 					<td>
-						<button class="bouton choix_personnage" ng-click="addPersonnage(3, 14);">
-							<span class="icon-ovni"></span>
-						</button>
+						<span class="icon-ovni choix_personnage" ng-click="addPersonnage(3, 14);"></span>
 					</td>
 					<td>
-						<button class="bouton choix_personnage">
-							<span class="icon-non_identifier disabled"></span>
-						</button>
+						<span class="icon-non_identifier disabled"></span>
 					</td>
 				</tr>
 				<tr>
@@ -273,11 +229,7 @@
 				<tr>
 					<td><p>&nbsp;</p></td>
 					<td>
-						
-						<button class="bouton choix_personnage" ng-click="x.activePersonnage='humain';" >
-							<span class="icon-humain"></span>
-						</button>
-						
+						<span class="icon-humain choix_personnage" ng-click="x.activePersonnage='humain';"></span>
 					</td>
 					<td><p>&nbsp;</p></td>
 				</tr>
@@ -288,19 +240,12 @@
 				</tr>
 				<tr>
 					<td>
-						
-						<button class="bouton choix_personnage" ng-click="x.activePersonnage='animal';">
-							<span class="icon-animal"></span>
-						</button>
+						<span class="icon-animal choix_personnage" ng-click="x.activePersonnage='animal';"></span>
 						
 					</td>
 					<td><p>&nbsp;</p></td>
 					<td>
-
-						<button class="bouton choix_personnage" ng-click="x.activePersonnage='autre';">
-							<span class="icon-non_identifier"></span>
-						</button>
-						
+						<span class="icon-non_identifier choix_personnage" ng-click="x.activePersonnage='autre';"></span>
 					</td>
 				</tr>
 				<tr>
@@ -330,16 +275,16 @@
 			<tr>
 				<td>
 					<a href="#questions_personnage">	
-						<button class="bouton">
+						
 							<span class="icon-croix"></span>
-						</button>
+						
 					</a>
 				</td>
 				<td>
 					<a href="#questions_action">	
-						<button class="bouton">
+						
 							<span class="icon-ok"></span>
-						</button>
+						
 					</a>
 				</td>
 			</tr>
@@ -350,9 +295,7 @@
 	</div>
 
 
-	<footer id="evolution_questionnaire">
-		<img src="img/dreamorize_evolution.png" alt="DREAMORIZE - Evolution du questionnaire">
-	</footer>
+	<div id="footer_container" ng-include src="footer.url"></div>
 
 
 

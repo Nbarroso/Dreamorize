@@ -9,6 +9,7 @@
 @vert_bleu : #67F4DC;
 @violet_clair: #B5B3FF;
 @rose : #BD59E6;
+@header_color: #1C1C59;
 
 
 /* Désactive les highights orange sur les supports natifs */
@@ -19,16 +20,12 @@
 	-webkit-overflow-scrolling: touch; 
 }
 
-
-
-
-
 @font-face{
 
 	font-family: 'Andarilho Font';
-	src: url('../../font/andarilho-font-webfont.ttf');
-	src: url('../../font/andarilho-font-webfont.svg');
-	src: url('../../font/andarilho-font-webfont.woff');
+	//src: url('../../font/andarilho-font-webfont.ttf');
+	src: url('../../font/andarilho-font-webfont.svg') format('svg');
+	//src: url('../../font/andarilho-font-webfont.woff');
 }
 
 body{
@@ -39,81 +36,21 @@ body{
 	overflow-x: hidden;
 	overflow-y: hidden;
 	height: 100%;
-	max-width: 100px;
+	
+	a{
+		text-decoration: none;
+		color: white;
+	}
+	
+
+	p{
+		font-size: 24px;
+	}
 	
 }
 
-// Quand le menu est déployé, panneau de droite
-.page{
-	background: blue;
-	overflow-x: hidden;
-	
-}
+/* - - - MENU SWIPABLE - - - */
 
-
-// Contenu d'une question (s'arrête avant le footer)
-.all_content{
-	overflow-y: scroll;
-	height: 68%;
-	//overflow-x: hidden;
-	
-}
-
-.boutons_annuler_valider{
-	//position: absolute;
-	bottom: 59px;
-	width: 162px;
-	left: 0;
-	right: 0;
-	margin: auto;
-}
-
-
-
-
-a{
-	color: white;
-	text-decoration: none;
-}
-
-p{
-
-	font-size: 24px;
-}
-
-[class^="icon-"], [class*=" icon-"] {
-
-	font-size: 80px;
-	color: @violet_clair;
-}
-
-/* /GENERAL */
-
-/* PAGE INTRO */
-
-#logo_dreamorize{
-
-	text-align: center;
-	margin-top: 200px;
-}
-
-
-
-.sidebar2{
-	background: black;
-}
-
-#sp-nav{
-	width: 150px;
-	z-index: 5;
-	box-shadow: -27px 0 111px -33px #030326 inset;
-	height: 100%;
-	overflow:hidden;
-	position:absolute;
-	top:0;
-	left:0;
-	
-}
 #sp-page{
 	position: absolute;
 	background: #141444;
@@ -126,20 +63,69 @@ p{
 	top: 0;
 	z-index: 10;
 	float: right;
-		
+	box-shadow: 20px 0 100px 30px #040433;
+	-webkit-box-shadow: 20px 0 100px 30px #040433;
 }
 
-/* /PAGE INTRO */
+
+#sp-nav{
+	width: 150px;
+	z-index: 5;
+	height: 100%;
+	overflow:hidden;
+	position:absolute;
+	top:0;
+	left:0;
+}
 
 
-/* HEADER */
+
+// Panneau de droite quand le menu est déployé
+.page{
+	background: blue;
+	overflow-x: hidden;
+}
+
+
+
+
+
+
+/* - - - QUESTIONS - - - */
+
+[class^="icon-"], [class*=" icon-"] {
+	font-size: 80px;
+	color: @violet_clair;
+}
+
+
+/* PAGE INTRO */
+
+#logo_dreamorize{
+	text-align: center;
+	margin-top: 200px;
+}
+
+
+
+
+
+
+/* - - - HEADER - - - */
+
+
+
+#header{
+	background: @header_color;
+	margin-top: -8px;
+	padding-top: 8px;
+	padding-bottom: 4px;
+}
 
 .home{
 	margin-top: -30px;
 	text-align: center;
 }
-
-
 
 .icon-menu{
 
@@ -149,25 +135,14 @@ p{
 	margin-left: 8px;
 }
 
-/* /HEADER*/
-
-
-
-header{
-	top: 0;
-	z-index: 100;
-	background: @background;
-	margin-top: -8px;
-	padding-top: 8px;
-	
-}
 
 
 
 
-/* PAGE MENU PRINCIPAL */
 
-.menu_memoriser{
+/* - - - HOME - - - */
+
+#menu_memoriser{
 	position: relative;
 	top: 100px;
 	text-align: center;
@@ -177,26 +152,37 @@ header{
 	}
 }
 
-.bouton{
-	background: @background;
-	border: none;
-	font-family: "Andarilho Font";
-	color: white;
+#options_memoriser{
+	position: absolute;
+	width: 290px;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	top: 216px;
+	right: 0;
+	
+ 	a{
+ 		display: inline-block;
+ 		text-align: center;
+ 	}
+}
+
+.icon-memoriser{
+	font-size: 100px;
+	color: @bleu_clair;
 }
 
 .titre_bouton{
-
 	font-size: 24px;
 }
 
 .titre_bouton1{
-
 	font-size: 26px;
 }
 
 .menu_bouton{
 
-	margin: 110px auto 0 auto;
+	margin: 165px auto 0 auto;
 	text-align: center;
 
 	a{
@@ -214,18 +200,12 @@ header{
 			margin-top: 10px
 		}
 	}
+
+	td{
+		padding: 0px 7px;
+	}
 }
 
-.menu_bouton td{
-
-	padding: 0px 10px;
-}
-
-.icon-memoriser{
-
-	font-size: 100px;
-	color: @bleu_clair;
-}
 
 .icon-explorer, .icon-visualiser, .icon-echanger{
 
@@ -233,31 +213,11 @@ header{
 	color: @violet_clair;
 }
 
-/* /PAGE MENU PRINCIPAL */
 
-/* MEMORISER */
 
-.memoriser{
 
-	margin: 100px auto 0 auto;
-	text-align: center;
 
-	a{
-		display: inline-block;
-		text-decoration: none;
-
-		img{
-			display: block;
-			margin: auto;
-		}
-		
-		p{
-			display: block;
-			margin: auto;
-			margin-top: 10px
-		}
-	}
-}
+/* OPTIONS DE MEMORISATION */
 
 .icon-micro, .icon-questions{
 
@@ -266,9 +226,10 @@ header{
 	padding: 20px;
 }
 
-/* /MEMORISER */
 
-/* VOCAL */
+
+
+/* - - - VOCAL - - - */
 
 .picto_vocal{
 
@@ -333,9 +294,151 @@ td a .icon-micro{
 }
 .mini-icon:active  { color: white; }
 
-/* /VOCAL */
 
-/* QUESTIONS */
+
+
+
+/* - - - QUESTIONS - - - */
+
+
+#footer_container{
+
+	text-align: center;
+	background: @header_color;
+	height: 60px;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	padding-right: 8px;
+
+
+
+	.indices_question{
+
+		display: inline-block;
+		color: @bleu_clair;
+		font-family: 'Andale Mono';
+		font-size: 15px;
+	}
+
+	.droit{
+		margin-left: 10px;
+	}
+	
+	.gauche{
+		margin-right: 10px;
+	}
+
+
+	.checked_question{
+		background: @bleu_clair;
+	}
+
+	.current_question{
+		background: repeating-linear-gradient(
+		-45deg,
+		@header_color,
+		@header_color 3px,
+		@bleu_clair 3px,
+		@bleu_clair 4px
+		);
+	}
+
+	#indicateur_question{
+		position: absolute
+		top: 0px;
+		position: absolute;
+		margin-top: 5px;
+		transition-duration: 0.5s;
+		-webkit-transition-duration: 0.5s;
+		-webkit-animation-duration: 0.5s;		
+	}
+
+
+	#barre_progression_question{
+
+		display: inline-table;
+		line-height: 50px;
+		margin: auto;
+		height: 8px;
+		width: 270px;
+		border: 1px solid @bleu_clair;
+		border-radius: 3px;
+		border-spacing: 0px;
+		margin-top: 19px;
+
+		
+
+		#ligne_etapes td:first-child {
+
+			-moz-border-radius-bottomleft:3px;
+            -webkit-border-bottom-left-radius:3px;
+    		border-bottom-left-radius:3px;
+
+    		-moz-border-radius-topleft:3px;
+            -webkit-border-top-left-radius:3px;
+    		border-top-left-radius:3px
+		}
+
+		#ligne_etapes td:last-child {
+
+			-moz-border-radius-bottomright:3px;
+            -webkit-border-bottom-right-radius:3px;
+    		border-bottom-right-radius:3px;
+
+    		-moz-border-radius-topright:3px;
+            -webkit-border-top-right-radius:3px;
+    		border-top-right-radius:3px;
+		}
+
+
+		.rectangle_etape_progression{
+
+			height: 8px;
+			border: 1px solid @bleu_clair;	
+		}
+	}
+}
+
+
+
+
+
+
+// Contenu d'une question (s'arrête avant le footer)
+.all_content{
+	overflow-y: scroll;
+	height: 68%;
+	//overflow-x: hidden;
+}
+
+.boutons_annuler_valider{
+	//position: absolute;
+	bottom: 59px;
+	
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
+.question_text_input{
+	text-decoration: none;
+	text-align: center;
+	border: 1px solid @violet_clair;
+	border-radius: 3px;
+	padding: 6px 0 0 0;
+	background-color: @background;
+	color: white;
+	width: 200px;
+	font-family: 'Andarilho Font', Helvetica, sans-serif;
+	font-size: 20px;
+}
+
+
+.left_arrow_container{
+	width: 55px;
+}
+
 
 .tab_question{
 
@@ -366,200 +469,169 @@ td a .icon-micro{
 
 .tableau{
 
-	//margin-bottom: 100px;
 }
 
-footer{
-
-	text-align: center;
-	background: #1C1C59;
-	height: 50px;
-	width: 100%;
-	position: absolute;
-	bottom: 0;
-	padding-right: 8px;
-	//margin-bottom: -10px;
-	
-}
 
 .icon-fleche{
 
 	color: @bleu_clair;
 	font-size: 40px;
+	padding: 15px;
 }
 
-/*#evolution_questionnaire{
+.intitule_question{
+	width : 80%;
+	text-align: center;
+	margin: auto;
+
+}
+
+
+
+
+
+/* - - - QUESTION DATE - - - */
+
+
+#ui-datepicker-div{
+	width: 194px;
+
+}
+
+.bouton_cette_nuit{
+	border: 1px solid @bleu_clair;
+}
+
+
+.date_elements{
 
 	text-align: center;
-	margin-top: 200px;
-	background: #1C1C59;
-	height: 50px;
-	width: 100%;
-	position: absolute;
-	bottom: 0;
-	}*/
+	margin-top: 20px;
+}
+
+	
 
 
 
-	/* /QUESTIONS */
+/* - - - QUESTION COULEURS - - - */
 
-	.intitule_question{
-		width : 280px;
+#tableau_couleurs{
+	a{
+		padding: 5px;
+	}
+}
+
+
+
+
+
+/* - - - QUESTION EMOTION - - - */
+
+.emotion_text{
+
+	font-size: 24px;
+}
+
+.color_user{
+
+	color: @violet_clair;
+}
+
+
+
+
+
+/* - - - QUESTION ACTION - - - */
+
+.action_list{
+	
+}
+
+#tableau_choix_categorie_action{
+	-webkit-transition-duration:0.3s;
+	transition-duration:0.3s;
+}
+
+
+#tableau_choix_categorie_action{
+	td {
+		padding: 10px;
 	}
 
-	/* DATE DU REVE */
+}
+#tableau_choix_categorie_action .categorie_action_titre{
+	font-size: 20px;
+}
 
-	.date_element{
+.action_item{
+	cursor: pointer;
+	display: inline-block;
+	border-radius: 3px;
+	margin-top: -15px;
+	margin-left: 5px;
+	padding: 3px;
+	border: 1px solid #7BF6FF;
+	font-size: 15px;
 
-		text-align: center;
-		margin-top: 20px;
-	}
+}
 
-	.date_reve{
+/* Auto-completion (s'appuie sur jquery_ui) */
+.ui-menu {
+    list-style:none;
+    padding: 10px;
+    margin: 0;
+    display:block;
+    width:190px;
+    background: red;
+    font-family: "Andarilho Font", Helvetica, sans-serif;
 
-		text-decoration: none;
-		text-align: center;
-
-		border: 1px solid @bleu_clair;
-		border-radius: 3px;
-		padding: 3px;
-
-		background-color: @background;
-		color: white;
-
-		width: 200px;
-
-		font-family: 'Andarilho Font', Helvetica, sans-serif;
-		font-size: 20px;
-	}
-
-	/* /DATE DE REVE */
-
-	/* EMOTION */
-
-	.emotion_text{
-
-		font-size: 24px;
-	}
-
-	.color_user{
-
-		color: @violet_clair;
-	}
-
-	/* /EMOTION */
-
-	/* ACTION MOT CLEF TITRE */
-
-	/* Menu
-----------------------------------*/
 	.ui-menu {
-	        list-style:none;
-	        padding: 10px;
-	        margin: 0;
-	        display:block;
-	        width:190px;
-	        background: red;
-	        font-family: "Andarilho Font", Helvetica, sans-serif;
+        margin-top: -3px;
+        background: red;
+        border: 1px solid blue;
+	}
+	.ui-menu-item {
+	    margin:0;
+	    padding: 0;
+	    width: 200px;
+	    font-family: "Andarilho Font", Helvetica, sans-serif;
 
-	}
-	.ui-menu .ui-menu {
-	        margin-top: -3px;
-	        background: red;
-	        border: 1px solid blue;
-	}
-	.ui-menu .ui-menu-item {
-	        margin:0;
-	        padding: 0;
-	        
-	        font-family: "Andarilho Font", Helvetica, sans-serif;
-
-	        
-	}
-	.ui-menu .ui-menu-item a {
+        a {
 	        text-decoration:none;
 	        display:block;
 	        padding:.2em .4em;
 	        line-height:1.5;
 	        zoom:1;
-
+		}   
 	}
-	
+}
 
-	.action_reve{
 
-		text-decoration: none;
-		text-align: center;
 
-		border: 1px solid @violet_clair;
-		border-radius: 3px;
-		padding: 3px;
 
-		background-color: @background;
-		color: white;
 
-		width: 200px;
-		font-family: 'Andarilho Font', Helvetica, sans-serif;
-		font-size: 20px;
-	}
+/* - - - NAVIGATION - - - */
 
-	.action_list{
-		//margin: auto;
-	}
+.panel{
+	position: absolute;
+	top: 0; right: 0; left: 0; bottom: 0;
 
-	#tableau_choix_categorie_action{
-		-webkit-transition-duration:0.3s;
-		transition-duration:0.3s;
-	}
-	
+	-webkit-overflow-scrolling: touch;
+	transition-duration: 0.5s;
+	-webkit-transition-duration: 0.5s ;
+	-moz-transition-duration: 0.5s ;
+	-ms-transition-duration: 0.5s ;
+	-o-transition-duration: 0.5s ;
+}
 
-	#tableau_choix_categorie_action td {
-		padding: 10px;
+.left{
+	-webkit-transform:  translate3d(-100%,0,0);
+}
 
-	}
-	#tableau_choix_categorie_action .categorie_action_titre{
-		font-size: 20px;
-	}
+.center{
+	-webkit-transform:  translate3d(0,0,0);
+}
 
-	.action_item{
-		cursor: pointer;
-		display: inline-block;
-		border-radius: 3px;
-		margin-top: -15px;
-		margin-left: 5px;
-		padding: 3px;
-		//display: none;
-		border: 1px solid #7BF6FF;
-		font-size: 15px;
-		//margin: auto;
-
-	}
-	/* /ACTION MOT CLEF TITRE  */
-
-	/* NAVIGATION */
-
-	.panel{
-		position: absolute;
-		top: 0; right: 0; left: 0; bottom: 0;
-
-		-webkit-overflow-scrolling: touch;
-		transition-duration: 0.5s;
-		-webkit-transition-duration: 0.5s ;
-		-moz-transition-duration: 0.5s ;
-		-ms-transition-duration: 0.5s ;
-		-o-transition-duration: 0.5s ;
-	}
-
-	.left{
-		-webkit-transform:  translate3d(-100%,0,0);
-	}
-
-	.center{
-		-webkit-transform:  translate3d(0,0,0);
-	}
-
-	.right{
-		-webkit-transform:  translate3d(100%,0,0);
-	}
-
-	/* /NAVIGATION */
+.right{
+	-webkit-transform:  translate3d(100%,0,0);
+}

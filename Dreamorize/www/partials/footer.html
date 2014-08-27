@@ -1,5 +1,52 @@
-<div id="evolution_questionnaire">
-               
-	<img src="../img/dreamorize_evolution.png" alt="DREAMORIZE - Evolution du questionnaire">
-	
-</div>
+<div class="indices_question gauche" id="numero_question">{{numero_question}}</div>
+
+<img id="indicateur_question" class="duration" src="img/indicateur_question.png" />
+<table id="barre_progression_question">
+	<tr id="ligne_etapes">
+		<td class="rectangle_etape_progression" id="question1"></td>
+		<td class="rectangle_etape_progression" id="question2"></td>
+		<td class="rectangle_etape_progression" id="question3"></td>
+		<td class="rectangle_etape_progression" id="question4"></td>
+		<td class="rectangle_etape_progression" id="question5"></td>
+		<td class="rectangle_etape_progression" id="question6"></td>
+		<td class="rectangle_etape_progression" id="question7"></td>
+		<td class="rectangle_etape_progression" id="question8"></td>
+		<td class="rectangle_etape_progression" id="question9"></td>
+	</tr>
+</table>
+<div class="indices_question droit">9</div>
+
+
+
+
+<script type="text/javascript">
+	var numero_question = angular.element('#question1').scope().numero_question;
+	var precedent_indice;
+	var decalage_indicateur;
+
+	for(var i=1 ; i <=9 ; i++){
+
+		if(numero_question == i){
+
+			decalage_indicateur = i*30-30;
+
+			if(precedent_indice < i){
+				$("#indicateur_question").css({
+				'margin-left': decalage_indicateur-30+'px'
+				}).animate({marginLeft: decalage_indicateur + 'px','useTranslate3d': true , duration:200, queue: false}, 200);
+			}else{
+				$("#indicateur_question").css({
+				'margin-left': decalage_indicateur+30+'px'
+				}).animate({marginLeft: decalage_indicateur + 'px','useTranslate3d': true , duration:200, queue: false}, 200);
+			}
+
+			$('#question' + i).addClass('current_question');
+			for(var j=1 ; j<i ; j++){
+
+				$('#question' + j).addClass('checked_question');
+			}
+			var precedent_indice = numero_question;
+		}
+	}
+
+</script>

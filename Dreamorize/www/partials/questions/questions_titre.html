@@ -1,0 +1,48 @@
+<div id="sp-nav" ng-include src="'partials/sidebar.html'"></div>
+<div id="sp-page" class="page" ng-controller="memCtrl" data-ng-init="updateNumeroQuestion(9)">
+
+<div id="header_container" ng-include src="header.url"></div>
+
+	<table class="tab_question">
+		<tr>
+			<td>
+				<a href="#questions_keywords">
+			        <span class="icon-fleche"></span>
+		    	</a>
+		    </td>
+			<td>
+				<p class="intitule_question">TITRE POUR TON RÊVE ?</p>
+			</td>
+			<td class="left_arrow_container" >&nbsp;</td>
+			
+		</td>
+		</tr>
+
+	</table>
+
+	<div class="date_elements">
+		<input type="text" value="&nbsp;" class="question_text_input" ng-model="titre"/>
+	</div>
+
+	<table class="tab_question tableau">
+		<tr>
+			<td>
+				<a href="#questions_titre">
+			        <span class="icon-croix"></span>
+		    	</a>
+			</td>
+
+			<td>
+				<a href="#home">
+			        <span class="icon-ok" ng-click="addTitre(titre);postReve();"></span>
+		    	</a>
+			</td>
+		</tr>
+	</table>
+
+	<div id="footer_container" ng-include src="footer.url"></div>
+
+</div>
+
+<script type="text/javascript" src="js/jquery.hammer.full.min.js"></script>    
+<script type="text/javascript" src="js/hammer_menu.js"></script>  

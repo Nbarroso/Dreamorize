@@ -1,288 +1,146 @@
 <div id="sp-nav" ng-include src="'partials/sidebar.html'"></div>
-<div id="sp-page" class="page" ng-controller="memCtrl">
+<div id="sp-page" class="page" ng-controller="memCtrl" data-ng-init="updateNumeroQuestion(4)">
 
-<div id="header" ng-include src="header.url"></div>
+<div id="header_container" ng-include src="header.url"></div>
 
 	<table class="tab_question">
-
 		<tr>
-
 			<td>
-
 				<a href="#questions_couleur">
-					
-					<button class="bouton">
-
-						<span class="icon-fleche"></span>
-
-					</button>
-
+					<span class="icon-fleche"></span>
 				</a>
-
 			</td>
-
-			<td>&nbsp;</td>
-
 			<td>
-
 				<p class="intitule_question">ÉMOTION(S) RESSENTIE(S) DANS TON RÊVE ?</p>
-
 			</td>
-
-			<td>&nbsp;</td>
-
 			<td>
 
 				<a href="#questions_lieu">
-					
-					<button class="bouton">
-
-						<span class="icon-fleche"></span>
-
-					</button>
-
+					<span class="icon-fleche"></span>
 				</a>
-
 			</td>
-
 		</tr>
-
 	</table>
 
 	<div class='all_content'id="dont_detect_swipe_gesture">
 
 		<table class="tab_question">
-
 			<tr>
-
 				<td rowspan="2">
-
 					<input  ng-model="joie" type="range" value="0" max="100" min="0" step="1" name="joie" onchange="getEmotion(this.value, this.name);"> 
-
 				</td>
-
 				<td>&nbsp;</td>
-
 				<td style="width:140px;" class="emotion_text color_user"><span id="indice_joie" >0</span>%</td>
-
-
 			</tr>
 
 			<tr>
-				
 				<td>&nbsp;</td>
-
 				<td id="joie" class="emotion_text">Joie</td>
-
 			</tr>
-
 		</table>
 
 		<table class="tab_question">
-
 			<tr>
-
 				<td rowspan="2">
-
 					<input ng-model="attirance" type="range" value="0" max="100" min="0" step="1" name="attirance" onchange="getEmotion(this.value, this.name)"> 
-
 				</td>
-
 				<td>&nbsp;</td>
-
 				<td style="width:140px;" class="emotion_text color_user"><span id="indice_attirance" >0</span>%</td>
-
-
 			</tr>
 
 			<tr>
-				
 				<td>&nbsp;</td>
-
 				<td id="attirance" class="emotion_text">Attirance</td>
-
 			</tr>
-
 		</table>
 
 		<table class="tab_question">
-
 			<tr>
-
 				<td rowspan="2">
-
 					<input ng-model="peur" type="range" value="0" max="100" min="0" step="1" name="peur" onchange="getEmotion(this.value, this.name)"> 
-
 				</td>
-
 				<td>&nbsp;</td>
-
 				<td style="width:140px;" class="emotion_text color_user"><span id="indice_peur" >0</span>%</td>
-
-
 			</tr>
-
 			<tr>
-				
 				<td>&nbsp;</td>
-
 				<td id="peur" class="emotion_text">Appréhension</td>
-
 			</tr>
-
 		</table>
 
 		<table class="tab_question">
-
 			<tr>
-
 				<td rowspan="2">
-
 					<input ng-model="surprise" type="range" value="0" max="100" min="0" step="1" name="surprise" onchange="getEmotion(this.value, this.name)"> 
-
 				</td>
-
 				<td>&nbsp;</td>
-
 				<td style="width:140px;" class="emotion_text color_user"><span id="indice_surprise" >0</span>%</td>
-
-
 			</tr>
-
 			<tr>
-				
 				<td>&nbsp;</td>
-
 				<td id="surprise"class="emotion_text">Distraction</td>
-
 			</tr>
-
 		</table>
 
 		<table class="tab_question">
-
 			<tr>
-
 				<td rowspan="2">
-
 					<input ng-model="tristesse" type="range" value="0" max="100" min="0" step="1" name="tristesse" onchange="getEmotion(this.value, this.name)"> 
-
 				</td>
-
 				<td>&nbsp;</td>
-
 				<td style="width:140px;" class="emotion_text color_user"><span id="indice_tristesse" >0</span>%</td>
-
-
 			</tr>
-
 			<tr>
-				
 				<td>&nbsp;</td>
-
 				<td id="tristesse"class="emotion_text">Songerie</td>
-
 			</tr>
-
 		</table>
 
 		<table class="tab_question">
-
 			<tr>
-
 				<td rowspan="2">
-
 					<input ng-model="degout" type="range" value="0" max="100" min="0" step="1" name="degout" onchange="getEmotion(this.value, this.name)"> 
-
 				</td>
-
 				<td>&nbsp;</td>
-
 				<td style="width:140px;" class="emotion_text color_user"><span id="indice_degout" >0</span>%</td>
-
-
 			</tr>
-
 			<tr>
-				
 				<td>&nbsp;</td>
-
 				<td id="degout"class="emotion_text">Ennui</td>
-
 			</tr>
-
 		</table>
 
 		<table class="tab_question">
-
 			<tr>
-
 				<td rowspan="2">
-
 					<input ng-model="colere" type="range" value="0" max="100" min="0" step="1" name="colere" onchange="getEmotion(this.value, this.name)"> 
-
 				</td>
-
 				<td>&nbsp;</td>
-
 				<td style="width:140px;" class="emotion_text color_user"><span id="indice_colere" value>0</span>%</td>
-
-
 			</tr>
-
 			<tr>
-				
 				<td>&nbsp;</td>
-
 				<td id="colere"class="emotion_text">Contrariété</td>
-
 			</tr>
-
 		</table>
 
 		<table class="tab_question tableau">
-
 			<tr>
-
 				<td>
-
-					<a href="#questions_emotion">
-						
-						<button class="bouton">
-
-							<span class="icon-croix"></span>
-
-						</button>
-
+					<a href="#questions_emotion">	
+						<span class="icon-croix"></span>
 					</a>
-
 				</td>
-
 				<td>
-
-					<a href="#questions_lieu">
-						
-						<button class="bouton" ng-click="addEmotion(joie, attirance, peur, surprise, tristesse, degout, colere);">
-
-							<span class="icon-ok"></span>
-
-						</button>
-
+					<a href="#questions_lieu" ng-click="addEmotion(joie, attirance, peur, surprise, tristesse, degout, colere);">	
+						<span class="icon-ok"></span>
 					</a>
-
 				</td>
-
 			</tr>
-
 		</table>
-
 	</div>
 
-	<footer id="evolution_questionnaire">
-		
-		<img src="img/dreamorize_evolution.png" alt="DREAMORIZE - Evolution du questionnaire">
-		
-	</footer>
+	<div id="footer_container" ng-include src="footer.url"></div>
 
 </div>
 
@@ -290,8 +148,6 @@
 
 function getEmotion(value1, name){
 
-
-      //var value1 = document.getElementById("nom_emotion_1").value;
       if(value1 < 33){
       	if(name=="joie"){
       		document.getElementById("joie").innerHTML="Sérénité";
@@ -365,4 +221,3 @@ function getEmotion(value1, name){
 
   <script type="text/javascript" src="js/jquery.hammer.full.min.js"></script>    
   <script type="text/javascript" src="js/hammer_menu.js"></script>
-

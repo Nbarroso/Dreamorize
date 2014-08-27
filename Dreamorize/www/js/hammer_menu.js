@@ -5,9 +5,6 @@
 
     $page.hammer()
 
-    
-
-
     .on('drag', function(e) {
 
 
@@ -21,13 +18,13 @@
         if (e.gesture.direction == "right" && !sidebar) {
             $page.css({
                 transitionDuration: '0s',
-                transform: 'translateX(' + e.gesture.deltaX + 'px)'
+                transform: 'translate3d(' + e.gesture.deltaX + 'px, 0, 0)'
             });
         }
         if (e.gesture.direction == "left" && sidebar) {
             $page.css({
                 transitionDuration: '0s',
-                transform: 'translateX(' + (150 + e.gesture.deltaX) + 'px)'
+                transform: 'translate3d(' + (150 + e.gesture.deltaX) + 'px, 0, 0)'
             });
         }
     })
@@ -39,13 +36,13 @@
 
                 $page.css({
                     transitionDuration: '0.3s',
-                    transform: 'translateX(0px)'
+                    transform: 'translate3d(0px, 0, 0)'
                 })
                 sidebar = 0;
             } else {
                 $page.css({
                     transitionDuration: '0.3s',
-                    transform: 'translateX(150px)'
+                    transform: 'translate3d(150px, 0, 0)'
                 });
                 sidebar = 1;
             }
@@ -54,13 +51,13 @@
             if (e.gesture.deltaX <= -75) {
                 $page.css({
                     transitionDuration: '0.3s',
-                    transform: 'translateX(0px)'
+                    transform: 'translate3d(0px, 0, 0)'
                 });
                 sidebar = 0;
             } else {
                 $page.css({
                     transitionDuration: '0.3s',
-                    transform: 'translateX(150px)'
+                    transform: 'translate3d(150px, 0, 0)'
                 });
                 sidebar = 1;
             }
@@ -68,32 +65,32 @@
     })
 
     $("#dont_detect_swipe_gesture").hammer().on('drag', function(e) {
-        //console.log('et ouais ma couille');
         e.stopPropagation();
     })
-        .on('swipeleft', function(e) {
-            e.stopPropagation();
-        })
-        .on('swiperight', function(e) {
-            e.stopPropagation();
-        });
+    .on('swipeleft', function(e) {
+        e.stopPropagation();
+    })
+    .on('swiperight', function(e) {
+        e.stopPropagation();
+    });
 
 
 
-    $("#header").load("partials/header.html", function(data) {
+    $("#header_container").load("partials/header.html", function(data) {
 
         $('#sidemenu-button').click(function(event) {
+            console.log('lol');
             
             if (sidebar) {
                 $page.css({
-                    transform: 'translateX(0px)'
+                    transform: 'translate3d(0px, 0, 0)'
                 });
                 sidebar = 0;
 
 
             } else if (!sidebar) {
                 $page.css({
-                    transform: 'translateX(150px)'
+                    transform: 'translate3d(150px, 0, 0)'
                 });
                 sidebar = 1;
             }

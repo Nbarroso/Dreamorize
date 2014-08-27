@@ -1,29 +1,22 @@
 <div id="sp-nav" ng-include src="'partials/sidebar.html'"></div>
-<div id="sp-page" class="page" ng-controller="memCtrl">
+<div id="sp-page" class="page" ng-controller="memCtrl" data-ng-init="updateNumeroQuestion(7)">
 
-<!--<header id="header"></header> -->
-<div id="header" ng-include src="header.url"></div>
+<div id="header_container" ng-include src="header.url"></div>
  
 
 <table class="tab_question">
 	<tr>
 		<td>
 			<a href="#questions_personnage">
-		    <button class="bouton">
 		       <span class="icon-fleche"></span>
-		    </button>
 	    	</a>
 	    </td>
-		<td>&nbsp;</td>
 		<td>
 			<p class="intitule_question">ACTIONS DANS TON RÊVE ?</p>
 		</td>
-		<td>&nbsp;</td>
 		<td>
 			<a href="#questions_keywords">
-		        <button class="bouton">
-		            <span class="icon-fleche"></span>
-		        </button>
+		        <span class="icon-fleche"></span>
 	    	</a>
 		</td>
 	</tr>
@@ -31,9 +24,10 @@
 
 <div class='all_content'>
 
-<div class="date_element">
+<div class="date_elements">
 
-	<input type="text" id="action_field" ng-model="action" placeholder="ENTRE UN VERBE" class="action_reve"/> <span id="action_ok"  ng-click='addAction(action);'class="icon-ok mini-icon"></span>
+	<input type="text" id="action_field" ng-model="action" placeholder="ENTRE UN VERBE" class="question_text_input"/>
+	<span id="action_ok"  ng-click='addAction(action);'class="icon-ok mini-icon"></span>
 
 	<div id="action_list" style='padding-top: 20px;'></div>
 
@@ -105,7 +99,9 @@
             url: "http://dreamorize.meximas.com/back_office/app/searchVerbs.php",
             type: 'get',
             
-            
+            error: function(xhr, status, error) {
+                    alert("l'auto-complétion des verbes ne peut pas s'effectuer");
+                },
             success: function(data) {
                 result = data;
                 access(data);
@@ -145,63 +141,73 @@
 					$('#action_field').attr("placeholder", "ENTRE UN VERBE");
 					$('#action_field').val('');
 					$('#action_list').append("<p id='action_item"+nbAction+"' class='action_item' style='opacity: 0;display: none;'>" + action + "</p></div><br>" );
+					
+					$("#action_field").animate({opacity: 0, duration: 300, queue: false}, 300, function(){
+						$("#action_field").css({
+							visibility: 'hidden'
+						});
+					});
+					$("#action_ok").animate({opacity: 0, duration: 300, queue: false}, 300, function(){
+						$("#action_ok").css({
+							visibility: 'hidden'
+						});
+					});
 
-					 /*$("#first").animate({
-					       width: '200px'
-					    }, { duration: 200, queue: false });
-					    $("#second").animate({
-					       width: '600px'
-					    }, { duration: 200, queue: false });*/
+
 					
-					
-					$("#boutons_final_actions").animate({marginTop: '200px',opacity: 0, 'useTranslate3d': true }, {duration :500, queue: false}, function(){
+					$("#boutons_final_actions").animate({marginTop: '100px',opacity: 0, 'useTranslate3d': true , duration:200, queue: false}, 200, function(){
 
 						$("#boutons_final_actions").css({display: 'none'});
+
+						// Action
+						$('#action_item'+nbAction).css({display: 'inline-block'});
+						$('#action_item'+nbAction).stop().animate({ opacity: 1, duration : 300, queue : false});
+
 						// Tableau choix categories
 						$('#tableau_choix_categorie_action').css({display: 'inline-block'});
-						$('#tableau_choix_categorie_action').animate({ opacity: 100 }, 5000);
-						
+						$('#tableau_choix_categorie_action').stop().animate({ opacity: 1 }, 300);
 					});
-					
-					// Action
-					$('#action_item'+nbAction).css({display: 'inline-block'});
-					$('#action_item'+nbAction).animate({ 'opacity': '100'}, {duration : 5000, queue : false});
 				}
 			}
 		});
 
 		$('.choix_cat_action ').click(function(event) {
-			$('#tableau_choix_categorie_action').animate({ opacity: 0 }, 1000, function() {
+			$('#tableau_choix_categorie_action').stop().animate({ opacity: -0.2 , duration: 500, queue: false}, 500, function() {
 
 				$('#tableau_choix_categorie_action').css({display: 'none'});
 
-				$("#boutons_final_actions").css({display: 'margin-top'});
+				$("#boutons_final_actions").css({display: ''});
+				$("#boutons_final_actions").animate({margin: '0 auto', opacity: 1, 'useTranslate3d': true}, 500);
 
-				$("#boutons_final_actions").css({'margin-top' : '200px', opacity: 100});
-				$("#boutons_final_actions").animate({marginTop: '0px','useTranslate3d': true}, 500);
+				$("#action_field").css({
+					visibility: 'visible'
+				});
+	 			$("#action_ok").css({
+						visibility: 'visible'
+					});
+	 			$("#action_field").animate({opacity: 1, duration: 500, queue: false}, 500);
+				$("#action_ok").animate({opacity: 1, duration: 500, queue: false}, 500);
+		
  			});
+ 			
 		});
 
 	</script>
 
-
-
-
 </div>
+
+
+
 	<table class="boutons_annuler_valider" id="boutons_final_actions">
 		<tr>
 			<td>
 				<a href="#questions_action">        
-			        <button class="bouton">
-			            <span class="icon-croix"></span>
-			        </button>
+			        <span class="icon-croix"></span>
 		    	</a>
 			</td>
 			<td>
 				<a href="#questions_keywords">        
-			        <button class="bouton">
-			            <span class="icon-ok"></span>
-			        </button>
+			        <span class="icon-ok"></span>
 		    	</a>
 			</td>
 		</tr>
@@ -209,11 +215,8 @@
 
 
 
-	<footer id="evolution_questionnaire">      
-		<img src="img/dreamorize_evolution.png" alt="DREAMORIZE - Evolution du questionnaire">
-	</footer>
+	<div id="footer_container" ng-include src="footer.url"></div>
 
 </div>
-
 <script type="text/javascript" src="js/jquery.hammer.full.min.js"></script>    
 <script type="text/javascript" src="js/hammer_menu.js"></script>

@@ -8,9 +8,19 @@ function memCtrl($scope, questionnaireFactory) {
         activePersonnage: "default"
     };
 
-    $scope.header = {name: "partials/header.html", url: "partials/header.html"};
+    $scope.numero_question = 5;
 
- 
+    $scope.header = {name: "partials/header.html", url: "partials/header.html"};
+    $scope.footer = {name: "partials/footer.html", url: "partials/footer.html"};
+
+
+    $scope.updateNumeroQuestion = function(new_numero_question){
+        
+        $scope.numero_question = new_numero_question;
+        
+    }
+
+
     $scope.increaseLevel = function() {
         $scope.pageLevel++;
         //console.log($scope.pageLevel);
@@ -43,6 +53,7 @@ function memCtrl($scope, questionnaireFactory) {
 
     $scope.addType = function(type) {
         $scope.$parent.$parent.type = type;
+        console.log($scope.$parent.$parent.type = type);
     };
 
 
@@ -50,16 +61,19 @@ function memCtrl($scope, questionnaireFactory) {
         var addColor = true;
 
         // Si la couleur cliquée est déjà sélectionnée, on la supprime de la liste
-        for (var i = 0; i < couleurs.length; i++) {
-            if (couleurs[i] == code_couleur) {
-                couleurs.splice(i, 1);
+        for (var i = 0; i < questionnaireFactory.colorsArray.length; i++) {
+            if (questionnaireFactory.colorsArray[i] == code_couleur) {
+                questionnaireFactory.colorsArray.splice(i, 1);
                 addColor = false;
             }
         }
         if (addColor) {
-            couleurs.push(code_couleur);
+            questionnaireFactory.addColor(code_couleur);
         }
-        $scope.$parent.$parent.couleurs_liste = couleurs;
+        //$scope.$parent.$parent.couleurs_liste = couleurs;
+
+        console.log(questionnaireFactory.colorsArray);
+
     };
 
 
@@ -164,8 +178,9 @@ function memCtrl($scope, questionnaireFactory) {
             var categorie_lieu = $scope.$parent.$parent.categorie_lieu;
             var lieu = "";
 
-            var jsonColors = JSON.stringify($scope.$parent.$parent.couleurs_liste);
-            //console.log("variables : ");
+            var jsonColors = JSON.stringify(questionnaireFactory.colorsArray);
+            console.log("Données du rêve : ");
+            console.log('couleurs : ' + jsonColors);
             console.log(questionnaireFactory.personnagesArray);
             var jsonPersonnages = JSON.stringify(questionnaireFactory.personnagesArray);
             //console.log(questionnaireFactory.completeActionsArray);
@@ -222,7 +237,7 @@ function memCtrl($scope, questionnaireFactory) {
 
         var categorie_lieu = $scope.$parent.$parent.categorie_lieu;
         var lieu = "";
-        questionnaireFactory.resetPersonnages();
+        //questionnaireFactory.resetPersonnages();
         //$scope.$parent.couleurs.clear();
     }
 }

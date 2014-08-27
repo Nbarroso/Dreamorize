@@ -37,8 +37,10 @@ app.factory('questionnaireFactory', function(){
 
     var ListService = {};
 
+    var numero_question;
     var tags = new Array();
     var actions = new Array();
+    var colors = new Array();
     var personnages = {
         datas: []
     };
@@ -46,14 +48,19 @@ app.factory('questionnaireFactory', function(){
         datas: []
     };
 
-
+    ListService.colorsArray = colors;
     ListService.actionsArray = actions;
     ListService.completeActionsArray = completeActions.datas;
     ListService.tagsArray = tags;
     ListService.personnagesArray = personnages.datas;
+    ListService.numeroQuestion = numero_question;
+
+
+    ListService.GetNumeroQuestion = function(){
+        return "lolilol";
+    }
 
     // Personnages
-
     ListService.addPersonnage = function(cat, sous_cat, nom_personnage) { 
         personnages.datas.push({
             "categorie_personnage": cat,
@@ -68,6 +75,14 @@ app.factory('questionnaireFactory', function(){
     //     return personnages.datas; 
     // }
 
+
+    // Actions
+    ListService.addColor = function(action){
+        colors.push(action);
+    }
+    ListService.resetColors = function() { 
+        colors.clear();
+    }
 
     
     // Actions
@@ -130,53 +145,53 @@ app.config(function($routeProvider) {
             templateUrl: 'partials/vocal_5.html'
         })
         .when('/questions_date', {
-            templateUrl: 'partials/questions_date.html',
+            templateUrl: 'partials/questions/questions_date.html',
             controller: 'memCtrl',
             header: 'partials/header.html', 
             footer: 'partials/footer.html'
         })
         .when('/questions_type', {
-            templateUrl: 'partials/questions_type.html',
+            templateUrl: 'partials/questions/questions_type.html',
             controller: 'memCtrl'
         })
         .when('/questions_couleur', {
-            templateUrl: 'partials/questions_couleur.html',
+            templateUrl: 'partials/questions/questions_couleur.html',
             controller: 'memCtrl'
         })
         .when('/questions_emotion', {
-            templateUrl: 'partials/questions_emotion.html',
+            templateUrl: 'partials/questions/questions_emotion.html',
             controller: 'memCtrl'
         })
         .when('/questions_lieu', {
-            templateUrl: 'partials/questions_lieu.html',
+            templateUrl: 'partials/questions/questions_lieu.html',
             controller: 'memCtrl'
         })
         .when('/questions_personnage', {
-            templateUrl: 'partials/questions_personnage.html',
+            templateUrl: 'partials/questions/questions_personnage.html',
             controller: 'memCtrl'
         })
         .when('/questions_personnage_humain', {
-            templateUrl: 'partials/questions_personnage_humain.html',
+            templateUrl: 'partials/questions/questions_personnage_humain.html',
             controller: 'memCtrl'
         })
         .when('/questions_personnage_animal', {
-            templateUrl: 'partials/questions_personnage_animal.html',
+            templateUrl: 'partials/questions/questions_personnage_animal.html',
             controller: 'memCtrl'
         })
         .when('/questions_personnage_autre', {
-            templateUrl: 'partials/questions_personnage_autre.html',
+            templateUrl: 'partials/questions/questions_personnage_autre.html',
             controller: 'memCtrl'
         })
         .when('/questions_action', {
-            templateUrl: 'partials/questions_action.html',
+            templateUrl: 'partials/questions/questions_action.html',
             controller: 'memCtrl'
         })
         .when('/questions_keywords', {
-            templateUrl: 'partials/questions_keywords.html',
+            templateUrl: 'partials/questions/questions_keywords.html',
             controller: 'memCtrl'
         })
         .when('/questions_titre', {
-            templateUrl: 'partials/questions_titre.html',
+            templateUrl: 'partials/questions/questions_titre.html',
             controller: 'memCtrl'
         })
         .when('/visualiser', {
