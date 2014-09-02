@@ -1,16 +1,16 @@
 @font-face {
-	font-family: 'dreamorize';
-	src:url('../font/Dreamorize_icons.eot?2kscin');
-	src:url('../font/Dreamorize_icons.eot?#iefix2kscin') format('embedded-opentype'),
-		url('../font/Dreamorize_icons.woff?2kscin') format('woff'),
-		url('../font/Dreamorize_icons.ttf?2kscin') format('truetype'),
-		url('../font/Dreamorize_icons.svg?2kscin#dreamorize') format('svg');
+	font-family: 'Dreamorize_icons';
+	src:url('fonts/Dreamorize_icons.eot?1b78nl');
+	src:url('fonts/Dreamorize_icons.eot?#iefix1b78nl') format('embedded-opentype'),
+		url('fonts/Dreamorize_icons.woff?1b78nl') format('woff'),
+		url('fonts/Dreamorize_icons.ttf?1b78nl') format('truetype'),
+		url('fonts/Dreamorize_icons.svg?1b78nl#Dreamorize_icons') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
 
 [class^="icon-"], [class*=" icon-"] {
-	font-family: 'dreamorize';
+	font-family: 'Dreamorize_icons';
 	speak: none;
 	font-style: normal;
 	font-weight: normal;
@@ -22,6 +22,7 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
+
 .icon-loisirs:before {
 	content: "\e652";
 }
@@ -43,7 +44,7 @@
 .icon-animal_clic:before {
 	content: "\e604";
 }
-.icon-cauchemar:before {
+.icon-cauchemar_clic:before {
 	content: "\e605";
 }
 .icon-collegue_clic:before {
@@ -111,6 +112,9 @@
 }
 .icon-maison_clic:before {
 	content: "\e61b";
+}
+.icon-memoriser_clic:before {
+	content: "\e61c";
 }
 .icon-micro_clic:before {
 	content: "\e61d";
@@ -181,11 +185,6 @@
 .icon-visualiser_clic:before {
 	content: "\e633";
 }
-
-
-
-
-
 .icon-action_autre:before {
 	content: "\e634";
 }
@@ -279,19 +278,9 @@
 .icon-maison:before {
 	content: "\e654";
 }
-.icon-memoriser:before{
+.icon-memoriser:before {
 	content: "\e655";
 }
-.icon-memoriser:focus:before{
-	content: "\e61c";
-}
-.icon-memoriser_not_click:before{
-	content: "\e655";
-}
-.icon-memoriser_clic:before{
-	content: "\e61c";
-}
-
 .icon-menu:before {
 	content: "\e656";
 }

@@ -15,7 +15,7 @@
 
 				<tr>
 					<td>
-						<a href="#vocal_2">        
+						<a onclick="recordAudio();">        
 					        <span class="icon-micro"></span>
 				    	</a>
 					</td>
@@ -31,6 +31,38 @@
 	</div>
 
 </div>
+
+
+<script type="text/javascript">
+
+
+	function recordAudio() {
+		var src = "default.wav";
+		mediaRec = new Media(src, captureSuccess, captureError);
+		mediaRec.captureAudio();
+	}
+
+    // A button will call this function
+    function captureAudio() {
+        // Launch device audio recording application, 
+        // allowing user to capture up to 2 audio clips
+        navigator.device.capture.captureAudio(captureSuccess, captureError, {limit: 1});
+    }
+
+    function captureSuccess(mediaFiles) {
+        var i, len;
+        for (i = 0, len = mediaFiles.length; i < len; i += 1) {
+            uploadFile(mediaFiles[i]);
+        }       
+    }
+
+    // Called if something bad happens.
+    function captureError(error) {
+        var msg = 'An error occurred during capture: ' + error.code;
+        navigator.notification.alert(msg, null, 'Uh oh!');
+    }
+
+</script>
 
 <script type="text/javascript" src="js/jquery.hammer.full.min.js"></script>    
 <script type="text/javascript" src="js/hammer_menu.js"></script>

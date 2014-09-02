@@ -6,7 +6,7 @@
     <div id="home_main_menu_content">
         <div id="menu_memoriser" >
             <a  id="bouton_memoriser" ng-click="increaseLevel()" class="home_link">
-                <span class="icon-memoriser" alt="DREAMORIZE - Mémoriser"></span>
+                <span class="icon-memoriser"  tabindex="1" alt="DREAMORIZE - Mémoriser"></span>
                 <p class="titre_bouton1">MÉMORISER</p>
             </a>
         </div>
@@ -54,7 +54,7 @@
         </a>
 
         <a href="#questions_date">
-            <span class="icon-questions"></span>
+            <span class="icon-question"></span>
             <p class="titre_bouton bouton">QUESTIONS</p>
         </a>
     </div>
@@ -65,17 +65,13 @@
 
 <script type="text/javascript">
 
+    $('#bouton_memoriser').click(function(event) {
 
-        $('#bouton_memoriser').click(function(event) {
+        $('#options_memoriser').css({'display': 'block'});
+        $('#options_memoriser').animate({opacity: 1, duration: 500, queue: false}, 500);
+        $('#home_main_menu_content').animate({opacity: 0.150, duration: 500, queue: false}, 500);
 
-            //$('.home_link').removeAttr('href');
-            $('#options_memoriser').css({'display': 'block'});
-            $('#options_memoriser').animate({opacity: 1, duration: 500, queue: false}, 500);
-            $('#home_main_menu_content').animate({opacity: 0.150, duration: 500, queue: false}, 500);
-            $('#vocal').click(function(event) {
-                console.log('clickouze');
-            });
-        });
+    });
 
 </script>
 <script type="text/javascript" src="js/jquery.hammer.full.min.js"></script>    

@@ -21,7 +21,7 @@
 	</table>
 
 	<div class="date_elements">
-		<input type="text" value="&nbsp;" class="question_text_input" ng-model="titre"/>
+		<input type="text" value="&nbsp;" class="question_text_input" ng-model="titre" maxlength="30"/>
 	</div>
 
 	<table class="tab_question tableau">
@@ -33,8 +33,8 @@
 			</td>
 
 			<td>
-				<a href="#home">
-			        <span class="icon-ok" ng-click="addTitre(titre);postReve();"></span>
+				<a href="#valider_reve">
+			        <span class="icon-ok" ng-click="addTitre(titre);"></span>
 		    	</a>
 			</td>
 		</tr>

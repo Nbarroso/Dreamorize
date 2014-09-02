@@ -2,7 +2,14 @@ Code android à ajouter :
 
 
 
-- Pour empêcher l'ajustement de la page quand le clavier est actif ( à mettre dans l'activité principale dans le manifest) : 
+- Pour empêcher l'ajustement de la page quand le clavier est actif (à mettre dans l'activité principale dans le manifest) : 
 
  	android:windowSoftInputMode="adjustPan" 
+
+ 	
+
+- Pour le SplashScreen : 
+
+	super.setIntegerProperty("splashscreen", R.drawable.splash);
+	super.loadUrl("file:///android_asset/www/index.html", 10000);
 

@@ -79,7 +79,6 @@
     $("#header_container").load("partials/header.html", function(data) {
 
         $('#sidemenu-button').click(function(event) {
-            console.log('lol');
             
             if (sidebar) {
                 $page.css({

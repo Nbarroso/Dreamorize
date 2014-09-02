@@ -48,6 +48,14 @@ app.factory('questionnaireFactory', function(){
         datas: []
     };
 
+    var completeLocations = {
+        datas: []
+    };
+
+    var active_location_category;
+
+    ListService.active_location_category = active_location_category;
+    ListService.locationsArray = completeLocations.datas;
     ListService.colorsArray = colors;
     ListService.actionsArray = actions;
     ListService.completeActionsArray = completeActions.datas;
@@ -82,6 +90,17 @@ app.factory('questionnaireFactory', function(){
     }
     ListService.resetColors = function() { 
         colors.clear();
+    }
+
+    // Actions completes (avec categorie)
+    ListService.addCompleteLocation = function(location, location_category){
+        completeLocations.datas.push({
+            "location_name": location,
+            "location_category": location_category
+        });
+    }
+    ListService.resetCompleteLocation = function() { 
+        completeActions.datas.clear();
     }
 
     
@@ -192,6 +211,10 @@ app.config(function($routeProvider) {
         })
         .when('/questions_titre', {
             templateUrl: 'partials/questions/questions_titre.html',
+            controller: 'memCtrl'
+        })
+        .when('/valider_reve', {
+            templateUrl: 'partials/questions/valider_reve.html',
             controller: 'memCtrl'
         })
         .when('/visualiser', {

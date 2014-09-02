@@ -29,19 +29,19 @@
 			<tr>
 				<td>
 					<a ng-click="addCouleur('#F93E4C')">
-				        <span class="icon-memoriser" style="color: #F93E4C" ></span>
+				        <span class="icon-memoriser_not_click" id="color1" tabindex="1"style="color: #F93E4C" ></span>
 			    	</a>
 				</td>
 
 				<td>
 					<a ng-click="addCouleur('#43E0F9')">
-						<span class="icon-memoriser" style="color: #43E0F9"></span>
+						<span class="icon-memoriser_not_click" id="color2" tabindex="1"style="color: #43E0F9"></span>
 			    	</a>
 				</td>
 
 				<td>
 					<a ng-click="addCouleur('#FFFF22')">
-				        <span class="icon-memoriser" style="color: #FFFF22"></span>
+				        <span class="icon-memoriser_not_click" id="color3" tabindex="1"style="color: #FFFF22"></span>
 			    	</a>
 				</td>
 			</tr>
@@ -49,19 +49,19 @@
 			<tr>
 				<td>
 					<a ng-click="addCouleur('#FCB1F1')">
-				        <span class="icon-memoriser" style="color: #FCB1F1"></span>
+				        <span class="icon-memoriser_not_click" id="color4" tabindex="1"style="color: #FCB1F1"></span>
 			    	</a>
 				</td>
 
 				<td>
 					<a ng-click="addCouleur('#7BFF94')">
-				        <span class="icon-memoriser" style="color: #7BFF94"></span>
+				        <span class="icon-memoriser_not_click" id="color5" style="color: #7BFF94"></span>
 			    	</a>
 				</td>
 
 				<td>
 					<a ng-click="addCouleur('#FFFFFF')">
-		 				<span class="icon-memoriser" style="color: #FFFFFF"></span>
+		 				<span class="icon-memoriser_not_click" id="color6" tabindex="1"style="color: #FFFFFF"></span>
 			    	</a>
 				</td>
 			</tr>
@@ -69,19 +69,19 @@
 			<tr>
 				<td>
 					<a ng-click="addCouleur('#B5B3FF')">
-				        <span class="icon-memoriser" style="color: #B5B3FF"></span>
+				        <span class="icon-memoriser_not_click" id="color7" tabindex="1" style="color: #B5B3FF"></span>
 			    	</a>
 				</td>
 
 				<td>
 					<a ng-click="addCouleur('#F99143')">
-				        <span class="icon-memoriser" style="color: #F99143"></span>
+				        <span class="icon-memoriser_not_click" id="color8" tabindex="1"style="color: #F99143"></span>
 			    	</a>
 				</td>
 
 				<td>
 					<a ng-click="addCouleur('#B9BAB9')">
-				        <span class="icon-memoriser" style="color: #B9BAB9"></span>
+				        <span class="icon-memoriser_not_click" id="color9" tabindex="1"style="color: #B9BAB9"></span>
 			    	</a>
 				</td>
 			</tr>
@@ -108,6 +108,113 @@
 
 	<div id="footer_container" ng-include src="footer.url"></div>
 </div>
+
+
+<script type="text/javascript">
+
+	var color1 = false;
+	var color2 = false;
+	var color3 = false;
+	var color4 = false;
+	var color5 = false;
+	var color6 = false;
+	var color7 = false;
+	var color8 = false;
+	var color9 = false;
+
+
+	$('#color1').click(function(event) {
+		if(color1 == false){
+			$('#color1').removeClass('icon-memoriser_not_click').addClass('icon-memoriser_clic');
+			color1 = true;
+		}else if(color1 == true){
+			$('#color1').removeClass('icon-memoriser_clic').addClass('icon-memoriser_not_click');
+			color1 = false;
+		}
+	});
+
+	$('#color2').click(function(event) {
+		if(color2 == false){
+			$('#color2').removeClass('icon-memoriser_not_click').addClass('icon-memoriser_clic');
+			color2 = true;
+		}else if(color2 == true){
+			$('#color2').removeClass('icon-memoriser_clic').addClass('icon-memoriser_not_click');
+			color2 = false;
+		}
+	});
+
+	$('#color3').click(function(event) {
+		if(color3 == false){
+			$('#color3').removeClass('icon-memoriser_not_click').addClass('icon-memoriser_clic');
+			color3 = true;
+		}else if(color3 == true){
+			$('#color3').removeClass('icon-memoriser_clic').addClass('icon-memoriser_not_click');
+			color3 = false;
+		}
+	});
+
+	$('#color4').click(function(event) {
+		if(color4 == false){
+			$('#color4').removeClass('icon-memoriser_not_click').addClass('icon-memoriser_clic');
+			color4 = true;
+		}else if(color4 == true){
+			$('#color4').removeClass('icon-memoriser_clic').addClass('icon-memoriser_not_click');
+			color4 = false;
+		}
+	});
+
+	$('#color5').click(function(event) {
+		if(color5 == false){
+			$('#color5').removeClass('icon-memoriser_not_click').addClass('icon-memoriser_clic');
+			color5 = true;
+		}else if(color5 == true){
+			$('#color5').removeClass('icon-memoriser_clic').addClass('icon-memoriser_not_click');
+			color5 = false;
+		}
+	});
+
+	$('#color6').click(function(event) {
+		if(color6 == false){
+			$('#color6').removeClass('icon-memoriser_not_click').addClass('icon-memoriser_clic');
+			color6 = true;
+		}else if(color6 == true){
+			$('#color6').removeClass('icon-memoriser_clic').addClass('icon-memoriser_not_click');
+			color6 = false;
+		}
+	});
+
+	$('#color7').click(function(event) {
+		if(color7 == false){
+			$('#color7').removeClass('icon-memoriser_not_click').addClass('icon-memoriser_clic');
+			color7 = true;
+		}else if(color7 == true){
+			$('#color7').removeClass('icon-memoriser_clic').addClass('icon-memoriser_not_click');
+			color7 = false;
+		}
+	});
+
+	$('#color8').click(function(event) {
+		if(color8 == false){
+			$('#color8').removeClass('icon-memoriser_not_click').addClass('icon-memoriser_clic');
+			color8 = true;
+		}else if(color8 == true){
+			$('#color8').removeClass('icon-memoriser_clic').addClass('icon-memoriser_not_click');
+			color8 = false;
+		}
+	});
+	
+	$('#color9').click(function(event) {
+		if(color9 == false){
+			$('#color9').removeClass('icon-memoriser_not_click').addClass('icon-memoriser_clic');
+			color9 = true;
+		}else if(color9 == true){
+			$('#color9').removeClass('icon-memoriser_clic').addClass('icon-memoriser_not_click');
+			color9 = false;
+		}
+	});
+
+
+</script>
 
 <script type="text/javascript" src="js/jquery.hammer.full.min.js"></script>    
 <script type="text/javascript" src="js/hammer_menu.js"></script>

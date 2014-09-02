@@ -1,0 +1,55 @@
+<div id="sp-nav" ng-include src="'partials/sidebar.html'"></div>
+<div id="sp-page" class="page" ng-controller="memCtrl" data-ng-init="updateNumeroQuestion(9)" ng-animate="'animate'">
+
+<div id="header_container" ng-include src="header.url"></div>
+
+<table class="tab_question">
+	<tr>
+		<td>
+			<a href="#questions_action">        
+		        <span class="icon-fleche"></span>
+	    	</a>
+	    </td>
+		<td>
+			<p class="intitule_question">VALIDER TON RÊVE ?</p>
+		</td>
+
+		<td>
+			<a href="#questions_titre">        
+		        <span class="icon-fleche"></span>
+	    	</a>
+		</td>
+	</tr>
+</table>
+
+<div class='all_content'>
+
+	<img src="img/ressources/dreamorize_picto.png" alt="DREAMORIZE" style="margin: auto;width: 143px; left:0;right: 0;position: absolute; margin-top: 50px"/>
+
+
+	<table class="boutons_annuler_valider tableau" style="margin-top: 220px;">
+		<tr>
+			
+			<td>
+				<a href="#home" ng-click="postReve();">        
+			        <span class="icon-ok"></span>
+		    	</a>
+			</td>
+		</tr>
+	</table>
+
+
+</div>
+
+<div id="footer_container" ng-include src="footer.url"></div>
+
+<script type="text/javascript">
+
+	$('#tag_field').focus(function(){
+		$(".boutons_annuler_valider").animate({opacity: 0, duration:200, queue: false});
+	});
+
+</script>
+
+<script type="text/javascript" src="js/jquery.hammer.full.min.js"></script>    
+<script type="text/javascript" src="js/hammer_menu.js"></script>

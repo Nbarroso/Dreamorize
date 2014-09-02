@@ -24,23 +24,25 @@
 
 	<div class='all_content'>
 
-		<table class="tab_question">
+		<div id="location_list"></div>
+
+		<table class="tab_question" id="liste_categorie_lieux">
 
 			<tr>
 				<td>
-					<a href="#questions_personnage" ng-click="addLieu(1)">
+					<a class="choix_categorie_lieu" ng-click="addLieu(1)">
 							<span class="icon-maison"></span>
 					</a>
 				</td>
 
 				<td>
-					<a href="#questions_personnage" ng-click="addLieu(2)">
+					<a class="choix_categorie_lieu" ng-click="addLieu(2)">
 						<span class="icon-travail"></span>
 					</a>
 				</td>
 
 				<td>
-					<a href="#questions_personnage" ng-click="addLieu(5)">	
+					<a class="choix_categorie_lieu" ng-click="addLieu(5)">	
 						<span class="icon-ecole"></span>
 					</a>
 				</td>
@@ -54,19 +56,19 @@
 
 			<tr>
 				<td>
-					<a href="#questions_personnage" ng-click="addLieu(11)">
+					<a class="choix_categorie_lieu" ng-click="addLieu(11)">
 						<span class="icon-public"></span>
 					</a>
 				</td>
 
 				<td>
-					<a href="#questions_personnage" ng-click="addLieu(3)">
+					<a class="choix_categorie_lieu" ng-click="addLieu(3)">
 						<span class="icon-commerce"></span>
 					</a>
 				</td>
 
 				<td>
-					<a href="#questions_personnage" ng-click="addLieu(8)">
+					<a class="choix_categorie_lieu" ng-click="addLieu(8)">
 						<span class="icon-transport"></span>
 					</a>
 				</td>
@@ -80,20 +82,20 @@
 
 			<tr>
 				<td>
-					<a href="#questions_personnage" ng-click="addLieu(4)">	
+					<a class="choix_categorie_lieu" ng-click="addLieu(4)">	
 						<span class="icon-urbain"></span>
 						</button>
 					</a>
 				</td>
 
 				<td>
-					<a href="#questions_personnage" ng-click="addLieu(7)">	
+					<a class="choix_categorie_lieu" ng-click="addLieu(7)">	
 						<span class="icon-rural"></span>
 					</a>
 				</td>
 
 				<td>
-					<a href="#questions_personnage" ng-click="addLieu(6)">
+					<a class="choix_categorie_lieu" ng-click="addLieu(6)">
 						<span class="icon-loisirs"></span>
 					</a>
 				</td>
@@ -107,19 +109,19 @@
 
 			<tr>
 				<td>
-					<a href="#questions_personnage" ng-click="addLieu(10)">	
+					<a class="choix_categorie_lieu" ng-click="addLieu(10)">	
 						<span class="icon-vacances"></span>
 					</a>
 				</td>
 
 				<td>
-					<a href="#questions_personnage" ng-click="addLieu(12)">
-						<span class="icon-imaginaire_lieu"></span>
+					<a class="choix_categorie_lieu" ng-click="addLieu(12)">
+						<span class="icon-imaginaire"></span>
 					</a>
 				</td>
 
 				<td>
-					<a href="#questions_personnage" ng-click="addLieu(9)">
+					<a class="choix_categorie_lieu" ng-click="addLieu(9)">
 						<span class="icon-historique"></span>
 					</a>
 				</td>
@@ -132,7 +134,7 @@
 			</tr>
 		</table>
 
-		<table class="tab_question tableau">
+		<table class="boutons_annuler_valider">
 			<tr>
 				<td>
 					<a href="#questions_personnage">	
@@ -141,7 +143,7 @@
 				</td>
 
 				<td>
-					<a href="#questions_personnage">
+					<a href="#questions_personnage" >
 						<span class="icon-ok"></span>
 					</a>
 				</td>
@@ -149,6 +151,76 @@
 		</table>
 
 	</div>
+
+
+	<div id="nom_lieu_content" style="opacity: 0; visibility: hidden;display: none;">
+
+		<p>Quel est le nom du lieu ?</p>
+		<input id="nom_lieu" class="question_text_input" type="text" placeholder="Lieu..." maxlength="30"/>
+		<span id="validation_nom_lieu" class="icon-ok mini-icon">
+		</span>
+
+	</div>
+
+
+	<script>
+		$('.choix_categorie_lieu').click(function(event) {
+
+			$(".boutons_annuler_valider").animate({opacity: 0, duration: 300, queue: false}, 300, function(){
+				$(".boutons_annuler_valider").css({display: 'none'});
+			});
+
+			$("#liste_categorie_lieux").animate({opacity: 0, duration: 300, queue: false}, 300, function(){
+				$("#liste_categorie_lieux").css({display: 'none'});
+			});
+
+			
+			$('#nom_lieu_content').css({
+				visibility: 'visible',
+				position: 'absolute',
+				marginTop: '-230px',
+				textAlign: 'center',
+				display: 'inline-block',
+				left: '0',
+				right: '0'
+			});
+			$('#nom_lieu').removeAttr('placeholder');
+			$("#nom_lieu_content").animate({opacity: 1, duration:500, marginTop: '-450px','useTranslate3d': true, queue: false}, 500, 'easeOutCubic', function(){
+
+				$('#nom_lieu').focus();
+			});
+
+			$('#nom_lieu').click(function(event) {
+				$('#nom_lieu').removeAttr('placeholder');
+			});
+
+			$('#validation_nom_lieu').click(function(event) {
+
+				if($('#nom_lieu').val() == ''){
+
+					$('#nom_lieu').attr('placeholder', 'Nom vide, rééssaie...');
+
+				}else{
+
+					var nom_lieu = $('#nom_lieu').val();
+					angular.element($("#validation_nom_lieu")).scope().addEntireLocation(nom_lieu);
+					$('#nom_lieu_content').animate({opacity: 0, duration:300, marginTop: '-230px','useTranslate3d': true, queue: false}, 300, 'easeInCubic', function(){
+						$("#nom_lieu_content").css({display: 'none'});
+					});
+
+					$("#liste_categorie_lieux").css({display: ''});
+					$(".boutons_annuler_valider").css({display: ''});
+
+					$(".boutons_annuler_valider").animate({opacity: 1, duration: 300, queue: false}, 300);
+					$("#liste_categorie_lieux").animate({opacity: 1, duration: 300, queue: false}, 300);
+					$('#location_list').append('<p class="location_item">' + nom_lieu +'</p>');
+					$('#nom_lieu').val('');
+				}
+				
+			});
+		});
+
+	</script>
 
 	<div id="footer_container" ng-include src="footer.url"></div>
 

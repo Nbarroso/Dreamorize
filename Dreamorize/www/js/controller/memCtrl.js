@@ -53,7 +53,7 @@ function memCtrl($scope, questionnaireFactory) {
 
     $scope.addType = function(type) {
         $scope.$parent.$parent.type = type;
-        console.log($scope.$parent.$parent.type = type);
+        console.log($scope.$parent.$parent.type);
     };
 
 
@@ -89,9 +89,13 @@ function memCtrl($scope, questionnaireFactory) {
 
 
     $scope.addLieu = function(categorie_lieu) {
-        $scope.$parent.$parent.categorie_lieu = categorie_lieu;
+        questionnaireFactory.active_location_category = categorie_lieu;
     };
 
+    $scope.addEntireLocation = function(nom_lieu) {
+        var categorie_lieu = questionnaireFactory.active_location_category;
+        questionnaireFactory.addCompleteLocation(nom_lieu, categorie_lieu);
+    };
 
     $scope.addPersonnage = function(categorie_personnage, sous_categorie_personnage) {
         $scope.$parent.$parent.categorie_personnage = categorie_personnage;
@@ -161,7 +165,9 @@ function memCtrl($scope, questionnaireFactory) {
     $scope.postReve = function() {
 
 
-        if ($scope.$parent.$parent.date != null && $scope.$parent.$parent.type != null && $scope.$parent.$parent.titre != null) {
+        if ($scope.$parent.$parent.date != null 
+            && $scope.$parent.$parent.type != null 
+            && $scope.$parent.$parent.titre != null) {
 
             var date_reve = $scope.$parent.$parent.date;
             var type_reve = $scope.$parent.$parent.type;
@@ -175,19 +181,16 @@ function memCtrl($scope, questionnaireFactory) {
             var emotion_degout = $scope.$parent.$parent.degout;
             var emotion_colere = $scope.$parent.$parent.colere;
 
-            var categorie_lieu = $scope.$parent.$parent.categorie_lieu;
-            var lieu = "";
+            var jsonLieux = JSON.stringify(questionnaireFactory.locationsArray);
+            console.log(jsonLieux);
 
             var jsonColors = JSON.stringify(questionnaireFactory.colorsArray);
-            console.log("Données du rêve : ");
-            console.log('couleurs : ' + jsonColors);
-            console.log(questionnaireFactory.personnagesArray);
-            var jsonPersonnages = JSON.stringify(questionnaireFactory.personnagesArray);
-            //console.log(questionnaireFactory.completeActionsArray);
-            console.log(questionnaireFactory.completeActionsArray);
-            var actionsList = JSON.stringify(questionnaireFactory.completeActionsArray);
 
-            var tagsList = JSON.stringify(questionnaireFactory.tagsArray);
+            var jsonPersonnages = JSON.stringify(questionnaireFactory.personnagesArray);
+
+            var jsonActions = JSON.stringify(questionnaireFactory.completeActionsArray);
+
+            var jsonTags = JSON.stringify(questionnaireFactory.tagsArray);
 
             jQuery.ajax({
 
@@ -205,11 +208,10 @@ function memCtrl($scope, questionnaireFactory) {
                     tristesse: emotion_tristesse,
                     degout: emotion_degout,
                     colere: emotion_colere,
-                    categorie_lieu: categorie_lieu,
-                    lieu: lieu,
+                    lieux: jsonLieux,
                     personnagestab: jsonPersonnages,
-                    actions: actionsList,
-                    tags: tagsList
+                    actions: jsonActions,
+                    tags: jsonTags
                 },
                 error: function(xhr, status, error) {
                     alert("Erreur : le rêve n'a pas pu s'enregistrer.");
@@ -220,7 +222,19 @@ function memCtrl($scope, questionnaireFactory) {
                 }
             });
         } else {
-            alert("Les informations sur le rêve ne sont pas renseignées.");
+            var erreur = "";
+            if($scope.$parent.$parent.date == null){
+                erreur += "La date n'est pas renseignée. ";
+            }
+            if($scope.$parent.$parent.type == null){
+                erreur += "Le type n'est pas renseigné. ";
+            }
+            if($scope.$parent.$parent.titre == null){
+                erreur += "Le titre n'est pas renseigné. ";
+            }
+
+
+            alert(erreur);
         }
 
         $scope.$parent.$parent.date = "";
@@ -235,8 +249,8 @@ function memCtrl($scope, questionnaireFactory) {
         $scope.$parent.$parent.colere = 0;
 
 
-        var categorie_lieu = $scope.$parent.$parent.categorie_lieu;
-        var lieu = "";
+        //var categorie_lieu = $scope.$parent.$parent.categorie_lieu;
+        //var lieu = "";
         //questionnaireFactory.resetPersonnages();
         //$scope.$parent.couleurs.clear();
     }
