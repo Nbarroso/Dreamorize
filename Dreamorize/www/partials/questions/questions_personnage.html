@@ -26,25 +26,46 @@
 
 
 
+	<div class='all_content'>
+
+		<div id="personnages_list"></div>
+
+
+		<div>
+			<table class="tab_question" id="icons_personnage">
+				<tr>
+					<td>&nbsp;</td>
+					<td><span class="icon-humain choix_personnage"></span></td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td><p>Humain</p></td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="icon-animal choix_personnage" ></span></td>
+					<td><p>&nbsp;</p></td>
+					<td><span class="icon-non-identifie choix_personnage" ></span></td>
+				</tr>
+				<tr>
+					<td><p>Animal</p></td>
+					<td>&nbsp;</td>
+					<td><p>Autre</p></td>
+				</tr>
+			</table>
+		</div> 
 
 
 
-	<div   class='all_content' ng-switch="x.activePersonnage">
 		
 
-		<div  ng-switch-when="humain">
+		<div id="choix_humain" style='display: none; opacity: 0;'>
 			<table class="tab_question">
-
-				<tr >
-					<td>
-						<span class="icon-toi choix_personnage" ng-click="addPersonnage(1, 1);"></span>
-					</td>
-					<td>
-						<span class="icon-humain disabled"></span>
-					</td>
-					<td>
-						<span class="icon-famille choix_personnage" ng-click="addPersonnage(1, 2);"></span>
-					</td>
+				<tr>
+					<td><span class="icon-toi choix_sous_categorie_personnage" ng-click="addPersonnage(1, 1);"></span></td>
+					<td><span class="icon-humain disabled"></span></td>
+					<td><span class="icon-famille choix_sous_categorie_personnage" ng-click="addPersonnage(1, 2);"></span></td>
 				</tr>
 				<tr>
 					<td><p>toi</p></td>
@@ -52,15 +73,9 @@
 					<td><p>famille</p></td>
 				</tr>
 				<tr>
-					<td>
-						<span class="icon-ami choix_personnage" ng-click="addPersonnage(1, 4);"></span>	
-					</td>
-					<td>
-						<span class="icon-amour choix_personnage" ng-click="addPersonnage(1, 8);"></span>
-					</td>
-					<td>
-						<span class="icon-connaissance choix_personnage" ng-click="addPersonnage(1, 6);"></span>
-					</td>
+					<td><span class="icon-ami choix_sous_categorie_personnage" ng-click="addPersonnage(1, 4);"></span>	</td>
+					<td><span class="icon-amour choix_sous_categorie_personnage" ng-click="addPersonnage(1, 8);"></span></td>
+					<td><span class="icon-contact choix_sous_categorie_personnage" ng-click="addPersonnage(1, 6);"></span></td>
 				</tr>
 				<tr>
 					<td><p>ami</p></td>
@@ -68,76 +83,28 @@
 					<td><p>contact</p></td>
 				</tr>
 				<tr>
-					<td>
-						<span class="icon-inconnu choix_personnage" ng-click="addPersonnage(1, 5);"></span>
-					</td>
-					<td>
-						<span class="icon-collegue choix_personnage" ng-click="addPersonnage(1, 7);"></span>
-					</td>
-					<td>
-						<span class="icon-star choix_personnage" ng-click="addPersonnage(1, 3);"></span>
-					</td>
+					<td><span class="icon-inconnu choix_sous_categorie_personnage" ng-click="addPersonnage(1, 5);"></span></td>
+					<td><span class="icon-collegue choix_sous_categorie_personnage" ng-click="addPersonnage(1, 7);"></span></td>
+					<td><span class="icon-star choix_sous_categorie_personnage" ng-click="addPersonnage(1, 3);"></span></td>
 				</tr>
 				<tr>
 					<td><p>inconnu</p></td>
 					<td><p>collègue</p></td>
 					<td><p>star</p></td>
-
 				</tr>
-
 			</table>
-
-
-			<script type="text/javascript">
-
-			$(function() {
-
-				$(".choix_personnage").on("click", function() {
-
-					$("#nom_personnage_popup").css("display","block");
-					$("#nom_personnage_popup").dialog({autoOpen : false});
-					$("#nom_personnage_popup").dialog('open');
-
-					$("#nom_personnage_ok").on("click", function() {
-
-						$("#nom_personnage_popup").dialog('close');
-
-						var nom_personnage = $("#nom_personnage").val();
-						
-
-						//var scope = angular.element($("#nom_personnage")).scope();
-						//var sous_cat = scope.sous_categorie_personnage;
-    					//scope.$apply(function(){
-        				//	scope.msg = 'Superhero';
-   						//})
-						//console.log("sous categorie après: " + sous_cat);
-
-						angular.element($("#nom_personnage")).scope().addPersonnageData(nom_personnage);
-
-						//angular.element($("#nom_personnage")).scope().$apply();
-						//console.log(nom_personnage);
-					});
-				});
-			});
-			</script>
 		</div>
-
-
 
 
 
 		
 
-		<div  ng-switch-when="animal">
+		<div  id="choix_animal" style="display: none; opacity: 0;">
 			<table class="tab_question">
 				<tr>
 					<td>&nbsp;</td>
-					<td>
-						<span class="icon-poil choix_personnage" ng-click="addPersonnage(2, 9);"></span>
-					</td>
-					<td>
-						<span class="icon-plume choix_personnage" ng-click="addPersonnage(2, 10);"></span>
-					</td>
+					<td><span class="icon-poil choix_sous_categorie_personnage" ng-click="addPersonnage(2, 9);"></span></td>
+					<td><span class="icon-plume choix_sous_categorie_personnage" ng-click="addPersonnage(2, 10);"></span></td>
 				</tr>
 				<tr>
 					<td>&nbsp;</td>
@@ -145,15 +112,9 @@
 					<td><p>plume</p></td>
 				</tr>
 				<tr>
-					<td>
-						<span class="icon-animal disabled"></span>
-					</td>
-					<td>
-						<span class="icon-ecaille choix_personnage" ng-click="addPersonnage(2, 11);"></span>
-					</td>
-					<td>
-						<span class="icon-autre_animal choix_personnage" ng-click="addPersonnage(2, 12);"></span>
-					</td>
+					<td><span class="icon-animal disabled"></span></td>
+					<td><span class="icon-ecaille choix_sous_categorie_personnage" ng-click="addPersonnage(2, 11);"></span></td>
+					<td><span class="icon-animal_autre choix_sous_categorie_personnage" ng-click="addPersonnage(2, 12);"></span></td>
 				</tr>
 				<tr>
 					<td><p class='disabled'>Animal</p></td>
@@ -171,16 +132,17 @@
 					<td>&nbsp;</td>
 				</tr>
 			</table>
-		</div>
+		</div>  
 
 
-		<div   ng-switch-when="autre">
+
+
+
+		<div id="choix_autre" style="display: none; opacity: 0;">
 			<table class="tab_question">
 				<tr>
 					<td>&nbsp;</td>
-					<td>
-						<span class="icon-monstre choix_personnage" ng-click="addPersonnage(3, 13);"></span>
-					</td>
+					<td><span class="icon-monstre choix_sous_categorie_personnage" ng-click="addPersonnage(3, 13);"></span></td>
 					<td>&nbsp;</td>
 				</tr>
 				<tr>
@@ -189,127 +151,143 @@
 					<td>&nbsp;</td>
 				</tr>
 				<tr>
-					<td>
-						<span class="icon-imaginaire_qui choix_personnage" ng-click="addPersonnage(3, 15);"></span>
-					</td>
-					<td>
-						<span class="icon-ovni choix_personnage" ng-click="addPersonnage(3, 14);"></span>
-					</td>
-					<td>
-						<span class="icon-non_identifier disabled"></span>
-					</td>
+					<td><span class="icon-imaginaire_non_id choix_sous_categorie_personnage" ng-click="addPersonnage(3, 15);"></span></td>
+					<td><span class="icon-ovni choix_sous_categorie_personnage" ng-click="addPersonnage(3, 14);"></span></td>
+					<td><span class="icon-non-identifie disabled"></span></td>
 				</tr>
 				<tr>
 					<td><p>imaginaire</p></td>
 					<td><p>OVNI</p></td>
 					<td><p class='disabled'>Autre</p></td>
 				</tr>
-				<tr>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-				</tr>
-				<tr>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-				</tr>
+				
 			</table>
 		</div>
 
+		
+
+
+		<script type="text/javascript">
+
+			$('.choix_personnage').click(function(event) {
+
+				var persType;
+				if($(event.target).hasClass('icon-humain')){
+					persType = 'humain';
+				}else if($(event.target).hasClass('icon-animal')){
+					persType = 'animal';
+				}else if($(event.target).hasClass('icon-non-identifie')){
+					persType = 'autre';
+				}
+
+
+				
+
+				$("#icons_personnage").animate({opacity: 0, queue: false, duration: 500}, 500, function(){
+					$('#icons_personnage').css({
+						display : 'none'
+					});
+				});
+
+				$(".boutons_annuler_valider").animate({opacity: 0, queue: false, duration: 500}, 500, function(){
+					$('.boutons_annuler_valider').css({
+						display : 'none'
+					});
+					$('#choix_' + persType).css({display : ''});
+				});
+				
+
+				$('#choix_' + persType).animate({opacity: 1, 'useTranslate3d': true , queue: false}, 500, function(){
 
 
 
+					// ON CLIQUE SUR UNE SOUS CATEGORIE
+					$('.choix_sous_categorie_personnage').unbind().click(function(event) {
 
 
 
+						$('#choix_' + persType).animate({opacity: 0, 'useTranslate3d': true , queue: false}, 300, function(){
+							$('#choix_' + persType).css({display: 'none'});
+						});
 
-		<div ng-switch-default>
-			<table class="tab_question" id="icons_personnage">
-				<tr>
-					<td><p>&nbsp;</p></td>
-					<td>
-						<span class="icon-humain choix_personnage" ng-click="x.activePersonnage='humain';"></span>
-					</td>
-					<td><p>&nbsp;</p></td>
-				</tr>
-				<tr>
-					<td>&nbsp;</td>
-					<td><p>Humain</p></td>
-					<td>&nbsp;</td>
-				</tr>
-				<tr>
-					<td>
-						<span class="icon-animal choix_personnage" ng-click="x.activePersonnage='animal';"></span>
-						
-					</td>
-					<td><p>&nbsp;</p></td>
-					<td>
-						<span class="icon-non-identifie choix_personnage" ng-click="x.activePersonnage='autre';"></span>
-					</td>
-				</tr>
-				<tr>
-					<td><p>Animal</p></td>
-					<td>&nbsp;</td>
-					<td><p>Autre</p></td>
-				</tr>
-				<tr>
-					<td><p>&nbsp;</p></td>
-					<td><p>&nbsp;</p></td>
-					<td><p>&nbsp;</p></td>
-				</tr>
-				<tr>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-				</tr>
-			</table>
-		</div>
+						$('#nom_personnage_content').css({
+							visibility: 'visible',
+							position: 'absolute',
+							marginTop: '500px',
+							textAlign: 'center',
+							display: 'inline-block',
+							left: '0',
+							right: '0'
+						});
+						$('#nom_personnage').removeAttr('placeholder');
+						$("#nom_personnage_content").animate({opacity: 1, duration:500, marginTop: '0px','useTranslate3d': true, queue: false}, 500, 'easeOutCubic', function(){
+
+							$('#nom_personnage').focus();
 
 
 
+							// ON VALIDE LE NOM DU PERSONNAGE
+							$('#validation_nom_personnage').unbind().click(function(event) {
+
+
+								if( $("#nom_personnage").val() != ''){
+									$("#nom_personnage_content").animate({opacity: 0, duration:400, marginTop: '450px','useTranslate3d': true, queue: false}, 400, 'easeInCubic', function(){
+
+										$('#nom_personnage_content').css({display: 'none'});
+
+										$('#icons_personnage').css({display : ''});
+										$('.boutons_annuler_valider').css({display : ''});
+										$("#icons_personnage").animate({opacity: 1, 'useTranslate3d': true , queue: false}, 500);
+										$(".boutons_annuler_valider").animate({opacity: 1, 'useTranslate3d': true , queue: false}, 500);
+
+										$('#personnages_list').append('<p class="location_item">'+ $('#nom_personnage').val() +'</p>')
+										var nom_personnage = $('#nom_personnage').val('');
+									});
+
+								}else if($("#nom_personnage").val() == ''){
+									$("#nom_personnage").attr('placeholder', 'Nom vide, réessaie...');
+								}
+
+							});
+						});
+
+					});
+				});
+			});
+		</script>
 
 
 
-		<table class="tab_question tableau">
+		<table class="tab_question boutons_annuler_valider">
 			<tr>
 				<td>
 					<a href="#questions_personnage">	
-						
-							<span class="icon-croix"></span>
-						
+						<span class="icon-croix"></span>
 					</a>
 				</td>
 				<td>
 					<a href="#questions_action">	
-						
-							<span class="icon-ok"></span>
-						
+						<span class="icon-ok"></span>
 					</a>
 				</td>
 			</tr>
 		</table>
 
 
+		<div id="nom_personnage_content" style="opacity: 0; visibility: hidden;display: none;">
+			<p>Quel est le nom de ton personnage ?</p>
+			<input id="nom_personnage" class="question_text_input" ng-model='nom_personnage' type="text" placeholder="Personnage..." maxlength="30"/>
+			<span id="validation_nom_personnage" class="icon-ok mini-icon" ng-click="addPersonnageData(nom_personnage);">
+			</span>
+		</div>
+
+
 		
 	</div>
 
-
 	<div id="footer_container" ng-include src="footer.url"></div>
 
-
-
 </div>
-
-
-
-
-<div id="nom_personnage_popup" style="display: none;">
-	<p>Quel est le nom de ton personnage ?</p>
-	<input class="date_reve" type="text" id="nom_personnage" maxlength="30"/>
-	<span class="icon-ok mini-icon" id="nom_personnage_ok"></span>
-</div>
-
 
 
 <script type="text/javascript" src="js/jquery.hammer.full.min.js"></script>    

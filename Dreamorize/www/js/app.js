@@ -37,35 +37,49 @@ app.factory('questionnaireFactory', function(){
 
     var ListService = {};
 
-    var numero_question;
-    var tags = new Array();
-    var actions = new Array();
-    var colors = new Array();
+    var active_categorie_personnage;
+    var active_sous_categorie_personnage;
     var personnages = {
-        datas: []
-    };
-    var completeActions = {
-        datas: []
-    };
-
-    var completeLocations = {
         datas: []
     };
 
     var active_location_category;
+    var completeLocations = {
+        datas: []
+    };
+
+    var numero_question;
+    var tags = new Array();
+    var actions = new Array();
+    var colors = new Array();
+    
+    var completeActions = {
+        datas: []
+    };
+
+
+
+    
+
+    ListService.active_categorie_personnage = active_categorie_personnage;
+    ListService.active_sous_categorie_personnage = active_sous_categorie_personnage;
+    ListService.personnagesArray = personnages.datas;
 
     ListService.active_location_category = active_location_category;
     ListService.locationsArray = completeLocations.datas;
+
     ListService.colorsArray = colors;
+
     ListService.actionsArray = actions;
     ListService.completeActionsArray = completeActions.datas;
+
     ListService.tagsArray = tags;
-    ListService.personnagesArray = personnages.datas;
+
     ListService.numeroQuestion = numero_question;
 
 
     ListService.GetNumeroQuestion = function(){
-        return "lolilol";
+        return "numero question";
     }
 
     // Personnages

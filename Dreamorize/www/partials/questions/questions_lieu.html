@@ -167,11 +167,15 @@
 		$('.choix_categorie_lieu').click(function(event) {
 
 			$(".boutons_annuler_valider").animate({opacity: 0, duration: 300, queue: false}, 300, function(){
-				$(".boutons_annuler_valider").css({display: 'none'});
+				$(".boutons_annuler_valider").css({
+					display: 'none'
+				});
 			});
 
 			$("#liste_categorie_lieux").animate({opacity: 0, duration: 300, queue: false}, 300, function(){
-				$("#liste_categorie_lieux").css({display: 'none'});
+				$("#liste_categorie_lieux").css({
+					display: 'none'
+				});
 			});
 
 			

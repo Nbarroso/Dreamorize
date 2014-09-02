@@ -70,7 +70,6 @@ function memCtrl($scope, questionnaireFactory) {
         if (addColor) {
             questionnaireFactory.addColor(code_couleur);
         }
-        //$scope.$parent.$parent.couleurs_liste = couleurs;
 
         console.log(questionnaireFactory.colorsArray);
 
@@ -98,18 +97,16 @@ function memCtrl($scope, questionnaireFactory) {
     };
 
     $scope.addPersonnage = function(categorie_personnage, sous_categorie_personnage) {
-        $scope.$parent.$parent.categorie_personnage = categorie_personnage;
-        $scope.$parent.$parent.sous_categorie_personnage = sous_categorie_personnage;
-        $scope.nbPersonnage++;
-        console.log("categorie : " + $scope.$parent.$parent.categorie_personnage);
-        console.log("sous-categorie : " + $scope.$parent.$parent.sous_categorie_personnage);
+        questionnaireFactory.active_categorie_personnage = categorie_personnage;
+        questionnaireFactory.active_sous_categorie_personnage = sous_categorie_personnage;
     };
 
 
     $scope.addPersonnageData = function(nom_personnage) {
-        var sous_cat = $scope.$parent.sous_categorie_personnage;
-        var cat = $scope.$parent.categorie_personnage;
+        var cat = questionnaireFactory.active_categorie_personnage;
+        var sous_cat = questionnaireFactory.active_sous_categorie_personnage;
         questionnaireFactory.addPersonnage(cat, sous_cat, nom_personnage);
+        console.log(questionnaireFactory.personnagesArray);
     }
 
 
@@ -122,21 +119,17 @@ function memCtrl($scope, questionnaireFactory) {
             }
         });
         
-
         if(actionDoesntExist){
             questionnaireFactory.addAction(action);
         }
-        console.log(questionnaireFactory.actionsArray);
     }
 
     $scope.addCategorieAction = function(categorie_action) {
-        
         var nbAction = questionnaireFactory.actionsArray.length;
         var lastAction = questionnaireFactory.actionsArray[nbAction-1];
 
         questionnaireFactory.addCompleteAction(lastAction, categorie_action);
         console.log(questionnaireFactory.completeActionsArray);
-
     }
 
     $scope.addTag = function(tag) {
@@ -182,7 +175,6 @@ function memCtrl($scope, questionnaireFactory) {
             var emotion_colere = $scope.$parent.$parent.colere;
 
             var jsonLieux = JSON.stringify(questionnaireFactory.locationsArray);
-            console.log(jsonLieux);
 
             var jsonColors = JSON.stringify(questionnaireFactory.colorsArray);
 
