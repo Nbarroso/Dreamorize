@@ -1,16 +1,16 @@
 @font-face {
-	font-family: 'dreamorize';
-	src:url('../font/Dreamorize_icons.eot?2kscin');
-	src:url('../font/Dreamorize_icons.eot?#iefix2kscin') format('embedded-opentype'),
-		url('../font/Dreamorize_icons.woff?2kscin') format('woff'),
-		url('../font/Dreamorize_icons.ttf?2kscin') format('truetype'),
-		url('../font/Dreamorize_icons.svg?2kscin#dreamorize') format('svg');
+	font-family: 'Dreamorize_icons';
+	src:url('../font/Dreamorize_icons/fonts/Dreamorize_icons.eot?-xva1rz');
+	src:url('../font/Dreamorize_icons/fonts/Dreamorize_icons.eot?#iefix-xva1rz') format('embedded-opentype'),
+		url('../font/Dreamorize_icons/fonts/Dreamorize_icons.woff?-xva1rz') format('woff'),
+		url('../font/Dreamorize_icons/fonts/Dreamorize_icons.ttf?-xva1rz') format('truetype'),
+		url('../font/Dreamorize_icons/fonts/Dreamorize_icons.svg?-xva1rz#Dreamorize_icons') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
 
 [class^="icon-"], [class*=" icon-"] {
-	font-family: 'dreamorize';
+	font-family: 'Dreamorize_icons';
 	speak: none;
 	font-style: normal;
 	font-weight: normal;
@@ -21,6 +21,28 @@
 	/* Better Font Rendering =========== */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-view_cauchemar:before {
+	content: "\e671";
+}
+.icon-view_color:before {
+	content: "\e672";
+}
+.icon-view_dejavu:before {
+	content: "\e673";
+}
+.icon-view_emotion:before {
+	content: "\e674";
+}
+.icon-view_enfantin:before {
+	content: "\e675";
+}
+.icon-view_lucide:before {
+	content: "\e676";
+}
+.icon-view_reve:before {
+	content: "\e677";
 }
 .icon-loisirs:before {
 	content: "\e652";
@@ -43,7 +65,7 @@
 .icon-animal_clic:before {
 	content: "\e604";
 }
-.icon-cauchemar:before {
+.icon-cauchemar_clic:before {
 	content: "\e605";
 }
 .icon-collegue_clic:before {
@@ -112,6 +134,20 @@
 .icon-maison_clic:before {
 	content: "\e61b";
 }
+
+
+.icon-memoriser_couleur:before {
+	content: "\e655";
+	width: 80px;
+}
+.icon-memoriser:before {
+	content: "\e655";
+}
+.icon-memoriser_clic:before {
+	content: "\e61c";
+}
+
+
 .icon-micro_clic:before {
 	content: "\e61d";
 }
@@ -181,11 +217,6 @@
 .icon-visualiser_clic:before {
 	content: "\e633";
 }
-
-
-
-
-
 .icon-action_autre:before {
 	content: "\e634";
 }
@@ -278,18 +309,6 @@
 }
 .icon-maison:before {
 	content: "\e654";
-}
-.icon-memoriser:before{
-	content: "\e655";
-}
-.icon-memoriser:focus:before{
-	content: "\e61c";
-}
-.icon-memoriser_not_click:before{
-	content: "\e655";
-}
-.icon-memoriser_clic:before{
-	content: "\e61c";
 }
 
 .icon-menu:before {

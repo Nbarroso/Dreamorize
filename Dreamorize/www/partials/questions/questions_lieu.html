@@ -164,6 +164,22 @@
 
 
 	<script>
+
+
+	var global_height = $(window).height();
+var footer_height = $('#footer_container').height();
+var header_height = 53
+var tab_question_height = $('.tab_question').height() ;
+var all_content_height = global_height - footer_height - header_height- tab_question_height+8;
+$('.all_content').css({
+	height: all_content_height + 'px',
+	paddingBottom: '40px'
+
+});
+
+
+
+
 		$('.choix_categorie_lieu').click(function(event) {
 
 			$(".boutons_annuler_valider").animate({opacity: 0, duration: 300, queue: false}, 300, function(){

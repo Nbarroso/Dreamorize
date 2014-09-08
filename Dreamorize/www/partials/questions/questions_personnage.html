@@ -169,6 +169,17 @@
 
 		<script type="text/javascript">
 
+
+		var global_height = $(window).height();
+var footer_height = $('#footer_container').height();
+var header_height = 53
+var tab_question_height = $('.tab_question').height() ;
+var all_content_height = global_height - footer_height - header_height- tab_question_height+8;
+$('.all_content').css({
+	height: all_content_height + 'px',
+	paddingBottom: '40px'
+});
+
 			$('.choix_personnage').click(function(event) {
 
 				var persType;
@@ -180,8 +191,6 @@
 					persType = 'autre';
 				}
 
-
-				
 
 				$("#icons_personnage").animate({opacity: 0, queue: false, duration: 500}, 500, function(){
 					$('#icons_personnage').css({
@@ -195,16 +204,16 @@
 					});
 					$('#choix_' + persType).css({display : ''});
 				});
-				
 
 				$('#choix_' + persType).animate({opacity: 1, 'useTranslate3d': true , queue: false}, 500, function(){
 
 
 
+
+
+
 					// ON CLIQUE SUR UNE SOUS CATEGORIE
-					$('.choix_sous_categorie_personnage').unbind().click(function(event) {
-
-
+					$('.choix_sous_categorie_personnage').click(function(event) {
 
 						$('#choix_' + persType).animate({opacity: 0, 'useTranslate3d': true , queue: false}, 300, function(){
 							$('#choix_' + persType).css({display: 'none'});
@@ -221,14 +230,16 @@
 						});
 						$('#nom_personnage').removeAttr('placeholder');
 						$("#nom_personnage_content").animate({opacity: 1, duration:500, marginTop: '0px','useTranslate3d': true, queue: false}, 500, 'easeOutCubic', function(){
-
 							$('#nom_personnage').focus();
+
+
 
 
 
 							// ON VALIDE LE NOM DU PERSONNAGE
 							$('#validation_nom_personnage').unbind().click(function(event) {
 
+								
 
 								if( $("#nom_personnage").val() != ''){
 									$("#nom_personnage_content").animate({opacity: 0, duration:400, marginTop: '450px','useTranslate3d': true, queue: false}, 400, 'easeInCubic', function(){
@@ -240,8 +251,10 @@
 										$("#icons_personnage").animate({opacity: 1, 'useTranslate3d': true , queue: false}, 500);
 										$(".boutons_annuler_valider").animate({opacity: 1, 'useTranslate3d': true , queue: false}, 500);
 
-										$('#personnages_list').append('<p class="location_item">'+ $('#nom_personnage').val() +'</p>')
-										var nom_personnage = $('#nom_personnage').val('');
+										$('#personnages_list').append('<p class="location_item">'+ $('#nom_personnage').val() +'</p>');
+										var nom_personnage = $('#nom_').val();
+										angular.element($("#nom_personnage_content")).scope().addPersonnageData(nom_personnage);
+										$('#nom_personnage').val('');
 									});
 
 								}else if($("#nom_personnage").val() == ''){
@@ -276,8 +289,8 @@
 
 		<div id="nom_personnage_content" style="opacity: 0; visibility: hidden;display: none;">
 			<p>Quel est le nom de ton personnage ?</p>
-			<input id="nom_personnage" class="question_text_input" ng-model='nom_personnage' type="text" placeholder="Personnage..." maxlength="30"/>
-			<span id="validation_nom_personnage" class="icon-ok mini-icon" ng-click="addPersonnageData(nom_personnage);">
+			<input id="nom_personnage" class="question_text_input" type="text" placeholder="Personnage..." maxlength="30"/>
+			<span id="validation_nom_personnage" class="icon-ok mini-icon">
 			</span>
 		</div>
 

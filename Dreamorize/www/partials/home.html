@@ -1,7 +1,7 @@
-<div id="sp-nav" ng-include src="'partials/sidebar.html'"></div>
+<div id="sp-nav" static-include="partials/sidebar.html"></div>
 <div id="sp-page" class="page" ng-controller="memCtrl">
 
-    <div id="header" ng-include src="header.url"></div>
+<div id="header_container" ng-include src="header.url"></div>
 
     <div id="home_main_menu_content">
         <div id="menu_memoriser" >
@@ -15,21 +15,21 @@
 
             <tr>
                 <td>
-                    <a href="#explorer">
+                    <a class='home_link' href="#explorer">
                         <span class="icon-explorer" alt="DREAMORIZE - Explorer"></span>
                     </a>
                 </td>
 
 
                 <td>
-                    <a href="#visualiser">
+                    <a class='home_link' href="#visualiser">
                         <span class="icon-visualiser" alt="DREAMORIZE - Visualiser"></span>
                     </a>
                </td>
 
 
                 <td>
-                    <a href="#partager">
+                    <a class='home_link' href="#partager">
                         <span class="icon-echanger" alt="DREAMORIZE - Echanger"></span>
                     </a>
                 </td>
@@ -54,7 +54,7 @@
         </a>
 
         <a href="#questions_date">
-            <span class="icon-question"></span>
+            <span class="icon-question" style="font-size: 100px;color: #7BF6FF;"></span>
             <p class="titre_bouton bouton">QUESTIONS</p>
         </a>
     </div>
@@ -62,14 +62,31 @@
     
 </div>
 
-
 <script type="text/javascript">
 
     $('#bouton_memoriser').click(function(event) {
 
         $('#options_memoriser').css({'display': 'block'});
         $('#options_memoriser').animate({opacity: 1, duration: 500, queue: false}, 500);
-        $('#home_main_menu_content').animate({opacity: 0.150, duration: 500, queue: false}, 500);
+        $('#home_main_menu_content').animate({opacity: 0.150, duration: 500, queue: false}, 500, function(){
+
+            $('.home_link').bind('click', false);
+           
+            $(document).mouseup(function (e){
+                
+                var container = $("#options_memoriser");
+
+                // if the target of the click isn't the container... nor a descendant of the container
+                if (!container.is(e.target) && container.has(e.target).length === 0){ 
+
+                    $('#home_main_menu_content').animate({opacity: 1, duration: 500, queue: false}, 500);
+                    $('#options_memoriser').animate({opacity: 0, duration: 500, queue: false}, 500);
+                    $('#options_memoriser').css({'display': 'none'});
+                    $('.home_link').unbind('click', false);
+                }
+
+            });
+        });
 
     });
 

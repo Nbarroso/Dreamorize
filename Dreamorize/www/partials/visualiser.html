@@ -1,5 +1,282 @@
-<div ng-controller="memCtrl">
+<div id="sp-nav" static-include="partials/sidebar.html"></div>
+<div id="sp-page" class="page" ng-controller="explorationCtrl">
 
-    <h2>Visualiser - A venir</h2>
+	<style type="text/css">
+		.visualiser_table td {
+			text-align: center;
+			font-size: 24px;
+
+		}
+	</style>
+
+	<div id="header_container" ng-include src="header.url"></div>
+
+
+	<div class='alll_content'>
+		<br>
+		<br>
+		<center>
+			<table class="visualiser_table">
+			<tr>
+				<td><span style="color: #43E0F9"  class="icon-view_reve" tabindex="1"></span></td>
+				<td style='padding: 0 25px 0 25px; text-align: center; width: 85px;'>Type de rêve</td>
+				<td><span style="color: #F93E4C" class="icon-view_cauchemar" tabindex="1"></span></td>
+				
+			</tr>
+			<tr>
+				<td id="pourcent_reve">0%</td>
+				<td></td>
+				<td id="pourcent_cauchemar">0%</td>
+			</tr>
+			</table>
+		</center>
+
+		
+			<span id='main_type' style="color: #43E0F9;display: none;opacity: 0" tabindex="1"></span>
+		
+
+		<div style="overflow-y: visible;overflow-x: visible">
+			<center><canvas style='margin-top: 15px;' id='myCanvas' width='300'height='170'></canvas></center>
+		</div>
+
+		<center>
+			<table  class="visualiser_table" style="margin-top: 30px">
+				<tr>
+					<td ><span style="color: #FCB1F1" class="icon-view_enfantin" tabindex="1"></td>
+					<td><span style="color: #B5B3FF;padding-left: 30px;padding-right: 30px;" class="icon-view_lucide" tabindex="1"></td>
+					<td><span style="color: #FFFF22" class="icon-view_dejavu" tabindex="1"></td>
+				</tr>
+				<tr>
+					<td id="pourcent_enfantin">0%</td>
+					<td id="pourcent_lucide">0%</td>
+					<td id="pourcent_dejavu">0%</td>
+				</tr>
+			</table>
+		</center>
+
+
+
+		<script type="text/javascript">
+
+
+			var global_height = $(window).height();
+			var footer_height = $('#footer_container').height();
+			var header_height = 53
+			var tab_question_height = $('.tab_question').height() ;
+			var all_content_height = global_height - footer_height - header_height- tab_question_height+8;
+			$('.all_content').css({
+				height: all_content_height + 'px',
+				paddingBottom: '40px'
+			});
+
+
+			jQuery.ajax({
+
+	            type: "GET",
+	            url: "http://dreamorize.meximas.com/back_office/app/getDreamData.php",
+	            async: false,
+	            error: function(xhr, status, error) {
+	                alert("Erreur de réseau ou du serveur distant : les données des rêves ne peuvent pas être récupérées.");
+	            },
+	            success: function(data, status, XHR) {
+
+	                console.log("Données des rêves chargées");
+	                var dreamData = $(data['responseText']);
+
+	              	var nbReve = parseInt(dreamData.find('#reve').html());
+	              	var nbCauchemar = parseInt(dreamData.find('#cauchemar').html());
+	              	var nbLucide = parseInt(dreamData.find('#lucide').html());
+	              	var nbDejavu = parseInt(dreamData.find('#dejavu').html());
+	              	var nbEnfantin = parseInt(dreamData.find('#enfantin').html());
+	              	fillPercentContainer(nbReve, nbCauchemar, nbLucide, nbDejavu, nbEnfantin);
+
+	              	var yellow = parseInt(dreamData.find('#yellow').html());
+	              	var red = parseInt(dreamData.find('#red').html());
+	              	var purple = parseInt(dreamData.find('#purple').html());
+	              	var blue = parseInt(dreamData.find('#blue').html());
+	              	var pink = parseInt(dreamData.find('#pink').html());
+	              	var orange = parseInt(dreamData.find('#orange').html());
+	              	var green = parseInt(dreamData.find('#green').html());
+	              	var white = parseInt(dreamData.find('#white').html());
+	              	var grey = parseInt(dreamData.find('#grey').html());
+	              	//beginDraw(yellow, red, purple, blue, pink);
+	            }
+	        });
+
+
+
+
+			function fillPercentContainer(nbreve, nbcauchemar, nblucide, nbdejavu, nbenfantin){
+
+				var totalType = nbreve + nbcauchemar + nblucide + nbdejavu + nbenfantin;
+
+				var nbTypes = [{typeName : "reve", number : nbreve},
+								{typeName : "cauchemar", number : nbcauchemar},
+								{typeName : "lucide", number : nblucide},
+								{typeName : "dejavu", number : nbdejavu},
+								{typeName : "enfantin", number : nbenfantin}];
+
+				var lenType = nbTypes.length;
+				var maxType = 0;
+
+
+				for(var i = 0 ; i < lenType ; i++){
+					if(nbTypes[i]['number'] > maxType){
+						maxType = nbTypes[i]['number'];
+						main_type = nbTypes[i]['typeName'];
+					}
+				}
+
+
+				var main_type_icon_class;
+				if(main_type == 'reve'){
+					main_type_icon_class = 'icon-view_reve';
+					$('#main_type').css({
+						color: '#43E0F9'
+					});
+				}else if(main_type == 'cauchemar'){
+					main_type_icon_class = 'icon-view_cauchemar';
+					$('#main_type').css({
+						color: '#F93E4C'
+					});
+				}else if(main_type == 'lucide'){
+					main_type_icon_class = 'icon-view_lucide';
+					$('#main_type').css({
+						color: '#B5B3FF'
+					});
+				}else if(main_type == 'dejavu'){
+					main_type_icon_class = 'icon-view_dejavu';
+					$('#main_type').css({
+						color: '#FFFF22'
+					});
+				}else if(main_type == 'enfantin'){
+					main_type_icon_class = 'icon-view_enfantin';
+					$('#main_type').css({
+						color: '#FCB1F1'
+					});
+				}
+				$('#main_type').addClass(main_type_icon_class);
+
+				$('#main_type').css({
+					display: ''
+				});
+
+				$("#main_type").animate({opacity: 1, duration:2000, queue: false}, 2000);
+
+
+				yellow =  (nbdejavu/totalType);
+				red =  (nbcauchemar/totalType);
+				purple = (nblucide/totalType);
+				blue =  (nbreve/totalType);
+				pink = (nbenfantin/totalType);;
+				
+
+				$('#pourcent_reve').html(Math.round( (nbreve/totalType)*100) + '%');
+				$('#pourcent_cauchemar').html(Math.round(  (nbcauchemar/totalType)*100) + '%');
+				$('#pourcent_lucide').html(Math.round( (nblucide/totalType)*100 ) + '%');
+				$('#pourcent_dejavu').html(Math.round(  (nbdejavu/totalType)*100) + '%');
+				$('#pourcent_enfantin').html(Math.round(  (nbenfantin/totalType)*100) + '%');
+
+				beginDraw(yellow, red, purple, blue, pink);
+
+
+
+			}
+
+
+
+			function beginDraw(yellow, red, purple, blue, pink){
+
+				//var totalColor = yellow+red+purple+blue+pink;
+			
+				var c = document.getElementById("myCanvas");
+				var context = c.getContext("2d");
+
+				context.lineWidth = 4;
+				context.imageSmoothingEnabled = true;
+
+				window.requestAnimFrame = function(){
+				    return (
+				        window.requestAnimationFrame       || 
+				        window.webkitRequestAnimationFrame || 
+				        window.mozRequestAnimationFrame    || 
+				        window.oRequestAnimationFrame      || 
+				        window.msRequestAnimationFrame     || 
+				        function(/* function */ callback){
+				            window.setTimeout(callback, 1000 / 60);
+				        }
+				    );
+				}();
+
+	            var progressValue = 0;
+				
+	            var endYellow = 2 *(Math.PI)  * yellow + 0.5;
+	            var endRed = 2 *(Math.PI) * red + 0.5;
+	            var endpurple = 2 *(Math.PI) * purple + 0.5;
+	            var endBlue = 2 *(Math.PI) * blue + 0.5;
+	            var endPink = 2 *(Math.PI) * pink + 0.5;
+
+	            
+				function draw(){
+
+					context.clearRect(0, 0, c.width, c.height);
+
+					// JAUNE
+					context.beginPath();
+					context.arc(150,85,40, Math.PI/2, Math.PI/2  + progressValue * endYellow );
+					context.strokeStyle = 'yellow';
+					context.stroke();
+					context.closePath();
+
+					// ROUGE
+					context.beginPath();
+					context.arc(150,85,50, Math.PI/2, Math.PI/2 + progressValue * endRed);
+					context.strokeStyle = 'red';
+					context.stroke();
+					context.closePath();
+
+					// VIOLET CLAIR
+					context.beginPath();
+					context.arc(150,85,60,Math.PI/2, Math.PI/2 + progressValue * endpurple);
+					context.strokeStyle = '#B5B3FF';
+					context.stroke();
+					context.closePath();
+
+					//BLEU
+					context.beginPath();
+					context.arc(150,85,70,Math.PI/2, Math.PI/2 + progressValue * endBlue);
+					context.strokeStyle = '#43E0F9';
+					context.stroke();
+					context.closePath();
+
+					// ROSE
+					context.beginPath();
+					context.arc(150,85,80,Math.PI/2, Math.PI/2 + progressValue * endPink);
+					context.strokeStyle = '#FCB1F1';
+					context.stroke();
+					context.closePath();
+
+					
+					requestAnimFrame(draw);
+
+
+					if(progressValue < 0.9){
+						progressValue += 0.009;
+					}
+				}
+
+				draw();
+			}
+		
+		</script>
+
+	</div>
+	<div id="footer_container" ng-include src="footer.url"></div>
 
 </div>
+
+
+
+
+<script type="text/javascript" src="js/jquery.hammer.full.min.js"></script>    
+<script type="text/javascript" src="js/hammer_menu.js"></script>

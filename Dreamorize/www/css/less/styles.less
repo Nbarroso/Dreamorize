@@ -30,11 +30,10 @@
 
 body{
 	background-color: @background;
+	overflow: hidden;
 	color: white;
 	font-family: "Andarilho Font", Helvetica, sans-serif;
 	font-size: 14px;
-	overflow-x: hidden;
-	overflow-y: hidden;
 	height: 100%;
 	
 	a{
@@ -54,15 +53,17 @@ body{
 #sp-page{
 	position: absolute;
 	background: #141444;
-	margin-left: -8px;
-	padding-top: 8px;
+	//margin-left: -8px;
+	//overflow: hidden;
 	-webkit-transition-duration:0.3s;
 	transition-duration:0.3s;
 	height: 100%;
-	width: 100%;
+	//width: 100%;
 	top: 0;
+	left: 0;
+	right: 0;
 	z-index: 10;
-	float: right;
+	//float: right;
 	box-shadow: 20px 0 100px 30px #040433;
 	-webkit-box-shadow: 20px 0 100px 30px #040433;
 }
@@ -72,7 +73,7 @@ body{
 	width: 150px;
 	z-index: 5;
 	height: 100%;
-	overflow:hidden;
+	//overflow:hidden;
 	position:absolute;
 	top:0;
 	left:0;
@@ -83,11 +84,24 @@ body{
 // Panneau de droite quand le menu est déployé
 .page{
 	background: blue;
-	overflow-x: hidden;
+	//overflow-x: hidden;
 }
 
+/* - - - VISUALISATION - - - */
 
 
+
+.visualiser_table{
+	margin-top: -20px;
+}
+
+#main_type{
+	width: 80px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: 60px auto;
+}
 
 
 
@@ -119,9 +133,9 @@ body{
 
 #header{
 	background: @header_color;
-	margin-top: -8px;
+	//margin-top: -8px;
 	padding-top: 8px;
-	padding-bottom: 4px;
+	padding-bottom: 8px;
 }
 
 .home{
@@ -311,10 +325,10 @@ td a .icon-micro{
 	width: 100%;
 	position: absolute;
 	bottom: 0;
-	padding-right: 8px;
+	//padding-right: 8px;
 
 
-
+	/* - - QUESTIONNAIRE -- */
 	.indices_question{
 		display: inline-block;
 		color: @bleu_clair;
@@ -390,6 +404,39 @@ td a .icon-micro{
     		border-top-right-radius:3px;
 		}
 	}
+
+
+
+	/* - - - EXPLORATION - - - */
+
+	
+
+
+	.footer_option{
+	width: 50%;
+	display: inline-block;
+	box-sizing: border-box;
+	height: 100%;
+
+		p{
+			text-align: center;
+			color: gray;
+		}
+	}
+
+
+	.footer_option:first-child{
+		border-right: 2px solid @bleu_clair;
+		float: left;
+	}
+
+	.active{
+		p{
+			color: white;
+			font-weight: bold;
+		}
+	}
+
 }
 
 
@@ -400,7 +447,8 @@ td a .icon-micro{
 // Contenu d'une question (s'arrête avant le footer)
 .all_content{
 	overflow-y: scroll;
-	height: 72%;
+	box-sizing: border-box;
+	//height: 72%;
 	//overflow-x: hidden;
 }
 

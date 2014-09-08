@@ -1,36 +1,23 @@
 function memCtrl($scope, questionnaireFactory) {
 
-    var couleurs = new Array();
-    $scope.pageLevel = 0;
-    $scope.nbPersonnage = 0;
-    $scope.activePersonnage = "";
-    $scope.x = {
-        activePersonnage: "default"
-    };
-
-    $scope.numero_question = 5;
-
     $scope.header = {name: "partials/header.html", url: "partials/header.html"};
     $scope.footer = {name: "partials/footer.html", url: "partials/footer.html"};
 
+    $scope.pageLevel = 0;
+    $scope.numero_question;
 
     $scope.updateNumeroQuestion = function(new_numero_question){
-        
         $scope.numero_question = new_numero_question;
-        
     }
-
 
     $scope.increaseLevel = function() {
         $scope.pageLevel++;
-        //console.log($scope.pageLevel);
-        //console.log("page level après click :  + $scope.pageLevel);
     };
 
 
     $scope.addDate = function(date) {
 
-        $scope.$parent.$parent.date = date;
+        questionnaireFactory.date = date;
 
         if(date == "lastNight"){
             var today = new Date();
@@ -44,16 +31,14 @@ function memCtrl($scope, questionnaireFactory) {
                 mm='0'+mm
             } 
             today = yyyy+'-'+mm+'-'+dd;
-            $scope.$parent.$parent.date = today;
+            questionnaireFactory.date = today;
         }
-        console.log($scope.$parent.$parent.date);
+        console.log(questionnaireFactory.date);
         
     };
 
-
     $scope.addType = function(type) {
-        $scope.$parent.$parent.type = type;
-        console.log($scope.$parent.$parent.type);
+        questionnaireFactory.type = type;
     };
 
 
@@ -99,6 +84,7 @@ function memCtrl($scope, questionnaireFactory) {
     $scope.addPersonnage = function(categorie_personnage, sous_categorie_personnage) {
         questionnaireFactory.active_categorie_personnage = categorie_personnage;
         questionnaireFactory.active_sous_categorie_personnage = sous_categorie_personnage;
+
     };
 
 
@@ -150,7 +136,7 @@ function memCtrl($scope, questionnaireFactory) {
 
 
     $scope.addTitre = function(titre) {
-        $scope.$parent.$parent.titre = titre;
+        questionnaireFactory.titre = titre;
         
     };
 
@@ -158,13 +144,13 @@ function memCtrl($scope, questionnaireFactory) {
     $scope.postReve = function() {
 
 
-        if ($scope.$parent.$parent.date != null 
-            && $scope.$parent.$parent.type != null 
-            && $scope.$parent.$parent.titre != null) {
+        if (questionnaireFactory.date != null 
+            && questionnaireFactory.type != null 
+            && questionnaireFactory.titre != null) {
 
-            var date_reve = $scope.$parent.$parent.date;
-            var type_reve = $scope.$parent.$parent.type;
-            var titre_reve = $scope.$parent.$parent.titre;
+            var date_reve = questionnaireFactory.date;
+            var type_reve = questionnaireFactory.type;
+            var titre_reve = questionnaireFactory.titre;
 
             var emotion_joie = $scope.$parent.$parent.joie;
             var emotion_attirance = $scope.$parent.$parent.attirance;
@@ -201,37 +187,41 @@ function memCtrl($scope, questionnaireFactory) {
                     degout: emotion_degout,
                     colere: emotion_colere,
                     lieux: jsonLieux,
-                    personnagestab: jsonPersonnages,
+                    personnages: jsonPersonnages,
                     actions: jsonActions,
                     tags: jsonTags
                 },
                 error: function(xhr, status, error) {
-                    alert("Erreur : le rêve n'a pas pu s'enregistrer.");
+                    alert("Erreur : le rêve n'a pas pu s'enregistrer. Cela peut provenir d'un problème de réseau ou bien du serveur.");
                 },
                 success: function(data, status, XHR) {
-                    console.log("requête réussie");
+                    console.log("Requête réussie");
                     console.log(data['responseText']);
                 }
             });
         } else {
-            var erreur = "";
-            if($scope.$parent.$parent.date == null){
-                erreur += "La date n'est pas renseignée. ";
+            var errorMsg = "";
+            if(questionnaireFactory.date == null){
+                errorMsg += "La date n'est pas renseignée. ";
             }
-            if($scope.$parent.$parent.type == null){
-                erreur += "Le type n'est pas renseigné. ";
+            if(questionnaireFactory.type == null){
+                errorMsg += "Le type n'est pas renseigné. ";
             }
-            if($scope.$parent.$parent.titre == null){
-                erreur += "Le titre n'est pas renseigné. ";
+            if(questionnaireFactory.titre == null){
+                errorMsg += "Le titre n'est pas renseigné. ";
             }
-
-
-            alert(erreur);
+            alert(errorMsg);
         }
-
-        $scope.$parent.$parent.date = "";
-        $scope.$parent.$parent.type = "";
-        $scope.$parent.$parent.titre = "";
+        
+        questionnaireFactory.date = '';
+        questionnaireFactory.type = '';
+        questionnaireFactory.titre = '';
+        questionnaireFactory.tagsArray.clear();
+        questionnaireFactory.colorsArray.clear();
+        questionnaireFactory.locationsArray.clear();
+        questionnaireFactory.personnagesArray.clear();
+        questionnaireFactory.completeActionsArray.clear();
+        
         $scope.$parent.$parent.joie = 0;
         $scope.$parent.$parent.attirance = 0;
         $scope.$parent.$parent.peur = 0;
@@ -239,11 +229,5 @@ function memCtrl($scope, questionnaireFactory) {
         $scope.$parent.$parent.tristesse = 0;
         $scope.$parent.$parent.degout = 0;
         $scope.$parent.$parent.colere = 0;
-
-
-        //var categorie_lieu = $scope.$parent.$parent.categorie_lieu;
-        //var lieu = "";
-        //questionnaireFactory.resetPersonnages();
-        //$scope.$parent.couleurs.clear();
     }
 }

@@ -29,19 +29,19 @@
 			<tr>
 				<td>
 					<a ng-click="addCouleur('#F93E4C')">
-				        <span class="icon-memoriser_not_click" id="color1" tabindex="1"style="color: #F93E4C" ></span>
+				        <span class="icon-memoriser_couleur" id="color1" tabindex="1"style="color: #F93E4C" ></span>
 			    	</a>
 				</td>
 
 				<td>
 					<a ng-click="addCouleur('#43E0F9')">
-						<span class="icon-memoriser_not_click" id="color2" tabindex="1"style="color: #43E0F9"></span>
+						<span class="icon-memoriser_couleur" id="color2" tabindex="1"style="color: #43E0F9"></span>
 			    	</a>
 				</td>
 
 				<td>
 					<a ng-click="addCouleur('#FFFF22')">
-				        <span class="icon-memoriser_not_click" id="color3" tabindex="1"style="color: #FFFF22"></span>
+				        <span class="icon-memoriser_couleur" id="color3" tabindex="1"style="color: #FFFF22"></span>
 			    	</a>
 				</td>
 			</tr>
@@ -49,19 +49,19 @@
 			<tr>
 				<td>
 					<a ng-click="addCouleur('#FCB1F1')">
-				        <span class="icon-memoriser_not_click" id="color4" tabindex="1"style="color: #FCB1F1"></span>
+				        <span class="icon-memoriser_couleur" id="color4" tabindex="1"style="color: #FCB1F1"></span>
 			    	</a>
 				</td>
 
 				<td>
 					<a ng-click="addCouleur('#7BFF94')">
-				        <span class="icon-memoriser_not_click" id="color5" style="color: #7BFF94"></span>
+				        <span class="icon-memoriser_couleur" id="color5" style="color: #7BFF94"></span>
 			    	</a>
 				</td>
 
 				<td>
 					<a ng-click="addCouleur('#FFFFFF')">
-		 				<span class="icon-memoriser_not_click" id="color6" tabindex="1"style="color: #FFFFFF"></span>
+		 				<span class="icon-memoriser_couleur" id="color6" tabindex="1"style="color: #FFFFFF"></span>
 			    	</a>
 				</td>
 			</tr>
@@ -69,19 +69,19 @@
 			<tr>
 				<td>
 					<a ng-click="addCouleur('#B5B3FF')">
-				        <span class="icon-memoriser_not_click" id="color7" tabindex="1" style="color: #B5B3FF"></span>
+				        <span class="icon-memoriser_couleur" id="color7" tabindex="1" style="color: #B5B3FF"></span>
 			    	</a>
 				</td>
 
 				<td>
 					<a ng-click="addCouleur('#F99143')">
-				        <span class="icon-memoriser_not_click" id="color8" tabindex="1"style="color: #F99143"></span>
+				        <span class="icon-memoriser_couleur" id="color8" tabindex="1"style="color: #F99143"></span>
 			    	</a>
 				</td>
 
 				<td>
 					<a ng-click="addCouleur('#B9BAB9')">
-				        <span class="icon-memoriser_not_click" id="color9" tabindex="1"style="color: #B9BAB9"></span>
+				        <span class="icon-memoriser_couleur" id="color9" tabindex="1"style="color: #B9BAB9"></span>
 			    	</a>
 				</td>
 			</tr>
@@ -125,20 +125,20 @@
 
 	$('#color1').click(function(event) {
 		if(color1 == false){
-			$('#color1').removeClass('icon-memoriser_not_click').addClass('icon-memoriser_clic');
+			$('#color1').removeClass('icon-memoriser').addClass('icon-memoriser_clic');
 			color1 = true;
 		}else if(color1 == true){
-			$('#color1').removeClass('icon-memoriser_clic').addClass('icon-memoriser_not_click');
+			$('#color1').removeClass('icon-memoriser_clic').addClass('icon-memoriser_couleur');
 			color1 = false;
 		}
 	});
 
 	$('#color2').click(function(event) {
 		if(color2 == false){
-			$('#color2').removeClass('icon-memoriser_not_click').addClass('icon-memoriser_clic');
+			$('#color2').removeClass('icon-memoriser_couleur').addClass('icon-memoriser_clic');
 			color2 = true;
 		}else if(color2 == true){
-			$('#color2').removeClass('icon-memoriser_clic').addClass('icon-memoriser_not_click');
+			$('#color2').removeClass('icon-memoriser_clic').addClass('icon-memoriser_couleur');
 			color2 = false;
 		}
 	});

@@ -37,6 +37,11 @@ app.factory('questionnaireFactory', function(){
 
     var ListService = {};
 
+
+    var date;
+    var type;
+    var titre;
+
     var active_categorie_personnage;
     var active_sous_categorie_personnage;
     var personnages = {
@@ -58,9 +63,9 @@ app.factory('questionnaireFactory', function(){
     };
 
 
-
-    
-
+    ListService.titre = titre;
+    ListService.date = date;
+    ListService.type = type;
     ListService.active_categorie_personnage = active_categorie_personnage;
     ListService.active_sous_categorie_personnage = active_sous_categorie_personnage;
     ListService.personnagesArray = personnages.datas;
@@ -232,7 +237,8 @@ app.config(function($routeProvider) {
             controller: 'memCtrl'
         })
         .when('/visualiser', {
-            templateUrl: 'partials/visualiser.html'
+            templateUrl: 'partials/visualiser.html',
+            controller: 'explorationCtrl'
         })
         .when('/partager', {
             templateUrl: 'partials/partager.html'

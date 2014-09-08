@@ -1,0 +1,25 @@
+<div class="footer_option active left_footer_option">
+<p>TOUT</p>
+</div>
+
+<div class="footer_option right_footer_option">
+<p>CE MOIS-CI</p>
+</div>
+
+
+
+<script type="text/javascript">
+$('.footer_option').click(function(event) {
+	if($(this).hasClass('right_footer_option')){
+		$('.left_footer_option').removeClass('active');
+		$(this).addClass('active');
+	}else{
+		$('.right_footer_option').removeClass('active');
+		$('.left_footer_option').addClass('active');
+	}
+	
+});
+
+</script>
+
+

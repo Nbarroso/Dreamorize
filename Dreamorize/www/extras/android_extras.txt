@@ -10,6 +10,6 @@ Code android à ajouter :
 
 - Pour le SplashScreen : 
 
-	super.setIntegerProperty("splashscreen", R.drawable.splash);
-	super.loadUrl("file:///android_asset/www/index.html", 10000);
+	super.setIntegerProperty("splashscreen", R.drawable.ic_launcher);
+    super.loadUrl("file:///android_asset/www/index.html", 10000);
 
